@@ -1,0 +1,329 @@
+<section id="main-content">
+<div class="row">
+<div class="medium-6 large-3 columns">
+<h3>Complete</h3>
+<p class="download-text">Grab this version of Foundation if you want everything in the framework in simple, vanilla CSS and JS.</p>
+<p><a data-src-download="5.5.3" href="http://foundation.zurb.com/cdn/releases/foundation-5.5.3.zip" title="Foundation 5.5.3" class="expand button">Download Everything</a></p>
+</div>
+<div class="medium-6 large-3 columns">
+<h3>Essential</h3>
+<p class="download-text">A simple, lighter version that includes typography, the grid, buttons, Reveal and Interchange.<sup>*</sup><br/><small>*59kb (okay, plus dependencies).</small></p>
+<p><a data-src-download="5.5.3-essentials" href="http://foundation.zurb.com/cdn/releases/foundation-essentials-5.5.3.zip" title="Foundation 5.5.3" class="secondary expand button">Download Essentials</a></p>
+</div>
+<div class="medium-6 large-3 columns">
+<h3>Custom</h3>
+<p class="download-text">Include or remove certain elements and define the size of columns, colors, font size and more.</p>
+<p><a href="#customizeFoundation" class="secondary expand button">Custom Download</a></p>
+</div>
+<div class="medium-6 large-3 columns">
+<h3>Sass</h3>
+<p class="download-text">Foundation is built using SCSS, and you can work with it in the same way. Check out the instructions on the Install documentation page.</p>
+<p><a href="/docs/sass.html" class="secondary expand button">Install via SCSS</a></p>
+</div>
+</div>
+<div class="row">
+<div class="large-12 columns">
+<div class="panel disclaimer">
+<div class="row">
+<div class="medium-3 small-12 columns">
+<h4>Upgrading from Foundation 4? </h4>
+</div>
+<div class="medium-9 small-12 columns">
+<p class="smaller">There are some things you should know. Read the <a href="../docs/upgrading.html">migration guide.</a><br/>
+Used to Foundation 4 and want to keep on truckin'? No problem. <a href="download-f4.html">Download it.</a><br/>
+Still on Foundation 3? We got you covered. <a href="download-f3.html">Download it.</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row" id="customizeFoundation">
+<div class="large-12 columns">
+<h2 class="top40">Customize Foundation</h2>
+<p class="lead bottom40">Pick and choose the features you want or have the whole enchilada.</p>
+<form id="customBuild" action="http://download.foundation5.zurb.com/download" method="post">
+<div class="row">
+<div class="medium-6 columns checkboxes">
+<h4>Choose Your Components:</h4>
+<input type="hidden" name="version" value="5.5.3"/>
+<label><input type="checkbox" name="components[]" id="toggleCss" value="all" checked="checked"> All Foundation Components</label>
+<br>
+<h5>Grid:</h5>
+<div class="row">
+<div class="medium-6 small-6 columns">
+<ul class="no-bullet customizer css">
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/grid" checked="checked"> Grid <span data-tooltip class="has-tip" title="This is what makes the responsive magic happen. Science!">(?)</span> </label></li>
+</ul>
+</div>
+<div class="medium-6 small-6 columns">
+<ul class="no-bullet customizer css">
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/block-grid" checked="checked"> Block Grid <span data-tooltip class="has-tip" title="Create blocks with even spacing">(?)</span> </label></li>
+</ul>
+</div>
+</div>
+<h5>Navigation:</h5>
+<div class="row">
+<div class="medium-6 small-6 columns">
+<ul class="no-bullet customizer css">
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/pagination" checked="checked"> Pagination <span data-tooltip class="has-tip" title="Page navigation for really long content">(?)</span> </label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/side-nav" checked="checked"> Side Nav <span data-tooltip class="has-tip" title="Vertical navigation list">(?)</span> </label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/icon-bar" checked="checked"> Icon Bar <span data-tooltip class="has-tip" title="Navigation list with icons">(?)</span> </label></li>
+</ul>
+</div>
+<div class="medium-6 small-6 columns">
+<ul class="no-bullet customizer css">
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/breadcrumbs" checked="checked"> Breadcrumbs <span data-tooltip class="has-tip" title="Navigation trail for users clicking through a site or app.">(?)</span> </label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/sub-nav" checked="checked"> Sub Nav <span data-tooltip class="has-tip" title="Navigation that is great for states of a page or for filtering.">(?)</span></label></li>
+</ul>
+</div>
+</div>
+<h5>Buttons:</h5>
+<div class="row">
+<div class="medium-6 small-6 columns">
+<ul class="no-bullet customizer css">
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/buttons" checked="checked"> Buttons <span data-tooltip class="has-tip" title="We made some sweet buttons so you don't have to">(?)</span></label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/button-groups" data-scss-dependency="foundation/components/buttons" checked="checked"> Button Groups <span data-tooltip class="has-tip" title="A group of buttons that work well together">(?)</span></label></li>
+</ul>
+</div>
+<div class="medium-6 small-6 columns">
+<ul class="no-bullet customizer css">
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/dropdown-buttons" data-scss-dependency="foundation/components/buttons" checked="checked"> Dropdown Buttons <span data-tooltip class="has-tip" title="When this button is tapped, it reveals additional content.">(?)</span></label></li>
+
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/split-buttons" data-scss-dependency="foundation/components/buttons" data-js-dependency="foundation/foundation.dropdown.js" checked="checked"> Split Buttons <span data-tooltip class="has-tip" title="A button that can link somewhere and contain a dropdown">(?)</span></label></li>
+
+</ul>
+</div>
+</div>
+<h5>Forms:</h5>
+<div class="row">
+<div class="medium-6 small-6 columns">
+<ul class="no-bullet customizer css">
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/forms" data-scss-dependency="foundation/components/buttons" checked="checked"> Forms <span data-tooltip class="has-tip" title="Easy, powerful and versatile form layout system. Use with the grid for best results">(?)</span></label></li>
+</ul>
+</div>
+<div class="medium-6 small-6 columns">
+<ul class="no-bullet customizer css">
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/switches" checked="checked"> Switches <span data-tooltip class="has-tip" title="Simple toggle switches">(?)</span></label></li>
+</ul>
+</div>
+</div>
+<h5>Typography:</h5>
+<div class="row">
+<div class="medium-6 small-6 columns">
+<ul class="no-bullet customizer css">
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/type" checked /> Type</label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/keystrokes" checked="checked"> Keystrokes</label></li>
+</ul>
+</div>
+<div class="medium-6 small-6 columns">
+<ul class="no-bullet customizer css">
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/inline-lists" checked="checked"> Inline Lists</label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/labels" checked="checked"> Labels</label></li>
+</ul>
+</div>
+</div>
+<h5>Other CSS Components:</h5>
+<div class="row">
+<div class="medium-6 small-6 columns">
+<ul class="no-bullet customizer css">
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/panels" checked="checked"> Panels</label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/progress-bars" checked="checked"> Progress Bars</label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/tables" checked="checked"> Tables</label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/visibility" checked="checked"> Visibility</label></li>
+</ul>
+</div>
+<div class="medium-6 small-6 columns">
+<ul class="no-bullet customizer css">
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/pricing-tables" checked="checked"> Pricing Tables</label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/thumbs" checked="checked"> Thumbs</label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/flex-video" checked="checked"> Flex Video</label></li>
+</ul>
+</div>
+</div>
+<h5>Javascript Components:</h5>
+<div class="row">
+<div class="medium-6 small-6 columns">
+<ul class="no-bullet customizer css">
+<li><label><input type="checkbox" name="js_files[]" value="foundation/foundation.abide.js" checked="checked"> Abide</label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/accordion" data-js-dependency="foundation/foundation.accordion.js" checked="checked"> Accordion</label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/alert-boxes" data-js-dependency="foundation/foundation.alert.js" checked="checked"> Alert Boxes</label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/clearing" data-js-dependency="foundation/foundation.clearing.js" checked="checked"> Clearing</label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/dropdown" data-js-dependency="foundation/foundation.dropdown.js" checked="checked"> Dropdown</label></li>
+<li><label><input type="checkbox" name="js_files[]" value="foundation/foundation.equalizer.js" checked="checked"> Equalizer</label></li>
+<li><label><input type="checkbox" name="js_files[]" value="foundation/foundation.interchange.js" checked="checked"> Interchange</label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/joyride" data-js-dependency="vendor/jquery.cookie.js,foundation/foundation.joyride.js" checked="checked"> Joyride</label></li>
+</ul>
+</div>
+<div class="medium-6 small-6 columns">
+<ul class="no-bullet customizer css">
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/magellan" data-js-dependency="foundation/foundation.magellan.js" checked="checked"> Magellan</label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/offcanvas" data-js-dependency="foundation/foundation.offcanvas.js" checked="checked"> Off Canvas</label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/orbit" data-js-dependency="foundation/foundation.orbit.js" disabled> Orbit <span class="deprecated"> [DEPRECATED]</span></label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/reveal" data-js-dependency="foundation/foundation.reveal.js" checked="checked"> Reveal</label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/range-slider" data-js-dependency="foundation/foundation.slider.js" checked="checked"> Slider</label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/tabs" data-js-dependency="foundation/foundation.tab.js" checked="checked"> Tabs</label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/tooltips" data-js-dependency="foundation/foundation.tooltip.js" checked="checked"> Tooltips</label></li>
+<li><label><input type="checkbox" name="scss_components[]" value="foundation/components/top-bar" checked="checked" data-scss-dependency="foundation/components/grid" data-js-dependency="foundation/foundation.topbar.js"> Top Bar</label></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="medium-6 columns">
+<h4>Set Your Defaults:</h4>
+<h5>The Grid</h5>
+<div class="row">
+<div class="medium-6 columns">
+<label for="columnCount"># of Columns</label>
+<input type="text" value="12" placeholder="12" id="columnCount" name="scss_settings[total-columns]"/>
+</div>
+<div class="medium-6 columns">
+<label for="columnGutter">Gutter</label>
+<div class="row collapse">
+<div class="large-10 small-9 columns">
+<input type="text" value="1.875" placeholder="1.875" id="columnGutter" name="scss_settings[column-gutter]" class="rem-value"/>
+</div>
+<div class="large-2 small-3 columns">
+<span class="postfix">rem</span>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="medium-6 columns">
+<label for="maxWidth">Max-Width</label>
+<div class="row collapse">
+<div class="large-10 small-9 columns">
+<input type="text" value="62.5" placeholder="62.5" class="rem-value" id="maxWidth" name="scss_settings[row-width]"/>
+</div>
+<div class="large-2 small-3 columns">
+<span class="postfix">rem</span>
+</div>
+</div>
+</div>
+</div>
+
+<h5>Colors</h5>
+<div class="row">
+<div class="medium-6 columns">
+<label for="primary-color">Primary Color</label>
+<div class="row collapse">
+<div class="large-2 small-3 columns">
+<span class="prefix white">#</span>
+</div>
+<div class="large-10 small-9 columns">
+<input type="text" value="2ba6cb" placeholder="Hex" id="primary-color" name="scss_settings[primary-color]" maxlength="7" class="color-picker"/>
+</div>
+</div>
+</div>
+<div class="medium-6 columns">
+<label for="secondary-color">Secondary Color</label>
+<div class="row collapse">
+<div class="large-2 small-3 columns">
+<span class="prefix">#</span>
+</div>
+<div class="large-10 small-9 columns">
+<input type="text" value="e9e9e9" placeholder="Hex" id="secondary-color" name="scss_settings[secondary-color]" maxlength="7" class="color-picker"/>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="medium-6 columns">
+<label for="alert-color">Alert Color</label>
+<div class="row collapse">
+<div class="large-2 small-3 columns">
+<span class="prefix white">#</span>
+</div>
+<div class="large-10 small-9 columns">
+<input type="text" value="c60f13" placeholder="Hex" id="alert-color" name="scss_settings[alert-color]" maxlength="7" class="color-picker"/>
+</div>
+</div>
+</div>
+<div class="medium-6 columns">
+<label for="success-color">Success Color</label>
+<div class="row collapse">
+<div class="large-2 small-3 columns">
+<span class="prefix white">#</span>
+</div>
+<div class="large-10 small-9 columns">
+<input type="text" value="5da423" placeholder="Hex" id="success-color" name="scss_settings[success-color]" maxlength="7" class="color-picker"/>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="medium-6 columns">
+<label for="body-font-color">Body Font Color</label>
+<div class="row collapse">
+<div class="large-2 small-3 columns">
+<span class="prefix">#</span>
+</div>
+<div class="large-10 small-9 columns">
+<input type="text" value="222222" placeholder="Hex" id="body-font-color" name="scss_settings[body-font-color]" maxlength="7" class="color-picker"/>
+</div>
+</div>
+</div>
+<div class="medium-6 columns">
+<label for="header-font-color">Header Font Color</label>
+<div class="row collapse">
+<div class="large-2 small-3 columns">
+<span class="prefix">#</span>
+</div>
+<div class="large-10 small-9 columns">
+<input type="text" value="222222" placeholder="Hex" id="header-font-color" name="scss_settings[header-font-color]" maxlength="7" class="color-picker"/>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="medium-6 columns">
+<h5>Global Radius</h5>
+<label for="global-radius">Radius</label>
+<div class="row collapse">
+<div class="medium-10 small-9 columns">
+<input type="text" value="3" placeholder="px" class="pixel-value" id="global-radius" name="scss_settings[global-radius]"/>
+</div>
+<div class="medium-2 small-3 columns">
+<span class="postfix">px</span>
+</div>
+</div>
+</div>
+<div class="medium-6 columns">
+<h5>Top Bar Breakpoint</h5>
+<label for="topbar-breakpoint">Breakpoint</label>
+<div class="row collapse">
+<div class="large-10 small-9 columns">
+<input type="text" value="58.75" placeholder="rem" class="rem-value" id="topbar-breakpoint" name="scss_settings[topbar-breakpoint]"/>
+</div>
+<div class="large-2 small-3 columns">
+<span class="postfix">rem</span>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="large-12 columns">
+<h5>Text Direction</h5>
+<div class="row">
+<div class="medium-6 columns">
+<label><input type="radio" name="scss_settings[text-direction]" value="ltr" checked /> Left-to-right</label>
+</div>
+<div class="medium-6 columns bottom40">
+<label><input type="radio" name="scss_settings[text-direction]" value="rtl"/> Right-to-left</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="large-12 columns">
+<input type="submit" class="radius large button" id="packageSubmit" value="Download Custom Build" data-src-download="5.5.3-custom"/>
+</div>
+</div>
+</form>
+</div>
+</div>
+</section>

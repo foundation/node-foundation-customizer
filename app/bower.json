@@ -1,0 +1,19 @@
+{
+  "name": "foundation-customizer",
+  "version": "0.0.1",
+  "authors": [
+    "ZURB <foundation@zurb.com>"
+  ],
+  "description": "Customizer for Foundation.",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.5.2"
+  }
+}
