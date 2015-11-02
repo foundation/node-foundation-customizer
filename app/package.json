@@ -22,6 +22,7 @@
     "gulp-uncss": "^1.0.4",
     "morgan": "~1.6.1",
     "open": "0.0.5",
+    "rimraf": "^2.4.3",
     "serve-favicon": "~2.3.0"
   }
 }
