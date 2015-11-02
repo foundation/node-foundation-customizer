@@ -302,42 +302,30 @@ router.post('/custom-f6', function(req, res, next) {
       unjs.push(data.js[element])
     })
     unimport=unimport.filter(function(e){return e})
-    unimport.forEach(function(element){
+    unimport.forEach(function(element, index){
       commands.push("sed -i '' -e \"s|"+element+"||g\" ../../foundation-sites-6/scss/foundation.scss");
     })
     uninclude=uninclude.filter(function(e){return e})
 
-    uninclude.forEach(function(element){
+    uninclude.forEach(function(element, index){
       commands.push("sed -i '' -e 's/"+element+"//g' ../../foundation-sites-6/scss/foundation.scss");
     })
     unjs=unjs.filter(function(e){return e})
-    unjs.forEach(function(element){
+    unjs.forEach(function(element, index){
       commands.push("rm ../../foundation-sites-6/js/"+element);
     })
-    data.settings.forEach(function(element){
+    data.settings.forEach(function(element, index){
       commands.push("sed -i '' -e 's|"+data.settingsLocators[element]+"|"+data.settingsText[element]+data.settingsPrefix[element]+req.body["scss_settings["+element+"]"]+data.settingsSuffix[element]+";|g' ../../foundation-sites-6/scss/_settings.scss");
     })
-    var locks=[];
-    commands.forEach(function(element, index){
-      locks[index] = false;
-      var fork = childProcess.spawn(process.env.SHELL, ['-c', element]);
-      fork.stdout.on('data', function (data) {
-
-        var output = data.toString().split('\n')
-        for(var i=0; i<output.length-1; i++){
-          console.log(output[i]);
-        }
-      });
-      fork.stderr.on('data', function (data) {
-        var output = data.toString();
-        console.log(output);
-      });
-      fork.on('close', function(code){
-        locks[index]=true;
-        if(locks.length == commands.length && locks.indexOf(false) < 0){
-          complete();
-        }
-      })
+    var fork = childProcess.spawn(process.env.SHELL, ['-c', commands.join(' && ')]);
+    fork.stdout.on('data', function (data) {
+        console.log(data.toString());
+    });
+    fork.stderr.on('data', function (data) {
+      console.log(data.toString());
+    });
+    fork.on('close', function(code){
+      complete();
     })
   }
   if(locked) wait();
