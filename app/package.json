@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "postinstall":"bower install && git clone https://github.com/zurb/foundation-sites-6 ../../foundation-sites-6 || cd $PWD/../../foundation-sites-6 && npm install && bower install && cd ../node-foundation-customizer/app"
   },
   "dependencies": {
     "archiver": "^0.16.0",

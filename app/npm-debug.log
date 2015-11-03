@@ -1,0 +1,143 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/emellum/.nvm/versions/node/v0.12.7/bin/node',
+1 verbose cli   '/Users/emellum/.nvm/versions/node/v0.12.7/bin/npm',
+1 verbose cli   'install' ]
+2 info using npm@2.11.3
+3 info using node@v0.12.7
+4 verbose readDependencies loading dependencies from /Users/emellum/Desktop/projects/node-foundation-customizer/app/package.json
+5 verbose install where, deps [ '/Users/emellum/Desktop/projects/node-foundation-customizer/app',
+5 verbose install   [ 'archiver',
+5 verbose install     'body-parser',
+5 verbose install     'cookie-parser',
+5 verbose install     'debug',
+5 verbose install     'ejs',
+5 verbose install     'express',
+5 verbose install     'gulp',
+5 verbose install     'gulp-autoprefixer',
+5 verbose install     'gulp-concat',
+5 verbose install     'gulp-livereload',
+5 verbose install     'gulp-load-plugins',
+5 verbose install     'gulp-sass',
+5 verbose install     'gulp-uglify',
+5 verbose install     'gulp-uncss',
+5 verbose install     'morgan',
+5 verbose install     'open',
+5 verbose install     'rimraf',
+5 verbose install     'serve-favicon' ] ]
+6 verbose install where, peers [ '/Users/emellum/Desktop/projects/node-foundation-customizer/app',
+6 verbose install   [] ]
+7 verbose installManyTop reading for lifecycle /Users/emellum/Desktop/projects/node-foundation-customizer/app/package.json
+8 info preinstall node-foundation-customizer@0.0.0
+9 verbose installManyTop reading scoped package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/archiver/package.json
+10 verbose installManyTop reading scoped package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/body-parser/package.json
+11 verbose installManyTop reading scoped package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/cookie-parser/package.json
+12 verbose installManyTop reading scoped package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/debug/package.json
+13 verbose installManyTop reading scoped package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/ejs/package.json
+14 verbose installManyTop reading scoped package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/express/package.json
+15 verbose installManyTop reading scoped package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/gulp/package.json
+16 verbose installManyTop reading scoped package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/gulp-autoprefixer/package.json
+17 verbose installManyTop reading scoped package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/gulp-concat/package.json
+18 verbose installManyTop reading scoped package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/gulp-livereload/package.json
+19 verbose installManyTop reading scoped package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/gulp-load-plugins/package.json
+20 verbose installManyTop reading scoped package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/gulp-sass/package.json
+21 verbose installManyTop reading scoped package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/gulp-uglify/package.json
+22 verbose installManyTop reading scoped package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/gulp-uncss/package.json
+23 verbose installManyTop reading scoped package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/morgan/package.json
+24 verbose installManyTop reading scoped package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/open/package.json
+25 verbose installManyTop reading scoped package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/rimraf/package.json
+26 verbose installManyTop reading scoped package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/serve-favicon/package.json
+27 verbose readDependencies loading dependencies from /Users/emellum/Desktop/projects/node-foundation-customizer/app/package.json
+28 verbose targetResolver reading package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/archiver/package.json
+29 verbose targetResolver reading package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/body-parser/package.json
+30 verbose targetResolver reading package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/cookie-parser/package.json
+31 verbose targetResolver reading package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/debug/package.json
+32 verbose targetResolver reading package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/ejs/package.json
+33 verbose targetResolver reading package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/express/package.json
+34 verbose targetResolver reading package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/gulp/package.json
+35 verbose targetResolver reading package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/gulp-autoprefixer/package.json
+36 verbose targetResolver reading package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/gulp-concat/package.json
+37 verbose targetResolver reading package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/gulp-livereload/package.json
+38 verbose targetResolver reading package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/gulp-load-plugins/package.json
+39 verbose targetResolver reading package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/gulp-sass/package.json
+40 verbose targetResolver reading package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/gulp-uglify/package.json
+41 verbose targetResolver reading package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/gulp-uncss/package.json
+42 verbose targetResolver reading package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/morgan/package.json
+43 verbose targetResolver reading package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/open/package.json
+44 verbose targetResolver reading package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/rimraf/package.json
+45 verbose targetResolver reading package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/serve-favicon/package.json
+46 verbose targetResolver reading package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/.bin/gulp/package.json
+47 verbose targetResolver reading package data from /Users/emellum/Desktop/projects/node-foundation-customizer/app/node_modules/.bin/rimraf/package.json
+48 verbose already installed skipping gulp-livereload@^3.8.1 /Users/emellum/Desktop/projects/node-foundation-customizer/app
+49 verbose already installed skipping gulp-load-plugins@^1.0.0 /Users/emellum/Desktop/projects/node-foundation-customizer/app
+50 verbose already installed skipping gulp-sass@^2.0.4 /Users/emellum/Desktop/projects/node-foundation-customizer/app
+51 verbose already installed skipping gulp-uglify@^1.4.2 /Users/emellum/Desktop/projects/node-foundation-customizer/app
+52 verbose already installed skipping gulp-uncss@^1.0.4 /Users/emellum/Desktop/projects/node-foundation-customizer/app
+53 verbose already installed skipping morgan@~1.6.1 /Users/emellum/Desktop/projects/node-foundation-customizer/app
+54 verbose already installed skipping open@0.0.5 /Users/emellum/Desktop/projects/node-foundation-customizer/app
+55 verbose already installed skipping rimraf@^2.4.3 /Users/emellum/Desktop/projects/node-foundation-customizer/app
+56 verbose already installed skipping serve-favicon@~2.3.0 /Users/emellum/Desktop/projects/node-foundation-customizer/app
+57 verbose already installed skipping archiver@^0.16.0 /Users/emellum/Desktop/projects/node-foundation-customizer/app
+58 verbose already installed skipping body-parser@~1.13.2 /Users/emellum/Desktop/projects/node-foundation-customizer/app
+59 verbose already installed skipping cookie-parser@~1.3.5 /Users/emellum/Desktop/projects/node-foundation-customizer/app
+60 verbose already installed skipping debug@~2.2.0 /Users/emellum/Desktop/projects/node-foundation-customizer/app
+61 verbose already installed skipping ejs@~2.3.3 /Users/emellum/Desktop/projects/node-foundation-customizer/app
+62 verbose already installed skipping express@~4.13.1 /Users/emellum/Desktop/projects/node-foundation-customizer/app
+63 verbose already installed skipping gulp@^3.9.0 /Users/emellum/Desktop/projects/node-foundation-customizer/app
+64 verbose already installed skipping gulp-autoprefixer@^3.1.0 /Users/emellum/Desktop/projects/node-foundation-customizer/app
+65 verbose already installed skipping gulp-concat@^2.6.0 /Users/emellum/Desktop/projects/node-foundation-customizer/app
+66 silly install resolved []
+67 info build /Users/emellum/Desktop/projects/node-foundation-customizer/app
+68 info linkStuff node-foundation-customizer@0.0.0
+69 silly linkStuff node-foundation-customizer@0.0.0 has /Users/emellum/Desktop/projects/node-foundation-customizer as its parent node_modules
+70 verbose linkBins node-foundation-customizer@0.0.0
+71 verbose linkMans node-foundation-customizer@0.0.0
+72 verbose rebuildBundles node-foundation-customizer@0.0.0
+73 verbose rebuildBundles [ '.bin',
+73 verbose rebuildBundles   'archiver',
+73 verbose rebuildBundles   'body-parser',
+73 verbose rebuildBundles   'cookie-parser',
+73 verbose rebuildBundles   'debug',
+73 verbose rebuildBundles   'ejs',
+73 verbose rebuildBundles   'express',
+73 verbose rebuildBundles   'gulp',
+73 verbose rebuildBundles   'gulp-autoprefixer',
+73 verbose rebuildBundles   'gulp-concat',
+73 verbose rebuildBundles   'gulp-livereload',
+73 verbose rebuildBundles   'gulp-load-plugins',
+73 verbose rebuildBundles   'gulp-sass',
+73 verbose rebuildBundles   'gulp-uglify',
+73 verbose rebuildBundles   'gulp-uncss',
+73 verbose rebuildBundles   'morgan',
+73 verbose rebuildBundles   'open',
+73 verbose rebuildBundles   'rimraf',
+73 verbose rebuildBundles   'serve-favicon' ]
+74 info install node-foundation-customizer@0.0.0
+75 info postinstall node-foundation-customizer@0.0.0
+76 verbose unsafe-perm in lifecycle true
+77 info node-foundation-customizer@0.0.0 Failed to exec postinstall script
+78 verbose stack Error: node-foundation-customizer@0.0.0 postinstall: `bower install && git clone https://github.com/zurb/foundation-sites-6 ../../foundation-sites-6 || cd ../../ && npm install && bower install && cd node-foundation-customizer/app`
+78 verbose stack Exit status 254
+78 verbose stack     at EventEmitter.<anonymous> (/Users/emellum/.nvm/versions/node/v0.12.7/lib/node_modules/npm/lib/utils/lifecycle.js:213:16)
+78 verbose stack     at EventEmitter.emit (events.js:110:17)
+78 verbose stack     at ChildProcess.<anonymous> (/Users/emellum/.nvm/versions/node/v0.12.7/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+78 verbose stack     at ChildProcess.emit (events.js:110:17)
+78 verbose stack     at maybeClose (child_process.js:1015:16)
+78 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1087:5)
+79 verbose pkgid node-foundation-customizer@0.0.0
+80 verbose cwd /Users/emellum/Desktop/projects/node-foundation-customizer/app
+81 error Darwin 14.5.0
+82 error argv "/Users/emellum/.nvm/versions/node/v0.12.7/bin/node" "/Users/emellum/.nvm/versions/node/v0.12.7/bin/npm" "install"
+83 error node v0.12.7
+84 error npm  v2.11.3
+85 error code ELIFECYCLE
+86 error node-foundation-customizer@0.0.0 postinstall: `bower install && git clone https://github.com/zurb/foundation-sites-6 ../../foundation-sites-6 || cd ../../ && npm install && bower install && cd node-foundation-customizer/app`
+86 error Exit status 254
+87 error Failed at the node-foundation-customizer@0.0.0 postinstall script 'bower install && git clone https://github.com/zurb/foundation-sites-6 ../../foundation-sites-6 || cd ../../ && npm install && bower install && cd node-foundation-customizer/app'.
+87 error This is most likely a problem with the node-foundation-customizer package,
+87 error not with npm itself.
+87 error Tell the author that this fails on your system:
+87 error     bower install && git clone https://github.com/zurb/foundation-sites-6 ../../foundation-sites-6 || cd ../../ && npm install && bower install && cd node-foundation-customizer/app
+87 error You can get their info via:
+87 error     npm owner ls node-foundation-customizer
+87 error There is likely additional logging output above.
+88 verbose exit [ 1, true ]
