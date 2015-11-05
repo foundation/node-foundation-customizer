@@ -30,9 +30,7 @@ childProcess.exec("stat public/assets/complete-f6.zip",function(err, data){
 
   if(err) {
     console.log("Creating essential and complete zips before launching app....")
-    app.gitlock=true;
     helper.createCompleteAndEssential();
-    app.gitlock=false;
   }
 })
 setInterval(function(){
@@ -40,6 +38,7 @@ setInterval(function(){
   app.gitlock=true;
   if(childProcess.execFileSync(process.env.SHELL,['-c', "git pull"], {cwd: '../../foundation-sites-6'}).toString() != 'Already up-to-date.\n'){
     app.gitlock=false;
+    childProcess.execFileSync(process.env.SHELL,['-c', "npm install && bower install"], {cwd: '../../foundation-sites-6'})
     helper.createCompleteAndEssential();
   }
   console.log(childProcess.execFileSync(process.env.SHELL,['-c', "stat public/assets/complete-f6.zip"]))
