@@ -7,7 +7,8 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
+var childProcess = require('child_process');
+var helper = require('./helper')
 var app = express();
 
 // view engine setup
@@ -24,7 +25,26 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.gitlock=false;
+childProcess.exec("stat public/assets/complete-f6.zip",function(err, data){
 
+  if(err) {
+    console.log("Creating essential and complete zips before launching app....")
+    app.gitlock=true;
+    helper.createCompleteAndEssential();
+    app.gitlock=false;
+  }
+})
+setInterval(function(){
+  console.log("BEGIN")
+  app.gitlock=true;
+  if(childProcess.execFileSync(process.env.SHELL,['-c', "git pull"], {cwd: '../../foundation-sites-6'}).toString() != 'Already up-to-date.\n'){
+    app.gitlock=false;
+    helper.createCompleteAndEssential();
+  }
+  console.log(childProcess.execFileSync(process.env.SHELL,['-c', "stat public/assets/complete-f6.zip"]))
+  app.gitlock=false;
+}, 60000)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

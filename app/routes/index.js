@@ -3,6 +3,7 @@
 var express      = require('express');
 var archiver     = require('archiver')
 var fs           = require('fs')
+var app          = require('../app')
 var rimraf       = require('rimraf')
 var router = express.Router();
 var childProcess = require('child_process')
@@ -38,7 +39,7 @@ router.post('/custom-f6', function(req, res, next) {
   }
   var complete = function(){
 
-    var fork = childProcess.spawn(process.env.SHELL, ['-c', 'gulp sass:foundation && gulp javascript:foundation && gulp deploy'], {cwd: 'assets/temp-'+uniq});
+    var fork = childProcess.spawn(process.env.SHELL, ['-c', 'gulp sass:foundation && gulp javascript:foundation && gulp deploy:custom'], {cwd: 'assets/temp-'+uniq});
     fork.stdout.on('data', function (data) {
 
       var output = data.toString().split('\n')
@@ -139,7 +140,7 @@ router.post('/custom-f6', function(req, res, next) {
     "accordion_menu":"foundation.accordionMenu.js",
     "drilldown":"foundation.drilldown.js",
     "dropdown":"foundation.dropdown.js",
-    "dropdown_menu":"foundation.dropdown-menu.js",
+    "dropdown_menu":"foundation.dropdownMenu.js",
     "off-canvas":"foundation.offcanvas.js",
     "orbit":"foundation.orbit.js",
     "reveal":"foundation.reveal.js",
@@ -156,41 +157,42 @@ router.post('/custom-f6', function(req, res, next) {
     "equalizer":"foundation.equalizer.js"
   }
   data.imports={
-    "grid":"'grid/grid',",
+    "grid":"@import 'grid/grid';",
     "global-styles":"@import 'global';",
-    "typography":"'typography/typography',",
-    "forms":"'forms/forms',",
-    "visibility":"'components/visibility',",
-    "float":"'components/float',",
-    "button":"'components/button',",
-    "button_group":"'components/button-group',",
-    "accordion_menu":"'components/accordion-menu',",
-    "accordion":"'components/accordion',",
-    "badge":"'components/badge',",
-    "breadcrumbs":"'components/breadcrumbs',",
-    "callout":"'components/callout',",
-    "close_button":"'components/close-button',",
-    "drilldown_menu":"'components/drilldown',",
-    "dropdown_menu":"'components/dropdown-menu',",
-    "dropdown":"'components/dropdown',",
-    "flex_video":"'components/flex-video',",
-    "label":"'components/label',",
-    "media_object":"'components/media-object',",
-    "menu":"'components/menu',",
-    "off-canvas":"'components/off-canvas',",
-    "orbit":"'components/orbit',",
-    "pagination":"'components/pagination',",
-    "progress_bar":"'components/progress-bar',",
-    "reveal":"'components/reveal',",
-    "slider":"'components/slider',",
-    "sticky":"'components/sticky',",
-    "switch":"'components/switch',",
-    "table":"'components/table',",
-    "tabs":"'components/tabs',",
-    "title_bar":"'components/title-bar',",
-    "top_bar":"'components/top-bar',",
-    "thumbnail":"'components/thumbnail',",
-    "tooltip":"'components/tooltip';"
+    "typography":"@import 'typography/typography';",
+    "forms":"@import 'forms/forms';",
+    "visibility":"@import 'components/visibility';",
+    "float":"@import 'components/float';",
+    "button":"'@import components/button';",
+    "button_group":"@import 'components/button-group';",
+    "accordion_menu":"@import 'components/accordion-menu';",
+    "accordion":"@import 'components/accordion';",
+    "badge":"@import 'components/badge';",
+    "breadcrumbs":"@import 'components/breadcrumbs';",
+    "callout":"@import 'components/callout';",
+    "close_button":"@import 'components/close-button';",
+    "drilldown_menu":"@import 'components/drilldown';",
+    "dropdown_menu":"@import 'components/dropdown-menu';",
+    "dropdown":"@import 'components/dropdown';",
+    "flex_video":"@import 'components/flex-video';",
+    "label":"@import 'components/label';",
+    "media_object":"@import 'components/media-object';",
+    "menu":"@import 'components/menu';",
+    "off-canvas":"@import 'components/off-canvas';",
+    "orbit":"@import 'components/orbit';",
+    "pagination":"@import 'components/pagination';",
+    "progress_bar":"@import 'components/progress-bar';",
+    "reveal":"@import 'components/reveal';",
+    "slider":"@import 'components/slider';",
+    "sticky":"@import 'components/sticky';",
+    "switch":"@import 'components/switch';",
+    "table":"@import 'components/table';",
+    "tabs":"@import 'components/tabs';",
+    "title_bar":"@import 'components/title-bar';",
+    "top_bar":"@import 'components/top-bar';",
+    "thumbnail":"@import 'components/thumbnail';",
+    "joyride":"@import 'components/joyride';",
+    "tooltip":"@import 'components/tooltip';"
   }
   data.settings= [
     "column-count",
@@ -277,9 +279,11 @@ router.post('/custom-f6', function(req, res, next) {
     "cp ../../foundation-sites-6/bower_components/jquery/dist/jquery.js ./assets/custom-f6-"+uniq+"/js",
     "sed -i '' -e \"s|_build/assets/css|../custom-f6-"+uniq+"/css|g\" assets/temp-"+uniq+"/gulp/sass.js",
     "sed -i '' -e \"s|_build/assets/js|../custom-f6-"+uniq+"/js|g\" assets/temp-"+uniq+"/gulp/javascript.js",
-    "sed -i '' -e \"s|./dist|../custom-f6-"+uniq+"|g\" assets/temp-"+uniq+"/gulp/deploy.js",
+    "sed -i '' -e \"s|./_build/assets/css|../custom-f6-"+uniq+"/css|g\" assets/temp-"+uniq+"/gulp/deploy.js",
+    "sed -i '' -e \"s|./_build/assets/js|../custom-f6-"+uniq+"/js|g\" assets/temp-"+uniq+"/gulp/deploy.js",
     "cp ../../foundation-sites-6/bower_components/jquery/dist/jquery.min.js ./assets/custom-f6-"+uniq+"/js",
     "sed -i '' -e \"s|_build/assets/js/foundation.js|../custom-f6-"+uniq+"/js/foundation.js|g\" assets/temp-"+uniq+"/gulp/deploy.js",
+    "sed -i '' -e \"s|@import 'components/joyride';||g\" assets/temp-"+uniq+"/scss/foundation.scss",
     "sed -i '' -e \"s|requireDir('./gulp');||g\" assets/temp-"+uniq+"/gulpfile.js",
     "cat assets/temp-"+uniq+"/gulp/deploy.js >> assets/temp-"+uniq+"/gulpfile.js",
     "cat assets/temp-"+uniq+"/gulp/sass.js >> assets/temp-"+uniq+"/gulpfile.js",
@@ -287,28 +291,24 @@ router.post('/custom-f6', function(req, res, next) {
   ];
   var wait = function(){
     console.log("WAITING")
-    if(locked) setTimeout(wait,1000);
+    if(app.gitlock) setTimeout(wait,1000);
     else go();
   }
   var go = function() {
     console.log("GO")
-    locked=true;
-    console.log(childProcess.execFileSync(process.env.SHELL,['-c', 'git pull'],options).toString())
     childProcess.execFileSync(process.env.SHELL,['-c', "mkdir -p assets/{temp-"+uniq+"/gulp,custom-f6-"+uniq+"/{css,js}}"])
     childProcess.execFileSync(process.env.SHELL,['-c', 'cp -r scss ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../foundation-sites-6'})
     childProcess.execFileSync(process.env.SHELL,['-c', 'cp -r js ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../foundation-sites-6'})
+    childProcess.execFileSync(process.env.SHELL,['-c', 'cp -r assets/common/* assets/custom-f6-'+uniq])
     childProcess.execFileSync(process.env.SHELL,['-c', 'cp gulp/{javascript.js,deploy.js,sass.js} ../node-foundation-customizer/app/assets/temp-'+uniq+'/gulp'], {cwd: '../../foundation-sites-6'})
-    childProcess.execFileSync(process.env.SHELL,['-c', 'cp gulpfile.js ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../foundation-sites-6'})
-
-
+    childProcess.execFileSync(process.env.SHELL,['-c', 'cp {foundation-sites.scss,gulpfile.js} ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../foundation-sites-6'})
     childProcess.execFileSync(process.env.SHELL,['-c', 'echo \'@import "settings"\' >> assets/temp-'+uniq+'/scss/foundation.scss'])
     if(req.body['components[]'].indexOf('motion_ui') < 0){
-      commands.push("sed -i '' -e \"s|'node_modules/motion-ui/src'||g\" assets/temp-"+uniq+"/gulp/sass.js")
+      commands.unshift("sed -i '' -e \"s|'node_modules/motion-ui/src'||g\" assets/temp-"+uniq+"/gulp/sass.js")
       commands.unshift("sed -i '' -e \"s|'scss',|'scss'|g\" assets/temp-"+uniq+"/gulp/sass.js")
     }
     else{
       commands.push("sed -i '' -e \"s|node_modules/motion-ui/src|../../../../foundation-sites-6/node_modules/motion-ui/src|g\" assets/temp-"+uniq+"/gulp/sass.js")
-      commands.push("cp ../../foundation-sites-6/node_modules/motion-ui/dist/motion-ui.js  assets/custom-f6-"+uniq+"/js/motion-ui.js")
     }
     req.body['components[]'].forEach(function(element){
       delete data.imports[element];//deleting a component means we keep it
@@ -319,7 +319,6 @@ router.post('/custom-f6', function(req, res, next) {
     data.components=data.components.filter(function(e){return e})
     console.log(data.components)
     data.components.forEach(function(element){
-      if(element =='tooltip') commands.push("sed -i '' -e \"s|thumbnail',|thumbnail';|g\" assets/temp-"+uniq+"/scss/foundation.scss")
       unimport.push(data.imports[element])
       uninclude.push(data.includes[element])
       unjs.push(data.js[element])
@@ -353,7 +352,8 @@ router.post('/custom-f6', function(req, res, next) {
       complete();
     })
   }
-  go();
+  if(app.gitlock) wait();
+  else go();
 });
 
 module.exports = router;
