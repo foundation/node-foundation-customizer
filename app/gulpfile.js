@@ -42,23 +42,15 @@ gulp.task('views', function() {
 });
 gulp.task('run', function(){
   var fork = childProcess.spawn(process.env.SHELL, ['-c', 'DEBUG=node-foundation-customizer:* node ./bin/www']);
-  open('http://localhost:3000');
-  fork.stdout.on('data', function (data) {
-    bool=false;
-    var output = data.toString().split('\n')
-    for(var i=0; i<output.length-1; i++){
-      console.log(output[i]);
-    }
-  });
   fork.stderr.on('data', function (data) {
     var output = data.toString();
     console.log(output);
   });
 })
 gulp.task('default', ['sass', 'js', 'run'], function() {
-  $.livereload.listen();
+  //$.livereload.listen();
   gulp.watch(['./assets/**/*.scss'], ['sass']);
   gulp.watch(['./assets/**/*.js'], ['js']);
   gulp.watch(['./views/**/*.ejs'], ['views']);
-
+  open('http://localhost:3000');
 });

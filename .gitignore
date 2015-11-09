@@ -1,2 +1,7 @@
 app/node_modules
 app/bower_components
+public/assets/*.zip
+app/assets/custom*
+app/assets/temp*
+app/npm-debug.log
+.DS_Store

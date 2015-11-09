@@ -1,5 +1,5 @@
 
-
+var debug = require('debug')('node-foundation-customizer:server');
 var express      = require('express');
 var archiver     = require('archiver')
 var fs           = require('fs')
@@ -262,26 +262,26 @@ router.post('/custom-f6', function(req, res, next) {
   var unimport=[];
   var uninclude=[];
   var unjs=[];
-  var options={cwd:"../../foundation-sites-6/"}
+  var options={cwd:"../../f6/"}
   var uniq=Math.random().toString(36).substr(2, 5)
   console.log(uniq)
   var commands=[
-    "sed -i '' -e \"s|require('|require('"+process.cwd()+"/../../foundation-sites-6/node_modules/|g\" assets/temp-"+uniq+"/gulp/deploy.js",
-    "sed -i '' -e \"s|require('|require('"+process.cwd()+"/../../foundation-sites-6/node_modules/|g\" assets/temp-"+uniq+"/gulp/sass.js",
-    "sed -i '' -e \"s|require('|require('"+process.cwd()+"/../../foundation-sites-6/node_modules/|g\" assets/temp-"+uniq+"/gulp/javascript.js",
-    "sed -i '' -e \"s|require('|require('"+process.cwd()+"/../../foundation-sites-6/node_modules/|g\" assets/temp-"+uniq+"/gulpfile.js",
-    "sed -i '' -e \"s|require('"+process.cwd()+"/../../foundation-sites-6/node_modules/fs|require('fs|g\" assets/temp-"+uniq+"/gulp/sass.js",
-    "sed -i '' -e \"s|require('"+process.cwd()+"/../../foundation-sites-6/node_modules/gulp|require('../../node_modules/gulp|g\" assets/temp-"+uniq+"/gulpfile.js",
-    "sed -i '' -e \"s|var gulp = require('"+process.cwd()+"/../../foundation-sites-6/node_modules/gulp');||g\" assets/temp-"+uniq+"/gulp/deploy.js",
-    "sed -i '' -e \"s|var gulp = require('"+process.cwd()+"/../../foundation-sites-6/node_modules/gulp');||g\" assets/temp-"+uniq+"/gulp/javascript.js",
-    "sed -i '' -e \"s|var gulp = require('"+process.cwd()+"/../../foundation-sites-6/node_modules/gulp');||g\" assets/temp-"+uniq+"/gulp/sass.js",
+    "sed -i '' -e \"s|require('|require('"+process.cwd()+"/../../f6/node_modules/|g\" assets/temp-"+uniq+"/gulp/deploy.js",
+    "sed -i '' -e \"s|require('|require('"+process.cwd()+"/../../f6/node_modules/|g\" assets/temp-"+uniq+"/gulp/sass.js",
+    "sed -i '' -e \"s|require('|require('"+process.cwd()+"/../../f6/node_modules/|g\" assets/temp-"+uniq+"/gulp/javascript.js",
+    "sed -i '' -e \"s|require('|require('"+process.cwd()+"/../../f6/node_modules/|g\" assets/temp-"+uniq+"/gulpfile.js",
+    "sed -i '' -e \"s|require('"+process.cwd()+"/../../f6/node_modules/fs|require('fs|g\" assets/temp-"+uniq+"/gulp/sass.js",
+    "sed -i '' -e \"s|require('"+process.cwd()+"/../../f6/node_modules/gulp|require('../../node_modules/gulp|g\" assets/temp-"+uniq+"/gulpfile.js",
+    "sed -i '' -e \"s|var gulp = require('"+process.cwd()+"/../../f6/node_modules/gulp');||g\" assets/temp-"+uniq+"/gulp/deploy.js",
+    "sed -i '' -e \"s|var gulp = require('"+process.cwd()+"/../../f6/node_modules/gulp');||g\" assets/temp-"+uniq+"/gulp/javascript.js",
+    "sed -i '' -e \"s|var gulp = require('"+process.cwd()+"/../../f6/node_modules/gulp');||g\" assets/temp-"+uniq+"/gulp/sass.js",
     "sed -i '' -e \"s|./_build/assets/css/foundation.css|../custom-f6-"+uniq+"/css/foundation.css|g\" assets/temp-"+uniq+"/gulp/deploy.js",
-    "cp ../../foundation-sites-6/bower_components/jquery/dist/jquery.js ./assets/custom-f6-"+uniq+"/js",
+    "cp ../../f6/bower_components/jquery/dist/jquery.js ./assets/custom-f6-"+uniq+"/js",
     "sed -i '' -e \"s|_build/assets/css|../custom-f6-"+uniq+"/css|g\" assets/temp-"+uniq+"/gulp/sass.js",
     "sed -i '' -e \"s|_build/assets/js|../custom-f6-"+uniq+"/js|g\" assets/temp-"+uniq+"/gulp/javascript.js",
     "sed -i '' -e \"s|./_build/assets/css|../custom-f6-"+uniq+"/css|g\" assets/temp-"+uniq+"/gulp/deploy.js",
     "sed -i '' -e \"s|./_build/assets/js|../custom-f6-"+uniq+"/js|g\" assets/temp-"+uniq+"/gulp/deploy.js",
-    "cp ../../foundation-sites-6/bower_components/jquery/dist/jquery.min.js ./assets/custom-f6-"+uniq+"/js",
+    "cp ../../f6/bower_components/jquery/dist/jquery.min.js ./assets/custom-f6-"+uniq+"/js",
     "sed -i '' -e \"s|_build/assets/js/foundation.js|../custom-f6-"+uniq+"/js/foundation.js|g\" assets/temp-"+uniq+"/gulp/deploy.js",
     "sed -i '' -e \"s|@import 'components/joyride';||g\" assets/temp-"+uniq+"/scss/foundation.scss",
     "sed -i '' -e \"s|requireDir('./gulp');||g\" assets/temp-"+uniq+"/gulpfile.js",
@@ -297,18 +297,22 @@ router.post('/custom-f6', function(req, res, next) {
   var go = function() {
     console.log("GO")
     childProcess.execFileSync(process.env.SHELL,['-c', "mkdir -p assets/{temp-"+uniq+"/gulp,custom-f6-"+uniq+"/{css,js}}"])
-    childProcess.execFileSync(process.env.SHELL,['-c', 'cp -r scss ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../foundation-sites-6'})
-    childProcess.execFileSync(process.env.SHELL,['-c', 'cp -r js ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../foundation-sites-6'})
+    app.gitlock=true;
+    console.log("Locked f6 folder for copy.")
+    childProcess.execFileSync(process.env.SHELL,['-c', 'cp -r scss ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../f6'})
+    childProcess.execFileSync(process.env.SHELL,['-c', 'cp -r js ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../f6'})
     childProcess.execFileSync(process.env.SHELL,['-c', 'cp -r assets/common/* assets/custom-f6-'+uniq])
-    childProcess.execFileSync(process.env.SHELL,['-c', 'cp gulp/{javascript.js,deploy.js,sass.js} ../node-foundation-customizer/app/assets/temp-'+uniq+'/gulp'], {cwd: '../../foundation-sites-6'})
-    childProcess.execFileSync(process.env.SHELL,['-c', 'cp {foundation-sites.scss,gulpfile.js} ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../foundation-sites-6'})
+    childProcess.execFileSync(process.env.SHELL,['-c', 'cp gulp/{javascript.js,deploy.js,sass.js} ../node-foundation-customizer/app/assets/temp-'+uniq+'/gulp'], {cwd: '../../f6'})
+    childProcess.execFileSync(process.env.SHELL,['-c', 'cp {foundation-sites.scss,gulpfile.js} ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../f6'})
+    console.log("Unlocked f6 folder. Copy complete.")
+    app.gitlock=false;
     childProcess.execFileSync(process.env.SHELL,['-c', 'echo \'@import "settings"\' >> assets/temp-'+uniq+'/scss/foundation.scss'])
     if(req.body['components[]'].indexOf('motion_ui') < 0){
       commands.unshift("sed -i '' -e \"s|'node_modules/motion-ui/src'||g\" assets/temp-"+uniq+"/gulp/sass.js")
       commands.unshift("sed -i '' -e \"s|'scss',|'scss'|g\" assets/temp-"+uniq+"/gulp/sass.js")
     }
     else{
-      commands.push("sed -i '' -e \"s|node_modules/motion-ui/src|../../../../foundation-sites-6/node_modules/motion-ui/src|g\" assets/temp-"+uniq+"/gulp/sass.js")
+      commands.push("sed -i '' -e \"s|node_modules/motion-ui/src|../../../../f6/node_modules/motion-ui/src|g\" assets/temp-"+uniq+"/gulp/sass.js")
     }
     req.body['components[]'].forEach(function(element){
       delete data.imports[element];//deleting a component means we keep it

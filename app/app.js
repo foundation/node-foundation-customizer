@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var debug = require('debug')('node-foundation-customizer:server');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var childProcess = require('child_process');
@@ -25,24 +25,34 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.gitlock=false;
 childProcess.exec("stat public/assets/complete-f6.zip",function(err, data){
 
   if(err) {
-    console.log("Creating essential and complete zips before launching app....")
+    debug("Creating essential and complete zips before launching app....")
     helper.createCompleteAndEssential();
   }
 })
 setInterval(function(){
-  console.log("BEGIN")
-  app.gitlock=true;
-  if(childProcess.execFileSync(process.env.SHELL,['-c', "git pull"], {cwd: '../../foundation-sites-6'}).toString() != 'Already up-to-date.\n'){
-    app.gitlock=false;
-    childProcess.execFileSync(process.env.SHELL,['-c', "npm install && bower install"], {cwd: '../../foundation-sites-6'})
-    helper.createCompleteAndEssential();
-  }
-  console.log(childProcess.execFileSync(process.env.SHELL,['-c', "stat public/assets/complete-f6.zip"]))
-  app.gitlock=false;
+  debug("Checking for updates...")
+  var fork=childProcess.execFile(process.env.SHELL, ['-c',"git pull"], {cwd:'../../foundation-sites-6'}, function(err, stdout, stderr){
+    if(err) debug(stderr)
+    else if(stdout != 'Already up-to-date.\n'){
+      debug(stdout)
+      debug("Updates found. Rebuilding complete and essential zips...")
+      var fork=childProcess.spawn(process.env.SHELL,['-c', "npm install && bower install"],{cwd: '../../foundation-sites-6'})
+      fork.stdout.on('data', function (data) {
+      });
+      fork.stderr.on('data', function (data) {
+        var output = data.toString();
+        debug(output);
+      });
+      fork.on('close', function(code){
+        helper.createCompleteAndEssential();
+      });
+    }
+    else debug("Foundation folder is up to date.")
+  })
+
 }, 60000)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
