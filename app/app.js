@@ -9,6 +9,9 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var childProcess = require('child_process');
 var helper = require('./helper')
+var Promise = require("bluebird");
+Promise.promisify(helper.createCompleteAndEssential)
+Promise.promisify(childProcess.execFile)
 var app = express();
 
 // view engine setup
@@ -25,12 +28,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-childProcess.exec("stat public/assets/complete-f6.zip",function(err, data){
-
-  if(err) {
-    debug("Creating essential and complete zips before launching app....")
-    helper.createCompleteAndEssential();
-  }
+childProcess.execFileAsync(process.env.SHELL, ['-c', "stat public/assets/complete-f6.zip"])
+.catch(function(e){
+  debug("Creating essential and complete zips before launching app....")
+  helper.createCompleteAndEssential();
 })
 setInterval(function(){
   debug("Checking for updates...")

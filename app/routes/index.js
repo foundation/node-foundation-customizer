@@ -14,14 +14,12 @@ router.get('/', function(req, res, next) {
 var locked = false;
 router.post('/custom-f6', function(req, res, next) {
   var cleanup = function(){
-    /**
     rimraf('public/assets/custom-f6-'+uniq+'.zip', function(){
     })
     rimraf('assets/custom-f6-'+uniq, function(){
     })
     rimraf('assets/temp-'+uniq, function(){
     })
-    **/
     delete data;
   }
   var zip = function(){
