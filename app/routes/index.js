@@ -160,7 +160,7 @@ router.post('/custom-f6', function(req, res, next) {
     "typography":"@import 'typography/typography';",
     "forms":"@import 'forms/forms';",
     "visibility":"@import 'components/visibility';",
-    "float":"@import 'components/float';",
+    "float_classes":"@import 'components/float';",
     "button":"'@import components/button';",
     "button_group":"@import 'components/button-group';",
     "accordion_menu":"@import 'components/accordion-menu';",
@@ -262,7 +262,7 @@ router.post('/custom-f6', function(req, res, next) {
   var unjs=[];
   var options={cwd:"../../f6/"}
   var uniq=Math.random().toString(36).substr(2, 5)
-  console.log(uniq)
+  debug(uniq)
   var commands=[
     "sed -i '' -e \"s|require('|require('"+process.cwd()+"/../../f6/node_modules/|g\" assets/temp-"+uniq+"/gulp/deploy.js",
     "sed -i '' -e \"s|require('|require('"+process.cwd()+"/../../f6/node_modules/|g\" assets/temp-"+uniq+"/gulp/sass.js",
@@ -288,21 +288,21 @@ router.post('/custom-f6', function(req, res, next) {
     "cat assets/temp-"+uniq+"/gulp/javascript.js >> assets/temp-"+uniq+"/gulpfile.js"
   ];
   var wait = function(){
-    console.log("WAITING")
+    debug("WAITING")
     if(app.gitlock) setTimeout(wait,1000);
     else go();
   }
   var go = function() {
-    console.log("GO")
+    debug("GO")
     childProcess.execFileSync(process.env.SHELL,['-c', "mkdir -p assets/{temp-"+uniq+"/gulp,custom-f6-"+uniq+"/{css,js}}"])
     app.gitlock=true;
-    console.log("Locked f6 folder for copy.")
+    debug("Locked f6 folder for copy.")
     childProcess.execFileSync(process.env.SHELL,['-c', 'cp -r scss ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../f6'})
     childProcess.execFileSync(process.env.SHELL,['-c', 'cp -r js ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../f6'})
     childProcess.execFileSync(process.env.SHELL,['-c', 'cp -r assets/common/* assets/custom-f6-'+uniq])
     childProcess.execFileSync(process.env.SHELL,['-c', 'cp gulp/{javascript.js,deploy.js,sass.js} ../node-foundation-customizer/app/assets/temp-'+uniq+'/gulp'], {cwd: '../../f6'})
     childProcess.execFileSync(process.env.SHELL,['-c', 'cp {foundation-sites.scss,gulpfile.js} ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../f6'})
-    console.log("Unlocked f6 folder. Copy complete.")
+    debug("Unlocked f6 folder. Copy complete.")
     app.gitlock=false;
     childProcess.execFileSync(process.env.SHELL,['-c', 'echo \'@import "settings"\' >> assets/temp-'+uniq+'/scss/foundation.scss'])
     if(req.body['components[]'].indexOf('motion_ui') < 0){
@@ -319,7 +319,7 @@ router.post('/custom-f6', function(req, res, next) {
       delete data.components[data.components.indexOf(element)]
     })
     data.components=data.components.filter(function(e){return e})
-    console.log(data.components)
+    debug(data.components)
     data.components.forEach(function(element){
       unimport.push(data.imports[element])
       uninclude.push(data.includes[element])
@@ -341,14 +341,14 @@ router.post('/custom-f6', function(req, res, next) {
     data.settings.forEach(function(element, index){
       commands.push("sed -i '' -e 's|"+data.settingsLocators[element]+"|"+data.settingsText[element]+data.settingsPrefix[element]+req.body["scss_settings["+element+"]"]+data.settingsSuffix[element]+";|g' assets/temp-"+uniq+"/scss/_settings.scss");
     })
-    console.log(process.cwd());
-    console.log(commands);
+    debug(process.cwd());
+    debug(commands);
     var fork = childProcess.spawn(process.env.SHELL, ['-c', commands.join(' && ')]);
     fork.stdout.on('data', function (data) {
-        console.log(data.toString());
+        debug(data.toString());
     });
     fork.stderr.on('data', function (data) {
-      console.log(data.toString());
+      debug(data.toString());
     });
     fork.on('close', function(code){
       complete();

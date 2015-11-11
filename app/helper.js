@@ -9,17 +9,17 @@ exports.createCompleteAndEssential=function(){
   childProcess.execFileAsync(process.env.SHELL,['-c', "mkdir -p assets/temp-complete/{css,js}"])
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', "gulp sass:foundation && gulp javascript:foundation && gulp deploy:custom"], {cwd: '../../f6'}))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', "cp ./_build/assets/css/*.css ../node-foundation-customizer/app/assets/temp-complete/css"], {cwd: '../../f6'}))
-  .then(childProcess.execFileAsync(process.env.SHELL,['-c', "cp ./_build/assets/js/*.* ../node-foundation-customizer/app/assets/temp-complete/js"], {cwd: '../../f6'}))
+  .then(childProcess.execFileAsync(process.env.SHELL,['-c', "cp ./_build/assets/js/*.js ../node-foundation-customizer/app/assets/temp-complete/js"], {cwd: '../../f6'}))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', "cp ./bower_components/jquery/dist/jquery.min.js ../node-foundation-customizer/app/assets/temp-complete/js"], {cwd: '../../f6'}))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', "cp ./bower_components/jquery/dist/jquery.js ../node-foundation-customizer/app/assets/temp-complete/js"], {cwd: '../../f6'}))
-  .then(childProcess.execFileAsync(process.env.SHELL,['-c', "cp common/*.* temp-complete/"], {cwd: 'assets'}))
+  .then(childProcess.execFileAsync(process.env.SHELL,['-c', "cp -r assets/common/* assets/temp-complete/"]))
   .then(function(){
     var output = fs.createWriteStream('public/assets/complete-f6.zip');
       var archive = archiver('zip'); //straight from the npm archiver docs
       output.on('close', function () {
         debug("Finished building complete zip")
-        rimraf('assets/temp-complete', function(){
-        })
+        //rimraf('assets/temp-complete', function(){
+        //})
       });
 
       //error almost always means the src path didn't exist
