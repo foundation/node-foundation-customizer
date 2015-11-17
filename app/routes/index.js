@@ -27,6 +27,9 @@ router.post('/sites/download/custom-f6', function(req, res, next) {
     var output = fs.createWriteStream('public/assets/custom-f6-'+uniq+'.zip');
       var archive = archiver('zip'); //straight from the npm archiver docs
       output.on('close', function () {
+        res.set(
+          'Content-Type', 'application/zip'
+        );
         res.sendfile('custom-f6-'+uniq+'.zip', {root: 'public/assets'}, cleanup)
       });
 
