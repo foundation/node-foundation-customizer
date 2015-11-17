@@ -3,33 +3,16 @@ var open = require('open');
 var $    = require('gulp-load-plugins')();
 var childProcess = require('child_process')
 
-var sassPaths = [
-  'bower_components/foundation/scss'
-];
-
-var jsPaths = [
-  'bower_components/jquery-placeholder/jquery.placeholder.js',
-  'bower_components/fastclick/lib/fastclick.js',
-  'bower_components/jquery/dist/jquery.js',
-  'bower_components/jquery.cookie/jquery.cookie.js',
-  'bower_components/modernizr/modernizr.js',
-  'bower_components/foundation/js/foundation.js',
-  'assets/javascripts/app.js'
-];
 
 gulp.task('js', function(){
-  return gulp.src(jsPaths)
+  return gulp.src('assets/javascripts/app.js')
   .pipe($.concat('app.js'))
   .pipe(gulp.dest('./public/javascripts'))
   .pipe($.livereload())
 })
 gulp.task('sass', function() {
   return gulp.src('./assets/scss/style.scss')
-    .pipe($.sass({
-      includePaths: sassPaths,
-      outputStyle: 'nested',
-      errLogToConsole: true
-    }))
+    .pipe($.sass())
     .pipe($.autoprefixer({
       browsers: ['last 2 versions', 'ie >= 9']
     }))
