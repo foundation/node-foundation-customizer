@@ -8,8 +8,15 @@ var rimraf       = require('rimraf')
 var router = express.Router();
 var childProcess = require('child_process')
 /* GET home page. */
+
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
+});
+router.get('/sites/download/assets/complete', function(req, res, next) {
+  res.sendfile('complete-f6.zip', {root: 'public/assets'})
+});
+router.get('/sites/download/assets/essential', function(req, res, next) {
+  res.sendfile('essential-f6.zip', {root: 'public/assets'})
 });
 var locked = false;
 router.post('/custom-f6', function(req, res, next) {
