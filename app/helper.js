@@ -18,8 +18,8 @@ exports.createCompleteAndEssential=function(){
       var archive = archiver('zip'); //straight from the npm archiver docs
       output.on('close', function () {
         debug("Finished building complete zip")
-        //rimraf('assets/temp-complete', function(){
-        //})
+        rimraf('assets/temp-complete', function(){
+        })
       });
 
       //error almost always means the src path didn't exist
@@ -61,10 +61,10 @@ exports.createCompleteAndEssential=function(){
         var archive2 = archiver('zip');
           outputer.on('close', function () {
             debug("Finished building essential zip")
-            //rimraf('assets/temp-essential', function(){
-            //})
-            //rimraf('assets/essential', function(){
-            //})
+            rimraf('assets/temp-essential', function(){
+            })
+            rimraf('assets/essential', function(){
+            })
             var wait = function(){
               console.log("Waiting for folder lock on foundation-sites-6 to be released...")
               if(app.gitlock) setTimeout(wait,1000);
