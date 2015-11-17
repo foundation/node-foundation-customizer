@@ -5396,7 +5396,8 @@ blockquote p {
   position: relative;
   width: 100%;
   transition: -webkit-transform 500ms ease;
-  transition: transform 500ms ease; }
+  transition: transform 500ms ease;
+  transition: transform 500ms ease, -webkit-transform 500ms ease; }
   .inner-wrap:before, .inner-wrap:after {
     content: " ";
     display: table; }
@@ -5489,6 +5490,7 @@ blockquote p {
   position: absolute;
   transition: -webkit-transform 500ms ease 0s;
   transition: transform 500ms ease 0s;
+  transition: transform 500ms ease 0s, -webkit-transform 500ms ease 0s;
   width: 15.625rem;
   z-index: 1001;
   -webkit-transform: translate3d(-100%, 0, 0);
@@ -5511,6 +5513,7 @@ blockquote p {
   position: absolute;
   transition: -webkit-transform 500ms ease 0s;
   transition: transform 500ms ease 0s;
+  transition: transform 500ms ease 0s, -webkit-transform 500ms ease 0s;
   width: 15.625rem;
   z-index: 1001;
   -webkit-transform: translate3d(100%, 0, 0);
@@ -5533,6 +5536,7 @@ blockquote p {
   position: absolute;
   transition: -webkit-transform 500ms ease 0s;
   transition: transform 500ms ease 0s;
+  transition: transform 500ms ease 0s, -webkit-transform 500ms ease 0s;
   width: 15.625rem;
   z-index: 1001;
   -webkit-transform: translate3d(0, -100%, 0);
@@ -5556,6 +5560,7 @@ blockquote p {
   position: absolute;
   transition: -webkit-transform 500ms ease 0s;
   transition: transform 500ms ease 0s;
+  transition: transform 500ms ease 0s, -webkit-transform 500ms ease 0s;
   width: 15.625rem;
   z-index: 1001;
   -webkit-transform: translate3d(0, 100%, 0);
@@ -5849,7 +5854,8 @@ ul.off-canvas-list {
   transform: translate3d(-100%, 0, 0);
   left: 0;
   transition: -webkit-transform 500ms ease;
-  transition: transform 500ms ease; }
+  transition: transform 500ms ease;
+  transition: transform 500ms ease, -webkit-transform 500ms ease; }
   .left-submenu * {
     -webkit-backface-visibility: hidden; }
   .left-submenu .back > a {
@@ -5893,7 +5899,8 @@ ul.off-canvas-list {
   transform: translate3d(100%, 0, 0);
   right: 0;
   transition: -webkit-transform 500ms ease;
-  transition: transform 500ms ease; }
+  transition: transform 500ms ease;
+  transition: transform 500ms ease, -webkit-transform 500ms ease; }
   .right-submenu * {
     -webkit-backface-visibility: hidden; }
   .right-submenu .back > a {
@@ -5938,7 +5945,8 @@ ul.off-canvas-list {
   top: 0;
   width: 100%;
   transition: -webkit-transform 500ms ease;
-  transition: transform 500ms ease; }
+  transition: transform 500ms ease;
+  transition: transform 500ms ease, -webkit-transform 500ms ease; }
   .top-submenu * {
     -webkit-backface-visibility: hidden; }
   .top-submenu .back > a {
@@ -5979,7 +5987,8 @@ ul.off-canvas-list {
   bottom: 0;
   width: 100%;
   transition: -webkit-transform 500ms ease;
-  transition: transform 500ms ease; }
+  transition: transform 500ms ease;
+  transition: transform 500ms ease, -webkit-transform 500ms ease; }
   .bottom-submenu * {
     -webkit-backface-visibility: hidden; }
   .bottom-submenu .back > a {
