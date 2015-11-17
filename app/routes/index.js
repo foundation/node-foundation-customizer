@@ -12,21 +12,15 @@ var childProcess = require('child_process')
 router.get('/sites/download', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-router.get('/sites/download/assets/complete', function(req, res, next) {
-  res.sendfile('complete-f6.zip', {root: 'public/assets'})
-});
-router.get('/sites/download/assets/essential', function(req, res, next) {
-  res.sendfile('essential-f6.zip', {root: 'public/assets'})
-});
 var locked = false;
-router.post('sites/download/custom-f6', function(req, res, next) {
+router.post('/sites/download/custom-f6', function(req, res, next) {
   var cleanup = function(){
-    rimraf('public/assets/custom-f6-'+uniq+'.zip', function(){
-    })
-    rimraf('assets/custom-f6-'+uniq, function(){
-    })
-    rimraf('assets/temp-'+uniq, function(){
-    })
+  //  rimraf('public/assets/custom-f6-'+uniq+'.zip', function(){
+  //  })
+  //  rimraf('assets/custom-f6-'+uniq, function(){
+  //  })
+  //  rimraf('assets/temp-'+uniq, function(){
+  //  })
     delete data;
   }
   var zip = function(){
