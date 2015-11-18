@@ -4,6 +4,7 @@ var express      = require('express');
 var archiver     = require('archiver')
 var fs           = require('fs')
 var app          = require('../app')
+var path = require('path');
 var rimraf       = require('rimraf')
 var router = express.Router();
 var childProcess = require('child_process')
@@ -14,8 +15,8 @@ router.get('/', function(req, res, next) {
 var locked = false;
 router.post('/custom-f6', function(req, res, next) {
   var cleanup = function(){
-    rimraf('public/assets/custom-f6-'+uniq+'.zip', function(){
-    })
+    //rimraf('public/assets/custom-f6-'+uniq+'.zip', function(){
+    //})
     rimraf('assets/custom-f6-'+uniq, function(){
     })
     rimraf('assets/temp-'+uniq, function(){
@@ -23,20 +24,18 @@ router.post('/custom-f6', function(req, res, next) {
     delete data;
   }
   var zip = function(){
-    var output = fs.createWriteStream('public/assets/custom-f6-'+uniq+'.zip');
+    var output = fs.createWriteStream('public/assets/custom-f6.zip');
       var archive = archiver('zip'); //straight from the npm archiver docs
       output.on('close', function () {
-        res.set(
-          'Content-Type', 'application/zip'
-        );
-        res.sendfile('public/assets/custom-f6-'+uniq+'.zip', cleanup)
+        var file = path.join(__dirname, '../public/assets', 'custom-f6.zip')
+        res.download(file);
       });
 
       //error almost always means the src path didn't exist
       archive.on('error', function(err){
       })
     archive.pipe(output);
-    archive.directory('assets/custom-f6-'+uniq, 'custom-f6-'+uniq).finalize();
+    archive.directory('assets/custom-f6-'+uniq, 'custom-f6').finalize();
   }
   var complete = function(){
 
