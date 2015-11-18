@@ -29,7 +29,7 @@ router.post('/custom-f6', function(req, res, next) {
         res.set(
           'Content-Type', 'application/zip'
         );
-        res.sendfile('custom-f6-'+uniq+'.zip', {root: 'public/assets'}, cleanup)
+        res.sendfile('custom-f6-'+uniq+'.zip', {root: 'assets'}, cleanup)
       });
 
       //error almost always means the src path didn't exist
