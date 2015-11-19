@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use('/sites/download', express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/sites/download', routes);
 app.use('/users', users);
 childProcess.execFileAsync(process.env.SHELL, ['-c', "stat public/assets/complete-f6.zip"])
 .catch(function(e){
