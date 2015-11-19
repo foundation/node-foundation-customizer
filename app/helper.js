@@ -72,11 +72,9 @@ exports.createCompleteAndEssential=function(){
             }
 
             var go = function(){
-
-
               app.gitlock=true;
               debug("Locked f6 folder to prepare for update.")
-              var forkeroo=childProcess.spawn(process.env.SHELL,['-c', 'rsync -av --progress ../../foundation-sites-6/* ../../f6 --exclude .git'])
+              var forkeroo=childProcess.spawn(process.env.SHELL,['-c', 'rsync -av --progress ../../foundation-sites-6/* ../../f6'])
               forkeroo.stdout.on('data', function (data) {
 
                 var output = data.toString().split('\n')
@@ -87,8 +85,12 @@ exports.createCompleteAndEssential=function(){
                 var output = data.toString();
               });
               forkeroo.on('close',function(){
-                debug("Unlocked f6 folder. Update succeeded.")
-                app.gitlock=false;
+                var forkier=childProcess.spawn(process.env.SHELL,['-c', 'git reset --hard'], {cwd: '../../f6'})
+                forkier.on('close',function(){
+                  debug("Unlocked f6 folder. Update succeeded.")
+                  app.gitlock=false;
+                })
+
               })
             }
             if(app.gitlock) wait();
