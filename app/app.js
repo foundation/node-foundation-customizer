@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 x
 app.use('/sites/download', express.static(path.join(__dirname, 'public')));
-
+app.use('/sites/download.html', express.static(path.join(__dirname, 'public')));
 app.use('/sites/download', routes);
 app.use('/sites/download.html', routes);
 app.use('/users', users);
