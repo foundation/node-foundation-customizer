@@ -16,10 +16,13 @@ var locked = false;
 router.post('/custom-f6', function(req, res, next) {
   var cleanup = function(){
     rimraf('public/assets/custom-f6-'+uniq+'.zip', function(){
+      debug("removed custom zip" + uniq)
     })
     rimraf('assets/custom-f6-'+uniq, function(){
+      debug("removed custom " + uniq)
     })
     rimraf('assets/temp-'+uniq, function(){
+      debug("removed custom temp" + uniq)
     })
     delete data;
   }
@@ -39,7 +42,7 @@ router.post('/custom-f6', function(req, res, next) {
   }
   var complete = function(){
 
-    var fork = childProcess.spawn(process.env.SHELL, ['-c', 'gulp sass:foundation && gulp javascript:foundation && gulp deploy:custom'], {cwd: 'assets/temp-'+uniq});
+    var fork = childProcess.spawn(process.env.SHELL, ['-c', 'gulp deploy:custom'], {cwd: 'assets/temp-'+uniq});
     fork.stdout.on('data', function (data) {
 
       var output = data.toString().split('\n')
