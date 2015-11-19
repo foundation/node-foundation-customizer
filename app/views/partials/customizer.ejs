@@ -1,40 +1,38 @@
 <section id="main-content">
-   <div class="row">
+   <div class="row" data-equalizer>
       <div class="medium-6 large-3 columns">
          <h3>Complete</h3>
-         <p class="download-text">Grab this version of Foundation if you want everything in the framework in simple, vanilla CSS and JS.</p>
+         <p class="download-text" data-equalizer-watch>Grab this version of Foundation if you want everything in the framework in simple, vanilla CSS and JS.</p>
          <p><a data-src-download="5.5.3" href="http://localhost:3000/assets/complete-f6.zip" title="Foundation 5.5.3" class="expand button">Download Everything</a></p>
       </div>
       <div class="medium-6 large-3 columns">
          <h3>Essential</h3>
-         <p class="download-text">A simple, lighter version that includes typography, the grid, buttons, Reveal and Interchange.<sup>*</sup><br/><small>*59kb (okay, plus dependencies).</small></p>
+         <p class="download-text" data-equalizer-watch>A simple, lighter version that includes typography, the grid, buttons, Reveal and Interchange.<sup>*</sup><br/><small>*59kb (okay, plus dependencies).</small></p>
          <p><a data-src-download="5.5.3-essentials" href="http://localhost:3000/assets/essential-f6.zip" title="Foundation 5.5.3" class="secondary expand button">Download Essentials</a></p>
       </div>
       <div class="medium-6 large-3 columns">
          <h3>Custom</h3>
-         <p class="download-text">Include or remove certain elements and define the size of columns, colors, font size and more.</p>
+         <p class="download-text" data-equalizer-watch>Include or remove certain elements and define the size of columns, colors, font size and more.</p>
          <p><a href="#customizeFoundation" class="secondary expand button">Custom Download</a></p>
       </div>
       <div class="medium-6 large-3 columns">
          <h3>Sass</h3>
-         <p class="download-text">Foundation is built using SCSS, and you can work with it in the same way. Check out the instructions on the Install documentation page.</p>
-         <p><a href="/docs/sass.html" class="secondary expand button">Install via SCSS</a></p>
+         <p class="download-text" data-equalizer-watch>Foundation is built using SCSS, and you can work with it in the same way. Check out the instructions on the Install documentation page.</p>
+         <p><a href="http://foundation.zurb.com/sites/docs/" class="secondary expand button">Install via SCSS</a></p>
       </div>
    </div>
    <div class="row">
       <div class="large-12 columns">
-         <div class="panel disclaimer">
-            <div class="row">
-               <div class="medium-3 small-12 columns">
-                  <h4>Upgrading from Foundation 4? </h4>
-               </div>
-               <div class="medium-9 small-12 columns">
-                  <p class="smaller">There are some things you should know. Read the <a href="../docs/upgrading.html">migration guide.</a><br/>
-                     Used to Foundation 4 and want to keep on truckin'? No problem. <a href="download-f4.html">Download it.</a><br/>
-                     Still on Foundation 3? We got you covered. <a href="download-f3.html">Download it.</a>
-                  </p>
-               </div>
-            </div>
+         <div class="callout primary">
+            <p class="smaller">
+               Used to Foundation 5 and want to keep on truckin'? No problem. <a href="http://foundation.zurb.com/develop/sites/download-f5.html">Download it.</a>
+            </p>
+            <p class="smaller">
+               Used to Foundation 4 and want to keep on truckin'? No problem. <a href="http://foundation.zurb.com/develop/sites/download-f4.html">Download it.</a>
+            </p>
+            <p class="smaller">
+               Still on Foundation 3? We got you covered. <a href="http://foundation.zurb.com/develop/sites/download-f3.html">Download it.</a>
+            </p>
          </div>
       </div>
    </div>
@@ -53,7 +51,7 @@
                   <div class="row">
                      <div class="medium-6 small-6 columns">
                         <ul class="no-bullet customizer css">
-                           <li><label><input type="checkbox" name="components[]" value="grid" checked="checked"> Grid <span data-tooltip class="has-tip" title="This is what makes the responsive magic happen. Science!">(?)</span> </label></li>
+                           <li><label><input type="checkbox" name="components[]" value="grid" checked="checked"> Grid <span data-tooltip class="has-tip" title="This is what makes the responsive magic happen. Science!"> </span> </label></li>
                         </ul>
                      </div>
                   </div>
@@ -61,14 +59,14 @@
                   <div class="row">
                      <div class="medium-6 small-6 columns">
                         <ul class="no-bullet customizer css">
-                           <li><label><input type="checkbox" name="components[]" value="global-styles" checked="checked"> Global Styles <span data-tooltip class="has-tip" title="Global styles">(?)</span> </label></li>
-                           <li><label><input type="checkbox" name="components[]" value="typography" checked="checked"> Typography <span data-tooltip class="has-tip" title="Typography">(?)</span> </label></li>
+                           <li><label><input type="checkbox" name="components[]" value="global-styles" checked="checked"> Global Styles <span data-tooltip class="has-tip" title="Global styles"> </span> </label></li>
+                           <li><label><input type="checkbox" name="components[]" value="typography" checked="checked"> Typography <span data-tooltip class="has-tip" title="Typography"> </span> </label></li>
                         </ul>
                      </div>
                      <div class="medium-6 small-6 columns">
                         <ul class="no-bullet customizer css">
-                          <li><label><input type="checkbox" name="components[]" value="float_classes" checked="checked"> Float Classes <span data-tooltip class="has-tip" title="Float Classes">(?)</span></label></li>
-                           <li><label><input type="checkbox" name="components[]" value="visibility_classes" checked="checked"> Visibility Classes <span data-tooltip class="has-tip" title="Visibility Classes.">(?)</span></label></li>
+                          <li><label><input type="checkbox" name="components[]" value="float_classes" checked="checked"> Float Classes <span data-tooltip class="has-tip" title="Float Classes"> </span></label></li>
+                           <li><label><input type="checkbox" name="components[]" value="visibility_classes" checked="checked"> Visibility Classes <span data-tooltip class="has-tip" title="Visibility Classes."> </span></label></li>
                         </ul>
                      </div>
                   </div>
@@ -76,14 +74,14 @@
                   <div class="row">
                      <div class="medium-6 small-6 columns">
                         <ul class="no-bullet customizer css">
-                          <li><label><input type="checkbox" name="components[]" value="forms" checked="checked"> Forms <span data-tooltip class="has-tip" title="Forms.">(?)</span> </label></li>
-                           <li><label><input type="checkbox" name="components[]" value="accordion" data-scss-dependency="accordion" checked="checked"> Accordion <span data-tooltip class="has-tip" title="Expandable">(?)</span></label></li>
+                          <li><label><input type="checkbox" name="components[]" value="forms" checked="checked"> Forms <span data-tooltip class="has-tip" title="Forms."> </span> </label></li>
+                           <li><label><input type="checkbox" name="components[]" value="accordion" data-scss-dependency="accordion" checked="checked"> Accordion <span data-tooltip class="has-tip" title="Expandable"> </span></label></li>
                         </ul>
                      </div>
                      <div class="medium-6 small-6 columns">
                         <ul class="no-bullet customizer css">
-                           <li><label><input type="checkbox" name="components[]" value="badge" checked="checked"> Badge <span data-tooltip class="has-tip" title="Badge.">(?)</span></label></li>
-                           <li><label><input type="checkbox" name="components[]" value="breadcrumbs" checked="checked"> Breadcrumbs <span data-tooltip class="has-tip" title="Breadcrumbs">(?)</span></label></li>
+                           <li><label><input type="checkbox" name="components[]" value="badge" checked="checked"> Badge <span data-tooltip class="has-tip" title="Badge."> </span></label></li>
+                           <li><label><input type="checkbox" name="components[]" value="breadcrumbs" checked="checked"> Breadcrumbs <span data-tooltip class="has-tip" title="Breadcrumbs"> </span></label></li>
                         </ul>
                      </div>
                   </div>
@@ -91,14 +89,14 @@
                   <div class="row">
                      <div class="medium-6 small-6 columns">
                         <ul class="no-bullet customizer css">
-                          <li><label><input type="checkbox" name="components[]" value="button" checked="checked"> Buttons <span data-tooltip class="has-tip" title="We made some sweet buttons so you don't have to">(?)</span> </label></li>
+                          <li><label><input type="checkbox" name="components[]" value="button" checked="checked"> Buttons <span data-tooltip class="has-tip" title="We made some sweet buttons so you don't have to"> </span> </label></li>
                           <li><label><input type="checkbox" name="components[]" value="close_button" checked /> Close Button</label></li>
-                          <li><label><input type="checkbox" name="components[]" value="button_group" checked="checked"> Button Group <span data-tooltip class="has-tip" title="Buttons that look good together.">(?)</span></label></li>
+                          <li><label><input type="checkbox" name="components[]" value="button_group" checked="checked"> Button Group <span data-tooltip class="has-tip" title="Buttons that look good together."> </span></label></li>
                         </ul>
                      </div>
                      <div class="medium-6 small-6 columns">
                         <ul class="no-bullet customizer css">
-                           <li><label><input type="checkbox" name="components[]" value="callout" checked="checked"> Callout <span data-tooltip class="has-tip" title="Callout">(?)</span></label></li>
+                           <li><label><input type="checkbox" name="components[]" value="callout" checked="checked"> Callout <span data-tooltip class="has-tip" title="Callout"> </span></label></li>
                         </ul>
                      </div>
                   </div>

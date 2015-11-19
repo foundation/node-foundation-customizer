@@ -3253,7 +3253,7 @@ p {
     opacity: 1.0; }
 
 .marketing-hero {
-  background: url(../img/mars-bg.svg) center center repeat-x;
+  background:  url(../assets/img/mars-bg.svg) center center repeat-x;
   background-size: cover;
   position: relative;
   padding: 2.5rem 0 4.5rem;
@@ -3282,17 +3282,17 @@ p {
     font-size: 0.8125rem;
     font-weight: 200; }
   .marketing-hero.home-large-hero {
-    background: url(../img/homepage/hero-bg2.svg) bottom center;
+    background:  url(../assets/img/homepage/hero-bg2.svg) bottom center;
     background-size: cover;
     padding-top: 180px;
     padding-bottom: 250px; }
   .marketing-hero.sites-large-hero {
-    background: url(../img/homepage/sites-hero-bg.svg) bottom center;
+    background:  url(../assets/img/homepage/sites-hero-bg.svg) bottom center;
     background-size: cover;
     padding-top: 180px;
     padding-bottom: 250px; }
   .marketing-hero.sites {
-    background: url(../img/mars-bg.svg) center 30% repeat-x; }
+    background:  url(../assets/img/mars-bg.svg) center 30% repeat-x; }
   .marketing-hero.without-subnav {
     padding-bottom: 2.5rem; }
   .marketing-hero.foundation-apps {
@@ -3303,7 +3303,7 @@ p {
     background-position: center right;
     background-size: contain;
     margin-bottom: 0;
-    background-image: url(../img/foundation-apps/apps-bg.png);
+    background-image:  url(../assets/img/foundation-apps/apps-bg.png);
     right: 0;
     position: relative;
     top: 0;
@@ -3312,7 +3312,7 @@ p {
     -webkit-animation: snow 10s linear infinite;
     animation: snow 10s linear infinite; }
   .marketing-hero.foundation-emails {
-    background-image: url(../img/foundation-emails/water.png);
+    background-image:  url(../assets/img/foundation-emails/water.png);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -3937,7 +3937,7 @@ p.faq {
     line-height: 1; }
 
 .the-numbers {
-  background: url(../img/business/business-hero2.jpg) no-repeat center top #064F68;
+  background:  url(../assets/img/business/business-hero2.jpg) no-repeat center top #064F68;
   width: 100%;
   padding: 40px 0;
   margin: 40px 0; }
@@ -4045,7 +4045,7 @@ p.faq {
 
 /*Features Page*/
 #features-hero {
-  background: url(../img/marquee-stars.svg) #074e68;
+  background:  url(../assets/img/marquee-stars.svg) #074e68;
   text-align: left;
   position: relative;
   padding: 50px 20px 0 20px; }
@@ -4118,7 +4118,7 @@ p.faq {
 
 /* line 90, ../sass/app.scss */
 .top-area.main {
-  background-image: url(../img/foundation-emails/water.png);
+  background-image:  url(../assets/img/foundation-emails/water.png);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover; }
@@ -4164,7 +4164,7 @@ p.faq {
 
 /* line 112, ../sass/app.scss */
 .inky {
-  background: url(../img/foundation-emails/inky-all-devices.svg) no-repeat center center;
+  background:  url(../assets/img/foundation-emails/inky-all-devices.svg) no-repeat center center;
   background-size: cover;
   height: 410px;
   width: 380px;
@@ -4277,7 +4277,7 @@ p.faq {
   /* line 475, ../sass/app.scss */
   .top-area .inky-phone {
     display: block;
-    background: url(../img/foundation-emails/inky-mobile-hold.svg);
+    background:  url(../assets/img/foundation-emails/inky-mobile-hold.svg);
     background-repeat: no-repeat;
     height: 542px;
     position: absolute;
@@ -4430,7 +4430,7 @@ ul.changelog li .release-description a {
 
 /* line 155, ../sass/app.scss */
 .callout .row .stamp {
-  background: url(../img/foundation-emails/inky-stamp-2.svg) no-repeat center center;
+  background:  url(../assets/img/foundation-emails/inky-stamp-2.svg) no-repeat center center;
   position: absolute;
   width: 231px;
   right: -40px;
@@ -4480,7 +4480,7 @@ ul.changelog li .release-description a {
   display: block;
   text-align: center;
   padding: 145px 0 25px;
-  background: url(../img/foundation-emails/icons/discover.png) no-repeat 0 0;
+  background:  url(../assets/img/foundation-emails/icons/discover.png) no-repeat 0 0;
   background-size: 125px 2000px; }
 
 /* line 188, ../sass/app.scss */
@@ -4565,7 +4565,7 @@ ul.changelog li .release-description a {
 
 /* line 289, ../sass/app.scss */
 .inky-fish {
-  background: url(../img/foundation-emails/inky-mobile-hold.svg) no-repeat center center;
+  background:  url(../assets/img/foundation-emails/inky-mobile-hold.svg) no-repeat center center;
   background-size: cover;
   height: 444px;
   width: 358px;
@@ -4589,7 +4589,7 @@ ul.changelog li .release-description a {
 
 /* line 294, ../sass/app.scss */
 .read-docs a {
-  background: #e5ecee url(../img/foundation-emails/icons/read-docs.png) no-repeat 38px center;
+  background: #e5ecee  url(../assets/img/foundation-emails/icons/read-docs.png) no-repeat 38px center;
   padding: 23px 23px 23px 97px;
   background-size: 32px 44px;
   display: block; }
@@ -4661,7 +4661,7 @@ ul.changelog li .release-description a {
 
 /* line 321, ../sass/app.scss */
 .how-to-use.one .process-1 {
-  background: url(../img/foundation-emails/inky-outlook.svg) no-repeat center center;
+  background:  url(../assets/img/foundation-emails/inky-outlook.svg) no-repeat center center;
   height: 335px;
   width: 248px;
   background-size: cover;
@@ -4728,7 +4728,7 @@ ul.changelog li .release-description a {
 
 /* line 336, ../sass/app.scss */
 .how-to-use.three .process-3 .inky-point {
-  background: url(../img/foundation-emails/inky-point.svg) no-repeat center center;
+  background:  url(../assets/img/foundation-emails/inky-point.svg) no-repeat center center;
   height: 386px;
   width: 349px;
   background-size: cover; }
@@ -4752,7 +4752,7 @@ ul.changelog li .release-description a {
 
 /* line 343, ../sass/app.scss */
 .how-to-use.four .process-4 {
-  background: url(../img/foundation-emails/fish-3.svg) no-repeat center center;
+  background:  url(../assets/img/foundation-emails/fish-3.svg) no-repeat center center;
   height: 116px;
   width: 107px;
   background-size: cover;
@@ -4831,7 +4831,7 @@ ul.changelog li .release-description a {
 
 /* line 360, ../sass/app.scss */
 .how-to-use .campaign-monitor {
-  background: url(../img/foundation-emails/campaign-monitor.png) no-repeat left center;
+  background:  url(../assets/img/foundation-emails/campaign-monitor.png) no-repeat left center;
   background-size: 18px 12px;
   padding-left: 30px; }
 
@@ -4842,7 +4842,7 @@ ul.changelog li .release-description a {
 
 /* line 363, ../sass/app.scss */
 .process-5-3 {
-  background: url(../img/foundation-emails/inky-boat.svg) bottom center no-repeat;
+  background:  url(../assets/img/foundation-emails/inky-boat.svg) bottom center no-repeat;
   height: 327px;
   width: 393px;
   background-size: cover;
@@ -5078,7 +5078,7 @@ iframe {
   /* line 475, ../sass/app.scss */
   .top-area .inky-phone {
     display: block;
-    background: url(../img/foundation-emails/inky-mobile-hold.svg);
+    background:  url(../assets/img/foundation-emails/inky-mobile-hold.svg);
     background-repeat: no-repeat;
     height: 542px;
     position: absolute;
@@ -5164,7 +5164,7 @@ ul.mobile-nav a.current {
     margin-left: 70px; }
   /* line 502, ../sass/app.scss */
   .how-to-use.one .process-1 {
-    background: url(../img/foundation-emails/inky.svg) no-repeat center center;
+    background:  url(../assets/img/foundation-emails/inky.svg) no-repeat center center;
     height: 325px;
     width: 256px;
     background-size: cover;
@@ -5233,7 +5233,7 @@ ul.mobile-nav a.current {
     margin-left: 150px; }
   /* line 523, ../sass/app.scss */
   .how-to-use.four .process-4 {
-    background: url(../img/foundation-emails/fish-3.png) no-repeat center center;
+    background:  url(../assets/img/foundation-emails/fish-3.png) no-repeat center center;
     height: 116px;
     width: 107px;
     background-size: cover;
@@ -5300,7 +5300,7 @@ ul.mobile-nav a.current {
     line-height: 1em; }
   /* line 540, ../sass/app.scss */
   .how-to-use .campaign-monitor {
-    background: url(../img/foundation-emails/campaign-monitor.png) no-repeat left center;
+    background:  url(../assets/img/foundation-emails/campaign-monitor.png) no-repeat left center;
     background-size: 18px 12px;
     padding-left: 30px; }
   /* line 542, ../sass/app.scss */
@@ -5358,14 +5358,14 @@ ul.mobile-nav a.current {
 
 /* line 583, ../sass/app.scss */
 .cs-inky {
-  background: url(../img/foundation-emails/inky-mobile.svg) no-repeat right bottom;
+  background:  url(../assets/img/foundation-emails/inky-mobile.svg) no-repeat right bottom;
   background-size: 624px 558px;
   min-height: 60vh; }
 
 @media only screen and (max-width: 767px) {
   /* line 583, ../sass/app.scss */
   .cs-inky {
-    background: url(../img/foundation-emails/inky-mobile-hold.svg) no-repeat center bottom;
+    background:  url(../assets/img/foundation-emails/inky-mobile-hold.svg) no-repeat center bottom;
     background-size: 147px 200px;
     padding-bottom: 140px; } }
 
@@ -5546,7 +5546,7 @@ h6 {
 h6 small.cp {
   position: absolute;
   right: 0;
-  background: url(../img/foundation-emails/icons/clipboard.png) no-repeat 10px 4px #002b36;
+  background:  url(../assets/img/foundation-emails/icons/clipboard.png) no-repeat 10px 4px #002b36;
   background-size: 8px 12px;
   padding: 12px 10px 10px 24px;
   font-size: 12px;
@@ -6720,7 +6720,7 @@ ol.getting-started-steps li:before {
     .hero-heading.home-hero .row {
       position: relative; }
   .hero-heading.foundation-emails {
-    background-image: url(../img/foundation-emails/water.png) !important;
+    background-image:  url(../assets/img/foundation-emails/water.png) !important;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -6732,7 +6732,7 @@ ol.getting-started-steps li:before {
     background-size: contain;
     margin-bottom: 0;
     background-color: #002c3a;
-    background-image: url(../img/foundation-apps/apps-bg.png);
+    background-image:  url(../assets/img/foundation-apps/apps-bg.png);
     right: 0;
     position: relative;
     top: 0;
