@@ -317,12 +317,23 @@ router.post('/custom-f6', function(req, res, next) {
     else{
       commands.push("sed -i \"s|node_modules/motion-ui/src|../../../../f6/node_modules/motion-ui/src|g\" assets/temp-"+uniq+"/gulp/sass.js")
     }
-    req.body['components[]'].forEach(function(element){
-      delete data.imports[element];//deleting a component means we keep it
-      delete data.includes[element];//deleting a component means we keep it
-      delete data.js[element]
-      delete data.components[data.components.indexOf(element)]
-    })
+    if(req.body['components[]'])
+    {
+      if(req.body['components[]'].isArray()){
+        req.body['components[]'].forEach(function(element){
+          delete data.imports[element];//deleting a component means we keep it
+          delete data.includes[element];//deleting a component means we keep it
+          delete data.js[element]
+          delete data.components[data.components.indexOf(element)]
+        })
+      }
+      else{
+        delete data.imports[req.body['components[]']];//deleting a component means we keep it
+        delete data.includes[req.body['components[]']];//deleting a component means we keep it
+        delete data.js[req.body['components[]']]
+        delete data.components[data.components.indexOf(req.body['components[]'])]
+      }
+    }
     data.components=data.components.filter(function(e){return e})
     debug(data.components)
     data.components.forEach(function(element){
