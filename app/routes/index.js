@@ -303,7 +303,7 @@ router.post('/custom-f6', function(req, res, next) {
     childProcess.execFileSync(process.env.SHELL,['-c', 'cp {foundation-sites.scss,gulpfile.js} ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../f6'})
     debug("Unlocked f6 folder. Copy complete.")
     app.gitlock=false;
-    childProcess.execFileSync(process.env.SHELL,['-c', 'echo \'@import "settings"\' >> assets/temp-'+uniq+'/scss/foundation.scss'])
+    childProcess.execFileSync(process.env.SHELL,['-c', 'echo \'@import "settings/settings"\' >> assets/temp-'+uniq+'/scss/foundation.scss'])
     if(req.body['components[]'].indexOf('motion_ui') < 0){
       commands.unshift("sed -i \"s|'node_modules/motion-ui/src'||g\" assets/temp-"+uniq+"/gulp/sass.js")
       commands.unshift("sed -i \"s|'scss',|'scss'|g\" assets/temp-"+uniq+"/gulp/sass.js")
@@ -348,7 +348,7 @@ router.post('/custom-f6', function(req, res, next) {
       commands.push("rm assets/temp-"+uniq+"/js/"+element);
     })
     data.settings.forEach(function(element, index){
-      commands.push("sed -i 's|"+data.settingsLocators[element]+"|"+data.settingsText[element]+data.settingsPrefix[element]+req.body["scss_settings["+element+"]"]+data.settingsSuffix[element]+";|g' assets/temp-"+uniq+"/scss/_settings.scss");
+      commands.push("sed -i 's|"+data.settingsLocators[element]+"|"+data.settingsText[element]+data.settingsPrefix[element]+req.body["scss_settings["+element+"]"]+data.settingsSuffix[element]+";|g' assets/temp-"+uniq+"/scss/settings/_settings.scss");
     })
     debug(process.cwd());
     debug(commands.join(' && '));

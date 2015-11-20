@@ -6,7 +6,7 @@ var app = require('./app')
 var Promise = require("bluebird");
 var childProcess = Promise.promisifyAll(require('child_process'));
 exports.createCompleteAndEssential=function(){
-  childProcess.execFileAsync(process.env.SHELL,['-c', "mkdir -p assets/temp-complete/{css,js}"])
+  childProcess.execFileAsync(process.env.SHELL,['-c', "mkdir -p assets/temp-complete/{css,js,img}"])
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'sed -i "s|\'node_modules/jquery/dist/jquery.js\',|\'node_modules/jquery/dist/jquery.js\'|g" ../../f6/gulp/javascript.js']))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'sed -i "s|\'node_modules/motion-ui/dist/motion-ui.js\',||g" ../../f6/gulp/javascript.js']))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'sed -i "s|\'node_modules/what-input/what-input.js\'||g" ../../f6/gulp/javascript.js']))
@@ -29,14 +29,14 @@ exports.createCompleteAndEssential=function(){
     archive.pipe(output);
     archive.directory('assets/temp-complete', 'foundation-6').finalize();
   })
-  .then(childProcess.execFileAsync(process.env.SHELL,['-c', "mkdir -p assets/essential/{css,js}"]))
+  .then(childProcess.execFileAsync(process.env.SHELL,['-c', "mkdir -p assets/essential/{css,js,img}"]))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', "mkdir -p assets/temp-essential/gulp"]))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'cp -r scss ../node-foundation-customizer/app/assets/temp-essential'], {cwd: '../../f6'}))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'cp -r js ../node-foundation-customizer/app/assets/temp-essential'], {cwd: '../../f6'}))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'cp -r assets/common/* assets/essential']))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'cp gulp/{javascript.js,deploy.js,sass.js} ../node-foundation-customizer/app/assets/temp-essential/gulp'], {cwd: '../../f6'}))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'cp {foundation-sites.scss,gulpfile.js} ../node-foundation-customizer/app/assets/temp-essential'], {cwd: '../../f6'}))
-  .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'echo \'@import "settings"\' >> assets/temp-essential'+'/scss/foundation.scss']))
+  .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'echo \'@import "settings/settings"\' >> assets/temp-essential'+'/scss/foundation.scss']))
   .then(function(){
     var essential=[ 'sed -i "s|\'scss\',|\'scss\'|g" assets/temp-essential/gulp/sass.js','sed -i "s|\'node_modules/motion-ui/src\'||g" assets/temp-essential/gulp/sass.js',
     'sed -i "s|\'node_modules/jquery/dist/jquery.js\',|\'node_modules/jquery/dist/jquery.js\'|g" assets/temp-essential/gulp/javascript.js',
