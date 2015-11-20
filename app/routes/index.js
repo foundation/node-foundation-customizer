@@ -53,7 +53,6 @@ router.post('/custom-f6', function(req, res, next) {
   }
   var data = {}
   data.includes = {
-    "global-styles":"@include foundation-global-styles;",
     "grid":"@include foundation-grid;",
     "typography":"@include foundation-typography;",
     "button":"@include foundation-button;",
@@ -90,7 +89,6 @@ router.post('/custom-f6', function(req, res, next) {
     "top_bar":"@include foundation-top-bar;"
   }
   data.components = [
-    "global-styles",
     "grid",
     "typography",
     "button",
@@ -157,7 +155,6 @@ router.post('/custom-f6', function(req, res, next) {
   }
   data.imports={
     "grid":"@import 'grid/grid';",
-    "global-styles":"@import 'global';",
     "typography":"@import 'typography/typography';",
     "forms":"@import 'forms/forms';",
     "visibility_classes":"@import 'components/visibility';",

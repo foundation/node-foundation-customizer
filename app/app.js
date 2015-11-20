@@ -24,10 +24,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use('/sites/download', express.static(path.join(__dirname, 'public')));
-app.use('/sites/download.html', express.static(path.join(__dirname, 'public')));
-app.use('/sites/download', routes);
-app.use('/sites/download.html', routes);
+app.use('/', express.static(path.join(__dirname, 'public')));
+app.use('/', routes);
 app.use('/users', users);
 childProcess.execFileAsync(process.env.SHELL, ['-c', "stat public/assets/complete-f6.zip"])
 .catch(function(e){
@@ -36,12 +34,12 @@ childProcess.execFileAsync(process.env.SHELL, ['-c', "stat public/assets/complet
 })
 setInterval(function(){
   debug("Checking for updates...")
-  var fork=childProcess.execFile(process.env.SHELL, ['-c',"git pull"], {cwd:'../../foundation-sites-6'}, function(err, stdout, stderr){
+  var fork=childProcess.execFile(process.env.SHELL, ['-c',"git pull"], {cwd:'../../foundation-sites'}, function(err, stdout, stderr){
     if(err) debug(stderr)
     else if(stdout != 'Already up-to-date.\n'){
       debug(stdout)
       debug("Updates found. Rebuilding complete and essential zips...")
-      var fork=childProcess.spawn(process.env.SHELL,['-c', "npm install && bower install"],{cwd: '../../foundation-sites-6'})
+      var fork=childProcess.spawn(process.env.SHELL,['-c', "npm install && bower install"],{cwd: '../../foundation-sites'})
       fork.stdout.on('data', function (data) {
       });
       fork.stderr.on('data', function (data) {

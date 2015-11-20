@@ -71,7 +71,7 @@ exports.createCompleteAndEssential=function(){
             rimraf('assets/essential', function(){
             })
             var wait = function(){
-              console.log("Waiting for folder lock on foundation-sites-6 to be released...")
+              console.log("Waiting for folder lock on foundation-sites to be released...")
               if(app.gitlock) setTimeout(wait,1000);
               else go();
             }
@@ -79,7 +79,7 @@ exports.createCompleteAndEssential=function(){
             var go = function(){
               app.gitlock=true;
               debug("Locked f6 folder to prepare for update.")
-              var forkeroo=childProcess.spawn(process.env.SHELL,['-c', 'rsync -av --progress ../../foundation-sites-6/* ../../f6'])
+              var forkeroo=childProcess.spawn(process.env.SHELL,['-c', 'rsync -av --progress ../../foundation-sites/* ../../f6'])
               forkeroo.stdout.on('data', function (data) {
 
                 var output = data.toString().split('\n')
