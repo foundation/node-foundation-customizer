@@ -27,11 +27,13 @@ router.post('/custom-f6', function(req, res, next) {
     delete data;
   }
   var zip = function(){
-    var output = fs.createWriteStream('public/assets/custom-f6.zip');
+    var output = fs.createWriteStream('public/assets/custom-f6-'+uniq+'.zip');
       var archive = archiver('zip'); //straight from the npm archiver docs
       output.on('close', function () {
-        var file = path.join(__dirname, '../public/assets', 'custom-f6.zip')
+        var file = path.join(__dirname, '../public/assets', 'custom-f6-'+uniq+'.zip')
         res.download(file);
+        debug("Finished building custom-" + uniq)
+        cleanup();
       });
 
       //error almost always means the src path didn't exist
@@ -67,6 +69,7 @@ router.post('/custom-f6', function(req, res, next) {
     "visibility_classes":"@include foundation-visibility-classes;",
     "float_classes":"@include foundation-float-classes;",
     "accordion":"@include foundation-accordion;",
+    "accordion_menu":"@include foundation-accordion-menu;",
     "badge":"@include foundation-badge;",
     "breadcrumbs":"@include foundation-breadcrumbs;",
     "button_group":"@include foundation-button-group;",
@@ -103,6 +106,7 @@ router.post('/custom-f6', function(req, res, next) {
     "visibility_classes",
     "float_classes",
     "accordion",
+    "accordion_menu",
     "badge",
     "breadcrumbs",
     "button_group",
@@ -164,9 +168,9 @@ router.post('/custom-f6', function(req, res, next) {
     "global-styles":"@import 'global';",
     "typography":"@import 'typography/typography';",
     "forms":"@import 'forms/forms';",
-    "visibility":"@import 'components/visibility';",
+    "visibility_classes":"@import 'components/visibility';",
     "float_classes":"@import 'components/float';",
-    "button":"'@import components/button';",
+    "button":"@import 'components/button';",
     "button_group":"@import 'components/button-group';",
     "accordion_menu":"@import 'components/accordion-menu';",
     "accordion":"@import 'components/accordion';",
@@ -317,23 +321,22 @@ router.post('/custom-f6', function(req, res, next) {
     else{
       commands.push("sed -i \"s|node_modules/motion-ui/src|../../../../f6/node_modules/motion-ui/src|g\" assets/temp-"+uniq+"/gulp/sass.js")
     }
-    if(req.body['components[]'])
-    {
-      if(req.body['components[]'].isArray()){
-        req.body['components[]'].forEach(function(element){
-          delete data.imports[element];//deleting a component means we keep it
-          delete data.includes[element];//deleting a component means we keep it
-          delete data.js[element]
-          delete data.components[data.components.indexOf(element)]
-        })
-      }
-      else{
-        delete data.imports[req.body['components[]']];//deleting a component means we keep it
-        delete data.includes[req.body['components[]']];//deleting a component means we keep it
-        delete data.js[req.body['components[]']]
-        delete data.components[data.components.indexOf(req.body['components[]'])]
-      }
+    if(typeof(req.body['components[]']) == 'object'){
+      req.body['components[]'].forEach(function(element){
+        delete data.imports[element];//deleting a component means we keep it
+        delete data.includes[element];//deleting a component means we keep it
+        delete data.js[element]
+        delete data.components[data.components.indexOf(element)]
+      })
     }
+    else if(typeof(req.body['components[]']) == 'string'){
+      debug("ARERIVED")
+      delete data.imports[req.body['components[]']];//deleting a component means we keep it
+      delete data.includes[req.body['components[]']];//deleting a component means we keep it
+      delete data.js[req.body['components[]']]
+      delete data.components[data.components.indexOf(req.body['components'])]
+    }
+
     data.components=data.components.filter(function(e){return e})
     debug(data.components)
     data.components.forEach(function(element){
