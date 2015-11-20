@@ -70,37 +70,6 @@ exports.createCompleteAndEssential=function(){
             })
             rimraf('assets/essential', function(){
             })
-            var wait = function(){
-              console.log("Waiting for folder lock on foundation-sites to be released...")
-              if(app.gitlock) setTimeout(wait,1000);
-              else go();
-            }
-
-            var go = function(){
-              app.gitlock=true;
-              debug("Locked f6 folder to prepare for update.")
-              var forkeroo=childProcess.spawn(process.env.SHELL,['-c', 'rsync -av --progress ../../foundation-sites/* ../../f6'])
-              forkeroo.stdout.on('data', function (data) {
-
-                var output = data.toString().split('\n')
-                for(var i=0; i<output.length-1; i++){
-                }
-              });
-              forkeroo.stderr.on('data', function (data) {
-                var output = data.toString();
-              });
-              forkeroo.on('close',function(){
-                var forkier=childProcess.spawn(process.env.SHELL,['-c', 'git reset --hard'], {cwd: '../../f6'})
-                forkier.on('close',function(){
-                  debug("Unlocked f6 folder. Update succeeded.")
-                  app.gitlock=false;
-                })
-
-              })
-            }
-            if(app.gitlock) wait();
-            else go();
-
           });
 
           //error almost always means the src path didn't exist

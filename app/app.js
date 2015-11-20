@@ -47,7 +47,34 @@ setInterval(function(){
         debug(output);
       });
       fork.on('close', function(code){
-        helper.createCompleteAndEssential();
+        var wait = function(){
+          console.log("Waiting for folder lock on foundation-sites to be released...")
+          if(app.gitlock) setTimeout(wait,1000);
+          else go();
+        }
+
+        var go = function(){
+          app.gitlock=true;
+          debug("Locked f6 folder to prepare for update.")
+          var forkeroo=childProcess.spawn(process.env.SHELL,['-c', 'rsync -av --progress ../../foundation-sites/* ../../f6'])
+          forkeroo.stdout.on('data', function (data) {
+
+            var output = data.toString().split('\n')
+            for(var i=0; i<output.length-1; i++){
+            }
+          });
+          forkeroo.stderr.on('data', function (data) {
+            var output = data.toString();
+          });
+          forkeroo.on('close',function(){
+            debug("Unlocked f6 folder. Update succeeded.")
+            app.gitlock=false;
+            helper.createCompleteAndEssential();
+          })
+        }
+        if(app.gitlock) wait();
+        else go();
+
       });
     }
     else debug("Foundation folder is up to date.")
