@@ -1,7 +1,7 @@
 app/node_modules
 app/bower_components
-public/assets/custom*.zip
-public/assets/*.zip
+app/public/assets/custom*.zip
+app/public/assets/*.zip
 app/assets/custom*
 app/assets/temp*
 app/npm-debug.log
