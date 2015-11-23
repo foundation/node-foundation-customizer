@@ -90,6 +90,7 @@ router.post('/custom-f6', function(req, res, next) {
   }
   data.components = [
     "grid",
+    "flex_grid",
     "typography",
     "button",
     "forms",
@@ -204,17 +205,17 @@ router.post('/custom-f6', function(req, res, next) {
     "text-direction"
   ]
   data.settingsLocators= {
-    "column-count":"// $grid-column-count: 12;",
-    "column-gutter":"// $grid-column-gutter: 1.875rem / 2;",
-    "max-width":"// $global-width: rem-calc(1200);",
-    "primary-color":"// $primary-color: #2199e8;",
-    "secondary-color":"// $secondary-color: #777;",
-    "success-color":"// $success-color: #3adb76;",
-    "alert-color":"// $alert-color: #ec5840;",
-    "body-font-color":"// $body-font-color: $black;",
-    "header-font-color":"// $header-color: inherit;",
-    "global-radius":"// $global-radius: 3px;",
-    "text-direction":"// $text-direction: ltr;"
+    "column-count":"$grid-column-count: 12;",
+    "column-gutter":"$grid-column-gutter: 1.875rem / 2;",
+    "max-width":"$global-width: rem-calc(1200);",
+    "primary-color":"$primary-color: #2199e8;",
+    "secondary-color":"$secondary-color: #777;",
+    "success-color":"$success-color: #3adb76;",
+    "alert-color":"$alert-color: #ec5840;",
+    "body-font-color":"$body-font-color: $black;",
+    "header-font-color":"$header-color: inherit;",
+    "global-radius":"$global-radius: 3px;",
+    "text-direction":"$text-direction: ltr;"
   }
   data.settingsText= {
     "column-count":"$grid-column-count: ",
@@ -233,12 +234,12 @@ router.post('/custom-f6', function(req, res, next) {
     "column-count":"",
     "column-gutter":"",
     "max-width":"",
-    "primary-color":"#",
-    "secondary-color":"#",
-    "success-color":"#",
-    "alert-color":"#",
-    "body-font-color":"#",
-    "header-font-color":"#",
+    "primary-color":"",
+    "secondary-color":"",
+    "success-color":"",
+    "alert-color":"",
+    "body-font-color":"",
+    "header-font-color":"",
     "global-radius":"",
     "text-direction":""
   }
@@ -311,6 +312,20 @@ router.post('/custom-f6', function(req, res, next) {
     else{
       commands.push("sed -i \"s|node_modules/motion-ui/src|../../../../f6/node_modules/motion-ui/src|g\" assets/temp-"+uniq+"/gulp/sass.js")
     }
+
+    //if someone selects grid and flex grid, default to regular grid
+    if(req.body['components[]'].indexOf('grid') >= 0 && req.body['components[]'].indexOf('flex_grid') >= 0 ){
+      delete req.body['components[]'][req.body['components[]'].indexOf('flex_grid')]
+    }
+    // here we know only the flex grid is selected
+    else if(req.body['components[]'].indexOf('flex_grid') >= 0){
+      delete data.imports['grid'];//deleting a component means we keep it
+      delete data.includes['grid'];//deleting a component means we keep it
+      delete data.js['grid']
+      delete data.components[data.components.indexOf('grid')]
+      commands.push("sed -i 's/@include foundation-grid;/@include foundation-flex-grid;/g' assets/temp-"+uniq+"/scss/foundation.scss")
+    }
+    //make sure there is more than one item before we iterate
     if(typeof(req.body['components[]']) == 'object'){
       req.body['components[]'].forEach(function(element){
         delete data.imports[element];//deleting a component means we keep it
@@ -319,8 +334,8 @@ router.post('/custom-f6', function(req, res, next) {
         delete data.components[data.components.indexOf(element)]
       })
     }
+    //treat our body as a string in this situation
     else if(typeof(req.body['components[]']) == 'string'){
-      debug("ARERIVED")
       delete data.imports[req.body['components[]']];//deleting a component means we keep it
       delete data.includes[req.body['components[]']];//deleting a component means we keep it
       delete data.js[req.body['components[]']]
