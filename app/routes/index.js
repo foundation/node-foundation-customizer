@@ -312,7 +312,7 @@ router.post('/custom-f6', function(req, res, next) {
     else{
       commands.push("sed -i \"s|node_modules/motion-ui/src|../../../../f6/node_modules/motion-ui/src|g\" assets/temp-"+uniq+"/gulp/sass.js")
     }
-
+    debug("DEBUG: "+req.body['components[]'])
     //if someone selects grid and flex grid, default to regular grid
     if(req.body['components[]'].indexOf('grid') >= 0 && req.body['components[]'].indexOf('flex_grid') >= 0 ){
       delete req.body['components[]'][req.body['components[]'].indexOf('flex_grid')]
