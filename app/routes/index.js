@@ -15,12 +15,7 @@ router.get('/', function(req, res, next) {
 var locked = false;
 router.post('/custom-f6', function(req, res, next) {
   var cleanup = function(){
-    rimraf('public/assets/custom-f6-'+uniq, function(){
-    })
-    rimraf('assets/custom-f6-'+uniq, function(){
-    })
-    rimraf('assets/temp-'+uniq, function(){
-    })
+
     delete data;
   }
   var zip = function(){
@@ -239,12 +234,12 @@ router.post('/custom-f6', function(req, res, next) {
     "column-count":"",
     "column-gutter":"",
     "max-width":"",
-    "primary-color":"",
-    "secondary-color":"",
-    "success-color":"",
-    "alert-color":"",
-    "body-font-color":"",
-    "header-font-color":"",
+    "primary-color":"#",
+    "secondary-color":"#",
+    "success-color":"#",
+    "alert-color":"#",
+    "body-font-color":"#",
+    "header-font-color":"#",
     "global-radius":"",
     "text-direction":""
   }
@@ -370,6 +365,7 @@ router.post('/custom-f6', function(req, res, next) {
     data.settings.forEach(function(element, index){
       commands.push("sed -i 's|"+data.settingsLocators[element]+"|"+data.settingsText[element]+data.settingsPrefix[element]+req.body["scss_settings["+element+"]"]+data.settingsSuffix[element]+";|g' assets/temp-"+uniq+"/scss/settings/_settings.scss");
     })
+    commands.push("sed -i 's|##|#|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
     debug(process.cwd());
     debug(commands.join(' && '));
     var fork = childProcess.spawn(process.env.SHELL, ['-c', commands.join(' && ')]);
