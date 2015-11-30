@@ -1,9 +1,9 @@
 @charset "UTF-8";
-/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
- * 2. Prevent iOS text size adjust after orientation change, without disabling
- *    user zoom.
+ * 2. Prevent iOS and IE text size adjust after device orientation change,
+ *    without disabling user zoom.
  */
 html {
   font-family: sans-serif;
@@ -65,7 +65,7 @@ audio:not([controls]) {
 
 /**
  * Address `[hidden]` styling not present in IE 8/9/10.
- * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
  */
 [hidden],
 template {
@@ -80,7 +80,8 @@ a {
   background-color: transparent; }
 
 /**
- * Improve readability when focused and also mouse hovered in all browsers.
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
  */
 a:active,
 a:hover {
@@ -292,14 +293,13 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /**
  * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
- * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
- *    (include `-moz` to future-proof).
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.
  */
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
-  /* 2 */
-  box-sizing: content-box; }
+  box-sizing: content-box;
+  /* 2 */ }
 
 /**
  * Remove inner padding and search cancel button in Safari and Chrome on OS X.
@@ -2087,11 +2087,11 @@ select {
   left: auto;
   right: 0; }
 
-.dropdown.menu.vertical {
+.is-dropdown-menu.vertical {
   width: 100px; }
-  .dropdown.menu.vertical.align-right {
+  .is-dropdown-menu.vertical.align-right {
     float: right; }
-  .dropdown.menu.vertical > li .submenu {
+  .is-dropdown-menu.vertical > li .submenu {
     top: 0;
     left: 100%; }
 
@@ -2504,7 +2504,9 @@ body {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-          user-select: none; }
+          user-select: none;
+  -ms-touch-action: none;
+      touch-action: none; }
 
 .slider-fill {
   position: absolute;
@@ -3083,6 +3085,29 @@ hr.dotted {
 p {
   font-size: 0.9375rem; }
 
+.page-subheader {
+  margin-bottom: 3rem; }
+  .page-subheader.with-subheader {
+    margin-bottom: 0.35rem;
+    text-align: center; }
+  .page-subheader + .subheader {
+    margin-bottom: 3rem; }
+
+.page-subheader-large {
+  margin-bottom: 0.5rem;
+  font-weight: 200;
+  color: #777; }
+
+.thank-you-icon {
+  height: 100px;
+  width: 100px; }
+
+.feature-bullet-list {
+  list-style: none;
+  text-align: left; }
+  .feature-bullet-list li {
+    padding-bottom: 0.75rem; }
+
 .button {
   box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.2) inset;
   -moz-box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.2) inset;
@@ -3125,6 +3150,12 @@ p {
     float: left; }
   .marketing-topbar ul:last-child {
     float: right; }
+  .marketing-topbar .topbar-title > a {
+    font-size: 1rem;
+    opacity: 0.9; }
+    .marketing-topbar .topbar-title > a > img {
+      position: relative;
+      top: -1px; }
   .marketing-topbar .menu a {
     height: 45px;
     line-height: 45px;
@@ -3132,23 +3163,24 @@ p {
     padding-top: 0;
     padding-bottom: 0; }
     .marketing-topbar .menu a:hover:not(.button), .marketing-topbar .menu a:focus {
-      background: black; }
+      background: #2c2c2c; }
     .marketing-topbar .menu a.button {
       border-radius: 0;
       box-shadow: 0 0 0 transparent; }
+  .marketing-topbar .menu.submenu {
+    border: 0;
+    margin-left: -1px; }
   .marketing-topbar .title {
     color: #8a8a8a;
     padding: 10px;
     padding-left: 15px;
     font-size: 0.8em;
-    background: #2c2c2c; }
+    background: #121212; }
   .marketing-topbar .is-active a {
     background: black; }
   .marketing-topbar .menu img {
     position: relative;
     top: -2px; }
-  .marketing-topbar .menu:first-child {
-    border-right: 1px solid #4e4e4e; }
   .marketing-topbar .menu:last-child {
     border-left: 1px solid #4e4e4e; }
   .marketing-topbar .menu li:not(:last-child) {
@@ -3156,7 +3188,9 @@ p {
 
 .off-canvas {
   background-color: #333;
-  padding: 15px 0px; }
+  padding: 15px 0px;
+  max-height: 100%;
+  overflow-y: auto; }
   .off-canvas li {
     padding: 0px 15px;
     list-style-type: none; }
@@ -3253,7 +3287,7 @@ p {
     opacity: 1.0; }
 
 .marketing-hero {
-  background:  url(../assets/img/mars-bg.svg) center center repeat-x;
+  background: url(http://foundation.zurb.com/assets/img/subheader-bg-01.svg) center center repeat-x;
   background-size: cover;
   position: relative;
   padding: 2.5rem 0 4.5rem;
@@ -3282,17 +3316,31 @@ p {
     font-size: 0.8125rem;
     font-weight: 200; }
   .marketing-hero.home-large-hero {
-    background:  url(../assets/img/homepage/hero-bg2.svg) bottom center;
-    background-size: cover;
-    padding-top: 180px;
-    padding-bottom: 250px; }
+    background: url(http://foundation.zurb.com/assets/img/home-bg-small-02.svg) bottom center;
+    background-size: cover; }
+    @media screen and (min-width: 43.75em) {
+      .marketing-hero.home-large-hero {
+        background: url(http://foundation.zurb.com/assets/img/home-bg.svg) bottom center;
+        background-size: cover;
+        background-position: center;
+        padding-top: 180px;
+        padding-bottom: 250px; } }
   .marketing-hero.sites-large-hero {
-    background:  url(../assets/img/homepage/sites-hero-bg.svg) bottom center;
+    background: url(http://foundation.zurb.com/assets/img/foundationsites-home-hero-small-02.svg) bottom center;
+    background-size: cover; }
+    @media screen and (min-width: 43.75em) {
+      .marketing-hero.sites-large-hero {
+        background: url(http://foundation.zurb.com/assets/img/foundationsites-home-hero2.svg) bottom center;
+        background-size: cover;
+        padding-top: 180px;
+        padding-bottom: 250px; } }
+  .marketing-hero.sites {
+    background: url(http://foundation.zurb.com/assets/img/mars-bg.svg) center 30% repeat-x; }
+  .marketing-hero.yeti-launch-hero {
+    background: url(http://foundation.zurb.com/assets/img/yeti-launch-hero-01.svg) bottom center;
     background-size: cover;
     padding-top: 180px;
     padding-bottom: 250px; }
-  .marketing-hero.sites {
-    background:  url(../assets/img/mars-bg.svg) center 30% repeat-x; }
   .marketing-hero.without-subnav {
     padding-bottom: 2.5rem; }
   .marketing-hero.foundation-apps {
@@ -3303,7 +3351,6 @@ p {
     background-position: center right;
     background-size: contain;
     margin-bottom: 0;
-    background-image:  url(../assets/img/foundation-apps/apps-bg.png);
     right: 0;
     position: relative;
     top: 0;
@@ -3312,7 +3359,7 @@ p {
     -webkit-animation: snow 10s linear infinite;
     animation: snow 10s linear infinite; }
   .marketing-hero.foundation-emails {
-    background-image:  url(../assets/img/foundation-emails/water.png);
+    background-image: url(http://foundation.zurb.com/assets/img/foundation-emails/water.png);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -3356,6 +3403,12 @@ p {
       color: white;
       opacity: 0.7; }
 
+.homepage {
+  text-align: left !important; }
+
+.homepage .hero-main-header {
+  text-align: left !important; }
+
 .marketing-subnav {
   float: none;
   position: absolute;
@@ -3380,21 +3433,15 @@ p {
       .marketing-subnav li a:hover {
         background: rgba(250, 250, 250, 0.15);
         transition: all .25s ease-in-out; }
-    @media screen and (max-width: 46em) {
+    @media screen and (min-width: 0em) and (max-width: 43.6875em) {
       .marketing-subnav li {
         display: none; } }
-  .marketing-subnav.contribute {
-    top: -0.05rem; }
-  .marketing-subnav.why-foundation {
-    top: 2.5rem; }
-  .marketing-subnav.services {
-    top: 31.7rem; }
-    @media only screen and (max-width: 64em) {
-      .marketing-subnav.services li a {
-        display: none; } }
-  @media only screen and (min-width: 40.063em) and (max-width: 46em) {
+  @media only screen and (min-width: 44.063em) and (max-width: 46em) {
     .marketing-subnav li a {
       font-size: 0.7rem; } }
+  @media only screen and (min-width: 40.063em) and (max-width: 44em) {
+    .marketing-subnav li a {
+      font-size: 0.6rem; } }
 
 /* Banner for announcements */
 a .notice {
@@ -3450,8 +3497,57 @@ p.faq {
 .main-feature-block {
   text-align: center; }
 
-.row.large-feature {
-  max-width: 1000px; }
+.large-feature {
+  margin-bottom: 5rem; }
+  .large-feature .large-feature-header {
+    margin-bottom: -0.2rem;
+    font-size: 2.25rem; }
+  .large-feature .subheader {
+    margin-bottom: 1rem; }
+  @media screen and (min-width: 0em) and (max-width: 43.6875em) {
+    .large-feature img {
+      width: 15rem;
+      text-align: center; } }
+  @media screen and (min-width: 0em) and (max-width: 43.6875em) {
+    .large-feature {
+      text-align: center; } }
+
+.code-reduction {
+  padding-top: 1rem; }
+
+.a11y {
+  padding-top: 1rem; }
+
+.fewer-styles {
+  padding-top: 1rem; }
+
+.mui {
+  padding-top: 0.9rem; }
+
+.sass-grid {
+  padding-top: 1rem; }
+
+.dev-stack {
+  padding-top: 0.8rem; }
+
+.yeti-launch {
+  padding-top: 0.8rem; }
+
+@media screen and (min-width: 43.75em) {
+  .code-reduction {
+    padding-top: 5.2rem; }
+  .a11y {
+    padding-top: 5rem; }
+  .fewer-styles {
+    padding-top: 5.2rem; }
+  .mui {
+    padding-top: 4.5rem; }
+  .sass-grid {
+    padding-top: 5rem; }
+  .dev-stack {
+    padding-top: 3.7rem; }
+  .yeti-launch {
+    padding-top: 3.6rem; } }
 
 .vertical-feature-block {
   margin-bottom: 3rem;
@@ -3459,16 +3555,21 @@ p.faq {
   .vertical-feature-block img {
     display: block;
     padding: 1.25rem;
-    margin: 1rem auto 0 auto; }
+    margin: 1rem auto 0 auto;
+    height: 65%;
+    width: 65%; }
     .vertical-feature-block img.round-icon {
       width: 12.5rem; }
   .vertical-feature-block .feature-block-header {
     color: #0a0a0a;
     font-weight: 200;
     font-size: 1.75rem; }
+  .vertical-feature-block h3 {
+    color: #333; }
   .vertical-feature-block h4 {
     margin-bottom: 1rem;
-    text-align: center; }
+    text-align: center;
+    color: #8a8a8a; }
   .vertical-feature-block a {
     margin-bottom: 3rem;
     text-align: center; }
@@ -3513,6 +3614,35 @@ p.faq {
 
 .features-blocks ul li {
   padding-bottom: 0.75rem; }
+
+.horizontal-feature-block {
+  margin-bottom: 2rem;
+  position: relative; }
+  .horizontal-feature-block .feature-img {
+    position: absolute;
+    border-radius: 50%;
+    left: 0;
+    top: 0;
+    width: 5rem; }
+  .horizontal-feature-block .feature-text {
+    padding-left: 5rem; }
+
+.vertical-feature-block {
+  margin-bottom: 3rem; }
+  .vertical-feature-block img {
+    display: block;
+    padding: 1.25rem;
+    margin: 1rem auto 0 auto; }
+    .vertical-feature-block img.round-icon {
+      width: 12.5rem; }
+  .vertical-feature-block h2 {
+    text-align: center; }
+  .vertical-feature-block h4 {
+    margin-bottom: 1rem;
+    text-align: center; }
+  .vertical-feature-block a {
+    margin-bottom: 3rem;
+    text-align: center; }
 
 .zurb-footer-top {
   padding: 40px 0;
@@ -3569,7 +3699,7 @@ p.faq {
   .zurb-footer-top .connect-links {
     padding: 50px 0 0 0;
     border-left: 1px solid rgba(255, 255, 255, 0.2);
-    background: url("../img/icons/footer-top-icons.png") no-repeat center 0;
+    background: url("http://foundation.zurb.com/assets/img/icons/footer-top-icons.png") no-repeat center 0;
     height: 220px;
     margin-bottom: 30px; }
     .zurb-footer-top .learn-links ul,
@@ -3605,13 +3735,13 @@ p.faq {
       display: block;
       margin: 30px 0 0 0; }
       .zurb-footer-top .global .footer-link-block.services {
-        background: url("../img/icons/footer-studios.png") left top no-repeat; }
+        background: url("http://foundation.zurb.com/assets/img/icons/footer-studios.png") left top no-repeat; }
       .zurb-footer-top .global .footer-link-block.foundation {
-        background: url("../img/icons/footer-foundation.png") left top no-repeat; }
+        background: url("http://foundation.zurb.com/assets/img/icons/footer-foundation.png") left top no-repeat; }
       .zurb-footer-top .global .footer-link-block.apps {
-        background: url("../img/icons/footer-products.png") left top no-repeat; }
+        background: url("http://foundation.zurb.com/assets/img/icons/footer-products.png") left top no-repeat; }
       .zurb-footer-top .global .footer-link-block.expo {
-        background: url("../img/icons/footer-expo.png") left top no-repeat; }
+        background: url("http://foundation.zurb.com/assets/img/icons/footer-expo.png") left top no-repeat; }
       .zurb-footer-top .global .footer-link-block span {
         display: block;
         color: white;
@@ -3632,7 +3762,7 @@ p.faq {
   .zurb-footer-bottom .zurb-logo {
     color: #858585;
     font-weight: normal;
-    background: url("../img/icons/footer-icons.png") no-repeat 0 3px;
+    background: url("http://foundation.zurb.com/assets/img/icons/footer-icons.png") no-repeat 0 3px;
     padding: 23px 0 0 0 !important;
     font-size: em-calc(16px);
     display: inline-block;
@@ -3674,7 +3804,7 @@ p.faq {
       display: block;
       height: 50px;
       width: 50px;
-      background: url("../img/icons/social.png") no-repeat center 0; }
+      background: url("http://foundation.zurb.com/assets/img/icons/social.png") no-repeat center 0; }
       .zurb-footer-bottom .home-social a:hover {
         opacity: 0.8; }
       .zurb-footer-bottom .home-social a.twitter {
@@ -3780,61 +3910,61 @@ p.faq {
 
 @media only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
   .zurb-footer-top .info-padding {
-    background-image: url("../img/icons/footer-large-icon-retina.png");
+    background-image: url("http://foundation.zurb.com/assets/img/icons/footer-large-icon-retina.png");
     background-size: 100px 400px; }
   .zurb-footer-bottom ul.home-social li a {
-    background-image: url("../img/icons/social-retina.png");
+    background-image: url("http://foundation.zurb.com/assets/img/icons/social-retina.png");
     background-size: 50px 600px; }
   .zurb-footer-top .global .footer-link-block {
     font-weight: normal;
     display: block;
     margin: 30px 0 0 0; }
     .zurb-footer-top .global .footer-link-block.services {
-      background: url("../img/icons/footer-studios-retina.png") left top no-repeat; }
+      background: url("http://foundation.zurb.com/assets/img/icons/footer-studios-retina.png") left top no-repeat; }
     .zurb-footer-top .global .footer-link-block.foundation {
-      background-image: url("../img/icons/footer-foundation-retina.png") left top no-repeat; }
+      background-image: url("http://foundation.zurb.com/assets/img/icons/footer-foundation-retina.png") left top no-repeat; }
     .zurb-footer-top .global .footer-link-block.apps {
-      background-image: url("../img/icons/footer-products-retina.png") left top no-repeat; }
+      background-image: url("http://foundation.zurb.com/assets/img/icons/footer-products-retina.png") left top no-repeat; }
     .zurb-footer-top .global .footer-link-block.expo {
-      background-image: url("../img/icons/footer-expo-retina.png") left top no-repeat; }
+      background-image: url("http://foundation.zurb.com/assets/img/icons/footer-expo-retina.png") left top no-repeat; }
   .zurb-footer-bottom a.zurb-logo {
-    background-image: url("../img/icons/footer-icons-retina.png");
+    background-image: url("http://foundation.zurb.com/assets/img/icons/footer-icons-retina.png");
     background-size: 100px 1400px; }
   .zurb-footer-top .property .learn-links,
   .zurb-footer-top .property .support-links,
   .zurb-footer-top .property .connect-links {
-    background-image: url("../img/icons/footer-top-icons-retina.png");
+    background-image: url("http://foundation.zurb.com/assets/img/icons/footer-top-icons-retina.png") no-repeat;
     background-size: 100px 1400px; } }
 
 @media only screen and (max-width: 320px), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
   .zurb-footer-top .info-padding {
-    background-image: url("../img/icons/footer-large-icon-retina.png");
+    background-image: url("http://foundation.zurb.com/assets/img/icons/footer-large-icon-retina.png");
     background-size: 100px 400px; }
   .zurb-footer-bottom ul.home-social li a {
-    background-image: url("../img/icons/social-retina.png");
+    background-image: url("http://foundation.zurb.com/assets/img/icons/social-retina.png");
     background-size: 50px 600px; }
   .zurb-footer-top .global .footer-link-block {
     font-weight: normal;
     display: block;
     margin: 30px 0 0 0; }
     .zurb-footer-top .global .footer-link-block.services {
-      background: url("../img/icons/footer-studios-retina.png") left top no-repeat;
+      background: url("http://foundation.zurb.com/assets/img/icons/footer-studios-retina.png") left top no-repeat;
       background-size: 30px; }
     .zurb-footer-top .global .footer-link-block.foundation {
-      background: url("../img/icons/footer-foundation-retina.png") left top no-repeat;
+      background: url("http://foundation.zurb.com/assets/img/icons/footer-foundation-retina.png") left top no-repeat;
       background-size: 30px; }
     .zurb-footer-top .global .footer-link-block.apps {
-      background: url("../img/icons/footer-products-retina.png") left top no-repeat;
+      background: url("http://foundation.zurb.com/assets/img/icons/footer-products-retina.png") left top no-repeat;
       background-size: 30px; }
     .zurb-footer-top .global .footer-link-block.expo {
-      background: url("../img/icons/footer-expo-retina.png") left top no-repeat;
+      background: url("http://foundation.zurb.com/assets/img/icons/footer-expo-retina.png") left top no-repeat;
       background-size: 30px; }
   .zurb-footer-bottom .zurb-logo {
-    background-image: url("../img/icons/footer-icons-retina.png");
+    background-image: url("http://foundation.zurb.com/assets/img/icons/footer-icons-retina.png");
     background-size: 100px 1400px; }
   .zurb-footer-top .property .support-links,
   .zurb-footer-top .property .connect-links {
-    background-image: url("../img/icons/footer-top-icons-retina.png");
+    background-image: url("http://foundation.zurb.com/assets/img/icons/footer-top-icons-retina.png") no-repeat;
     background-size: 100px 1400px; } }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
@@ -3937,7 +4067,7 @@ p.faq {
     line-height: 1; }
 
 .the-numbers {
-  background:  url(../assets/img/business/business-hero2.jpg) no-repeat center top #064F68;
+  background: url(http://foundation.zurb.com/assets/img/business/business-hero2.jpg) no-repeat center top #064F68;
   width: 100%;
   padding: 40px 0;
   margin: 40px 0; }
@@ -4023,29 +4153,29 @@ p.faq {
 
 .smallfeaturesicons .img {
   position: relative;
-  height: 10px;
-  width: 10px;
   margin-top: 500px; }
 
 .smallfeaturesicons h5, .smallfeaturesicons p, .smallfeaturesicons a {
   margin-top: 10px;
-  padding-left: 0px;
   color: #0a0a0a; }
 
-@media screen and (max-width: 768px) {
-  .smallfeaturesicons img {
-    position: absolute;
-    height: 10px;
-    width: 10px;
-    margin-top: auto; }
-  .smallfeaturesicons h5, .smallfeaturesicons p, .smallfeaturesicons a {
-    margin-top: 0px;
-    padding-left: 40px;
-    color: #0a0a0a; } }
+@media screen and (min-width: 0em) and (max-width: 43.6875em) {
+  .smallfeaturesicons {
+    text-align: center; }
+    .smallfeaturesicons .tiny-feature-icon {
+      width: 100px;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      margin: 0 auto;
+      display: block; }
+    .smallfeaturesicons h5, .smallfeaturesicons p, .smallfeaturesicons a {
+      margin-top: 0px;
+      color: #0a0a0a; } }
 
 /*Features Page*/
 #features-hero {
-  background:  url(../assets/img/marquee-stars.svg) #074e68;
+  background: url(http://foundation.zurb.com/assets/img/marquee-stars.svg) #074e68;
   text-align: left;
   position: relative;
   padding: 50px 20px 0 20px; }
@@ -4104,9 +4234,6 @@ p.faq {
       #features-hero.news {
         margin-bottom: 200px; } }
 
-#subForm {
-  margin-top: 2.5rem; }
-
 .mainfeature img {
   width: 300%; }
 
@@ -4118,7 +4245,7 @@ p.faq {
 
 /* line 90, ../sass/app.scss */
 .top-area.main {
-  background-image:  url(../assets/img/foundation-emails/water.png);
+  background-image: url(http://foundation.zurb.com/assets/img/foundation-emails/water.png);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover; }
@@ -4164,7 +4291,7 @@ p.faq {
 
 /* line 112, ../sass/app.scss */
 .inky {
-  background:  url(../assets/img/foundation-emails/inky-all-devices.svg) no-repeat center center;
+  background: url(http://foundation.zurb.com/assets/img/foundation-emails/inky-all-devices.svg) no-repeat center center;
   background-size: cover;
   height: 410px;
   width: 380px;
@@ -4277,7 +4404,7 @@ p.faq {
   /* line 475, ../sass/app.scss */
   .top-area .inky-phone {
     display: block;
-    background:  url(../assets/img/foundation-emails/inky-mobile-hold.svg);
+    background: url(http://foundation.zurb.com/assets/img/foundation-emails/inky-mobile-hold.svg);
     background-repeat: no-repeat;
     height: 542px;
     position: absolute;
@@ -4430,7 +4557,7 @@ ul.changelog li .release-description a {
 
 /* line 155, ../sass/app.scss */
 .callout .row .stamp {
-  background:  url(../assets/img/foundation-emails/inky-stamp-2.svg) no-repeat center center;
+  background: url(http://foundation.zurb.com/assets/img/foundation-emails/inky-stamp-2.svg) no-repeat center center;
   position: absolute;
   width: 231px;
   right: -40px;
@@ -4480,7 +4607,7 @@ ul.changelog li .release-description a {
   display: block;
   text-align: center;
   padding: 145px 0 25px;
-  background:  url(../assets/img/foundation-emails/icons/discover.png) no-repeat 0 0;
+  background: url(http://foundation.zurb.com/assets/img/foundation-emails/icons/discover.png) no-repeat 0 0;
   background-size: 125px 2000px; }
 
 /* line 188, ../sass/app.scss */
@@ -4565,7 +4692,7 @@ ul.changelog li .release-description a {
 
 /* line 289, ../sass/app.scss */
 .inky-fish {
-  background:  url(../assets/img/foundation-emails/inky-mobile-hold.svg) no-repeat center center;
+  background: url(http://foundation.zurb.com/assets/img/foundation-emails/inky-mobile-hold.svg) no-repeat center center;
   background-size: cover;
   height: 444px;
   width: 358px;
@@ -4589,7 +4716,7 @@ ul.changelog li .release-description a {
 
 /* line 294, ../sass/app.scss */
 .read-docs a {
-  background: #e5ecee  url(../assets/img/foundation-emails/icons/read-docs.png) no-repeat 38px center;
+  background: #e5ecee url(http://foundation.zurb.com/assets/img/foundation-emails/icons/read-docs.png) no-repeat 38px center;
   padding: 23px 23px 23px 97px;
   background-size: 32px 44px;
   display: block; }
@@ -4661,7 +4788,7 @@ ul.changelog li .release-description a {
 
 /* line 321, ../sass/app.scss */
 .how-to-use.one .process-1 {
-  background:  url(../assets/img/foundation-emails/inky-outlook.svg) no-repeat center center;
+  background: url(http://foundation.zurb.com/assets/img/foundation-emails/inky-outlook.svg) no-repeat center center;
   height: 335px;
   width: 248px;
   background-size: cover;
@@ -4728,7 +4855,7 @@ ul.changelog li .release-description a {
 
 /* line 336, ../sass/app.scss */
 .how-to-use.three .process-3 .inky-point {
-  background:  url(../assets/img/foundation-emails/inky-point.svg) no-repeat center center;
+  background: url(http://foundation.zurb.com/assets/img/foundation-emails/inky-point.svg) no-repeat center center;
   height: 386px;
   width: 349px;
   background-size: cover; }
@@ -4752,7 +4879,7 @@ ul.changelog li .release-description a {
 
 /* line 343, ../sass/app.scss */
 .how-to-use.four .process-4 {
-  background:  url(../assets/img/foundation-emails/fish-3.svg) no-repeat center center;
+  background: url(http://foundation.zurb.com/assets/img/foundation-emails/fish-3.svg) no-repeat center center;
   height: 116px;
   width: 107px;
   background-size: cover;
@@ -4831,7 +4958,7 @@ ul.changelog li .release-description a {
 
 /* line 360, ../sass/app.scss */
 .how-to-use .campaign-monitor {
-  background:  url(../assets/img/foundation-emails/campaign-monitor.png) no-repeat left center;
+  background: url(http://foundation.zurb.com/assets/img/foundation-emails/campaign-monitor.png) no-repeat left center;
   background-size: 18px 12px;
   padding-left: 30px; }
 
@@ -4842,7 +4969,7 @@ ul.changelog li .release-description a {
 
 /* line 363, ../sass/app.scss */
 .process-5-3 {
-  background:  url(../assets/img/foundation-emails/inky-boat.svg) bottom center no-repeat;
+  background: url(http://foundation.zurb.com/assets/img/foundation-emails/inky-boat.svg) bottom center no-repeat;
   height: 327px;
   width: 393px;
   background-size: cover;
@@ -5078,7 +5205,7 @@ iframe {
   /* line 475, ../sass/app.scss */
   .top-area .inky-phone {
     display: block;
-    background:  url(../assets/img/foundation-emails/inky-mobile-hold.svg);
+    background: url(http://foundation.zurb.com/assets/img/foundation-emails/inky-mobile-hold.svg);
     background-repeat: no-repeat;
     height: 542px;
     position: absolute;
@@ -5164,7 +5291,7 @@ ul.mobile-nav a.current {
     margin-left: 70px; }
   /* line 502, ../sass/app.scss */
   .how-to-use.one .process-1 {
-    background:  url(../assets/img/foundation-emails/inky.svg) no-repeat center center;
+    background: url(http://foundation.zurb.com/assets/img/foundation-emails/inky.svg) no-repeat center center;
     height: 325px;
     width: 256px;
     background-size: cover;
@@ -5233,7 +5360,7 @@ ul.mobile-nav a.current {
     margin-left: 150px; }
   /* line 523, ../sass/app.scss */
   .how-to-use.four .process-4 {
-    background:  url(../assets/img/foundation-emails/fish-3.png) no-repeat center center;
+    background: url(http://foundation.zurb.com/assets/img/foundation-emails/fish-3.png) no-repeat center center;
     height: 116px;
     width: 107px;
     background-size: cover;
@@ -5300,7 +5427,7 @@ ul.mobile-nav a.current {
     line-height: 1em; }
   /* line 540, ../sass/app.scss */
   .how-to-use .campaign-monitor {
-    background:  url(../assets/img/foundation-emails/campaign-monitor.png) no-repeat left center;
+    background: url(http://foundation.zurb.com/assets/img/foundation-emails/campaign-monitor.png) no-repeat left center;
     background-size: 18px 12px;
     padding-left: 30px; }
   /* line 542, ../sass/app.scss */
@@ -5358,14 +5485,14 @@ ul.mobile-nav a.current {
 
 /* line 583, ../sass/app.scss */
 .cs-inky {
-  background:  url(../assets/img/foundation-emails/inky-mobile.svg) no-repeat right bottom;
+  background: url(http://foundation.zurb.com/assets/img/foundation-emails/inky-mobile.svg) no-repeat right bottom;
   background-size: 624px 558px;
   min-height: 60vh; }
 
 @media only screen and (max-width: 767px) {
   /* line 583, ../sass/app.scss */
   .cs-inky {
-    background:  url(../assets/img/foundation-emails/inky-mobile-hold.svg) no-repeat center bottom;
+    background: url(http://foundation.zurb.com/assets/img/foundation-emails/inky-mobile-hold.svg) no-repeat center bottom;
     background-size: 147px 200px;
     padding-bottom: 140px; } }
 
@@ -5546,7 +5673,7 @@ h6 {
 h6 small.cp {
   position: absolute;
   right: 0;
-  background:  url(../assets/img/foundation-emails/icons/clipboard.png) no-repeat 10px 4px #002b36;
+  background: url(http://foundation.zurb.com/assets/img/foundation-emails/icons/clipboard.png) no-repeat 10px 4px #002b36;
   background-size: 8px 12px;
   padding: 12px 10px 10px 24px;
   font-size: 12px;
@@ -5671,26 +5798,6 @@ ul.header-social-links li a:hover {
   display: block;
   margin: 0 auto; }
 
-.smallfeaturesicons .img {
-  position: relative;
-  height: 10px;
-  width: 10px;
-  margin-top: 500px; }
-
-.smallfeaturesicons h5, .smallfeaturesicons p {
-  margin-top: 10px;
-  padding-left: 0px; }
-
-@media screen and (max-width: 768px) {
-  .smallfeaturesicons img {
-    position: absolute;
-    height: 10px;
-    width: 10px;
-    margin-top: auto; }
-  .smallfeaturesicons h5, .smallfeaturesicons p {
-    margin-top: 0px;
-    padding-left: 40px; } }
-
 .style0 {
   enable-background: new 0 0 530 360; }
 
@@ -5774,17 +5881,25 @@ p.small-lead {
 .callout.course {
   margin: 0; }
 
+#fieldEmail {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0; }
+
+.footer-signup-form .postfix.button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0; }
+
 #dragdroparea {
-  border: 2px dashed #008CBA;
+  border: 2px dashed #1d92cf;
   border-radius: 4px;
   width: auto;
-  color: rgba(0, 140, 186, 0.3);
+  color: rgba(29, 146, 207, 0.5);
   text-align: center;
   vertical-align: middle;
-  padding: 3rem;
+  padding: 3rem 3rem 3rem;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 30px;
+  margin-top: 0;
   margin-bottom: 10px;
   font-size: 150%;
   -webkit-user-select: none;
@@ -5792,6 +5907,8 @@ p.small-lead {
   -ms-user-select: none;
   user-select: none;
   position: relative; }
+  #dragdroparea p {
+    margin: 0; }
   #dragdroparea.drop-area {
     height: auto;
     line-height: 100px;
@@ -5817,6 +5934,9 @@ p.small-lead {
     margin-top: 0; }
   .upload-panel > :last-child {
     margin-bottom: 0; }
+
+.upload-button {
+  margin: -3rem 0 0; }
 
 .tools-page {
   /* Tools-Community Page */ }
@@ -5870,6 +5990,414 @@ p.small-lead {
     list-style-type: none;
     padding: 0px;
     margin: 0px; }
+
+.row.post h5 {
+  margin-top: 0 !important; }
+
+.row.forum-posts {
+  margin-left: auto !important; }
+  @media screen and (min-width: 0em) and (max-width: 43.6875em) {
+    .row.forum-posts {
+      padding: 0 15px; } }
+
+.post-count-spacing > .column:first-child, .post-count-spacing > .columns:first-child {
+  margin-bottom: 10px;
+  padding-bottom: 0;
+  width: 16%; }
+  @media screen and (min-width: 0em) and (max-width: 43.6875em) {
+    .post-count-spacing > .column:first-child, .post-count-spacing > .columns:first-child {
+      padding-left: 0;
+      width: 25%; } }
+  @media screen and (min-width: 64em) and (max-width: 74.9375em) {
+    .post-count-spacing > .column:first-child, .post-count-spacing > .columns:first-child {
+      width: 105px; } }
+  .post-count-spacing > .column:first-child form, .post-count-spacing > .columns:first-child form {
+    margin-bottom: 0 !important; }
+
+@media screen and (min-width: 0em) and (max-width: 43.6875em) {
+  .post-count-spacing > .column:nth-child(2), .post-count-spacing > .columns:nth-child(2) {
+    width: 75%; } }
+
+.post-count-spacing > .column.desc, .post-count-spacing > .desc.columns {
+  padding-bottom: 0;
+  line-height: 1.2em;
+  padding-left: emCalc(10px);
+  width: 75%;
+  margin-bottom: 20px; }
+  @media screen and (min-width: 0em) and (max-width: 43.6875em) {
+    .post-count-spacing > .column.desc, .post-count-spacing > .desc.columns {
+      width: 85%; } }
+  @media screen and (min-width: 550px) and (max-width: 767px) {
+    .post-count-spacing > .column.desc, .post-count-spacing > .desc.columns {
+      width: 70% !important; } }
+  @media screen and (min-width: 767px) and (max-width: 850px) {
+    .post-count-spacing > .column.desc, .post-count-spacing > .desc.columns {
+      width: 73% !important; } }
+  @media screen and (min-width: 851px) and (max-width: 1999px) {
+    .post-count-spacing > .column.desc, .post-count-spacing > .desc.columns {
+      width: 75% !important; } }
+  @media screen and (min-width: 1200px) {
+    .post-count-spacing > .column.desc, .post-count-spacing > .desc.columns {
+      width: 80% !important;
+      padding-left: emCalc(15px); } }
+
+.post-count {
+  width: 80px !important;
+  height: 80px;
+  border: none !important;
+  background-color: #e6e6e6;
+  text-align: center; }
+  @media screen and (min-width: 0em) and (max-width: 43.6875em) {
+    .post-count {
+      width: 95px !important; } }
+  .post-count.new-general {
+    background-color: #074e68;
+    color: #d8f3fc; }
+  .post-count.old-general {
+    background-color: #f2f2f2 !important; }
+  .post-count .post-count-container {
+    height: 50px;
+    background-color: #f2f2f2; }
+    .post-count .post-count-container.old-general {
+      background-color: #f2f2f2 !important; }
+    .post-count .post-count-container.new {
+      background-color: #074e68;
+      color: #d8f3fc; }
+    .post-count .post-count-container.new-general {
+      background-color: #074e68;
+      color: #d8f3fc; }
+    .post-count .post-count-container span.reply-count {
+      position: relative;
+      top: 4px;
+      color: #666666;
+      font-family: "Proxima Nova", "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+      font-size: 1.75em;
+      font-weight: 700; }
+      .post-count .post-count-container span.reply-count.old-general {
+        background-color: #f2f2f2 !important;
+        top: 18px;
+        font-size: 1.75em; }
+      .post-count .post-count-container span.reply-count.new-general {
+        top: 18px;
+        color: #d8f3fc;
+        font-size: 1.75em; }
+        .post-count .post-count-container span.reply-count.new-general.with-replies {
+          top: 6px; }
+      .post-count .post-count-container span.reply-count.new-post {
+        color: #d8f3fc;
+        top: 6px; }
+        .post-count .post-count-container span.reply-count.new-post.already-checked {
+          top: 0.2em !important; }
+    .post-count .post-count-container .label {
+      display: block;
+      background-color: transparent !important;
+      text-transform: uppercase;
+      font-family: "Proxima Nova", "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+      color: #78d4f6;
+      position: relative;
+      top: emCalc(-15px); }
+  .post-count .total-post-count {
+    height: 30px;
+    font-family: "Proxima Nova", "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    color: gray;
+    font-size: 11px;
+    text-transform: uppercase;
+    padding: 8px 3px 3px 3px;
+    font-weight: 700; }
+    .post-count .total-post-count.total-replies {
+      color: gray; }
+      .post-count .total-post-count.total-replies.new {
+        background-color: #053c50;
+        color: #d8f3fc; }
+
+@media screen and (min-width: 0em) and (max-width: 43.6875em) {
+  .post-count-spacing {
+    margin: 0; } }
+
+@media screen and (min-width: 0em) and (max-width: 43.6875em) {
+  .post-count-spacing .post-description {
+    margin-top: 0 !important; } }
+
+.post-count-spacing .author-name {
+  margin-top: 5px;
+  line-height: 13px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-size: 11px; }
+  .post-count-spacing .author-name a {
+    color: #666666 !important; }
+    .post-count-spacing .author-name a:hover {
+      color: gray !important; }
+
+.post-count-spacing .last-reply-by a {
+  color: #8c8c8c; }
+
+.post-count-spacing h5 {
+  line-height: 1em;
+  margin-bottom: 5px;
+  margin-top: -4px;
+  font-size: 18px !important; }
+  @media screen and (min-width: 0em) and (max-width: 43.6875em) {
+    .post-count-spacing h5 {
+      font-size: 1.5em !important;
+      margin-top: -2px; } }
+
+.post-count-spacing p {
+  margin-bottom: 0;
+  font-size: 14px;
+  color: #666;
+  font-weight: 400; }
+
+.post-count-spacing p.moderator-links {
+  margin-top: 5px;
+  margin-bottom: 5px; }
+
+.post-count-spacing p.tags {
+  margin-top: 2px !important;
+  margin-bottom: 5px !important;
+  line-height: 28px; }
+  @media screen and (min-width: 767px) {
+    .post-count-spacing p.tags a {
+      margin: emCalc(0px) emCalc(5px) emCalc(15px) 0 !important; } }
+  @media screen and (min-width: 0px) and (max-width: 767px) {
+    .post-count-spacing p.tags a {
+      margin: emCalc(15px) emCalc(5px) emCalc(15px) 0 !important; } }
+
+.post-count-spacing span.when {
+  color: #a6a6a6; }
+  @media screen and (min-width: 0px) and (max-width: 767px) {
+    .post-count-spacing span.when {
+      margin-top: emCalc(15px); } }
+  @media screen and (min-width: 0px) and (max-width: 767px) {
+    .post-count-spacing span.when {
+      font-family: "Proxima Nova", "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+      font-weight: 400;
+      color: #666666;
+      font-size: emCalc(13px); } }
+
+.row.posts .row.post.impressions.old a {
+  color: #999999; }
+
+.row.posts .row.post.impressions hr {
+  margin: 1.25em 0 1.1875em; }
+
+.timeline-list {
+  list-style-type: none; }
+
+ul.timeline-list li {
+  margin-bottom: 15px; }
+
+ul.timeline-list {
+  font-size: 0.875em; }
+
+h5.pnc, h6.pnc {
+  font-family: "Proxima Nova Condensed Bold","Proxima Nova Condensed","proxima-nova-condensed","Helvetica Neue",Helvetica,Arial,sans-serif;
+  text-transform: uppercase; }
+
+.dropcap {
+  display: block;
+  float: left;
+  line-height: 2rem;
+  margin: 0.25rem 0.75rem 0.5rem 0;
+  text-align: center;
+  width: 2rem;
+  font-size: 3rem;
+  color: #ddd;
+  font-weight: 600; }
+
+.yeti-about {
+  position: relative;
+  z-index: 0;
+  top: -2rem;
+  height: 10rem;
+  margin: 0 auto;
+  display: block; }
+  @media screen and (min-width: 43.75em) and (max-width: 63.9375em) {
+    .yeti-about {
+      margin: 3rem 0 0 0;
+      left: 4rem; } }
+
+.yeti-about-1 {
+  z-index: -1;
+  top: -2rem;
+  height: 15rem;
+  left: 4rem; }
+  @media screen and (min-width: 43.75em) and (max-width: 63.9375em) {
+    .yeti-about-1 {
+      margin: 3rem 0 0 0; } }
+
+.light {
+  font-weight: 200 !important; }
+
+#courses-banner-large {
+  margin-top: 80px;
+  background: #f4f4f4;
+  padding: 40px 0; }
+  #courses-banner-large .banner-image img {
+    width: 100%; }
+    @media only screen and (max-width: 767px) {
+      #courses-banner-large .banner-image img {
+        width: 100%; } }
+  #courses-banner-large .banner-info h5 {
+    font-family: "Proxima Nova", "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-weight: 200;
+    color: #333;
+    margin-bottom: 22px;
+    font-size: 24px; }
+    @media only screen and (max-width: 767px) {
+      #courses-banner-large .banner-info h5 {
+        text-align: center;
+        font-size: 22px; } }
+  #courses-banner-large .banner-info p {
+    font-size: 15px;
+    color: #333; }
+    @media only screen and (max-width: 767px) {
+      #courses-banner-large .banner-info p {
+        text-align: center; } }
+  #courses-banner-large .banner-info h3 {
+    font-size: 30px;
+    font-weight: 200;
+    color: #333;
+    margin: 14px 0 20px;
+    line-height: 1.2; }
+    @media only screen and (max-width: 767px) {
+      #courses-banner-large .banner-info h3 {
+        text-align: center; } }
+  #courses-banner-large .banner-info .learn-more {
+    margin-left: 20px; }
+    @media only screen and (max-width: 767px) {
+      #courses-banner-large .banner-info .learn-more {
+        margin: 0;
+        text-align: center; } }
+  @media only screen and (max-width: 767px) {
+    #courses-banner-large .banner-info a.inline-hide {
+      display: none; } }
+
+#courses-banner-small {
+  margin-top: 30px;
+  background: #f4f4f4;
+  padding: 15px 0; }
+  #courses-banner-small .banner-image img {
+    width: 72%;
+    margin: -40px auto 0;
+    display: block; }
+    @media only screen and (max-width: 767px) {
+      #courses-banner-small .banner-image img {
+        width: 100%; } }
+  #courses-banner-small .banner-info h5 {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-weight: 200;
+    color: #333;
+    font-size: 24px; }
+    @media only screen and (max-width: 767px) {
+      #courses-banner-small .banner-info h5 {
+        text-align: center;
+        font-size: 22px; } }
+  #courses-banner-small .banner-info p {
+    font-size: 15px;
+    color: #333; }
+    @media only screen and (max-width: 767px) {
+      #courses-banner-small .banner-info p {
+        text-align: center; } }
+    #courses-banner-small .banner-info p.date {
+      margin-top: 20px;
+      margin-bottom: 10px; }
+  #courses-banner-small .banner-info .learn-more {
+    margin-left: 20px; }
+    @media only screen and (max-width: 767px) {
+      #courses-banner-small .banner-info .learn-more {
+        margin: 0;
+        text-align: center; } }
+  @media only screen and (max-width: 767px) {
+    #courses-banner-small .banner-info a.inline-hide {
+      display: none; } }
+  #courses-banner-small .banner-info a.button {
+    font-family: "Proxima Nova", "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-weight: bold !important;
+    border: none;
+    box-shadow: none;
+    color: #fff;
+    -webkit-font-smoothing: antialiased; }
+    @media only screen and (max-width: 767px) {
+      #courses-banner-small .banner-info a.button {
+        width: 100%; } }
+
+/* -----------------------------------------
+   Proxima Nova
+----------------------------------------- */
+/* Regular */
+@font-face {
+  font-family: 'proxima-nova';
+  src: font-url("ProximaNova-Reg-webfont.eot");
+  src: font-url("ProximaNova-Reg-webfont.eot?iefix") format("eot"), font-url("ProximaNova-Reg-webfont.woff") format("woff"), font-url("ProximaNova-Reg-webfont.ttf") format("truetype"), font-url("ProximaNova-Reg-webfont.svg#webfontZam02nTh") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+/* Light */
+@font-face {
+  font-family: 'proxima-nova';
+  src: font-url("ProximaNova-Light-webfont.eot");
+  src: font-url("ProximaNova-Light-webfont.eot?iefix") format("eot"), font-url("ProximaNova-Light-webfont.woff") format("woff"), font-url("ProximaNova-Light-webfont.ttf") format("truetype"), font-url("ProximaNova-Light-webfont.svg#webfontBtAcCspH") format("svg");
+  font-weight: 200;
+  font-style: normal; }
+
+/* Bold */
+@font-face {
+  font-family: 'proxima-nova';
+  src: font-url("ProximaNova-Bold-webfont.eot");
+  src: font-url("ProximaNova-Bold-webfont.eot?iefix") format("eot"), font-url("ProximaNova-Bold-webfont.woff") format("woff"), font-url("ProximaNova-Bold-webfont.ttf") format("truetype"), font-url("ProximaNova-Bold-webfont.svg#webfontZ6etP9ZY") format("svg");
+  font-weight: bold;
+  font-style: normal; }
+
+/* Xtra Bold */
+@font-face {
+  font-family: 'proxima-nova';
+  src: font-url("ProximaNova-Xbold-webfont.eot");
+  src: font-url("ProximaNova-Xbold-webfont.eot?iefix") format("eot"), font-url("ProximaNova-Xbold-webfont.woff") format("woff"), font-url("ProximaNova-Xbold-webfont.ttf") format("truetype"), font-url("ProximaNova-Xbold-webfont.svg#webfont2rpW2ohz") format("svg");
+  font-weight: 900;
+  font-style: normal; }
+
+/* Regular Italic */
+@font-face {
+  font-family: 'proxima-nova';
+  src: font-url("proximanova-regitalic-webfont.eot");
+  src: font-url("proximanova-regitalic-webfont.eot?#iefix") format("embedded-opentype"), font-url("proximanova-regitalic-webfont.woff") format("woff"), font-url("proximanova-regitalic-webfont.ttf") format("truetype"), font-url("proximanova-regitalic-webfont.svg#proxima_novaregular_italic") format("svg");
+  font-weight: normal;
+  font-style: italic; }
+
+/* Condensed Regular */
+@font-face {
+  font-family: 'proxima-nova-condensed';
+  src: font-url("proximanovacond-regular.eot");
+  src: font-url("proximanovacond-regular.eot?#iefix") format("embedded-opentype"), font-url("proximanovacond-regular.woff") format("woff"), font-url("proximanovacond-regular.ttf") format("truetype"), font-url("proximanovacond-regular.svg#proximanovacond-regular") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+/* Condensed Bold */
+@font-face {
+  font-family: 'proxima-nova-condensed';
+  src: font-url("proximanovacond-bold-webfont.eot");
+  src: font-url("proximanovacond-bold-webfont.eot?#iefix") format("embedded-opentype"), font-url("proximanovacond-bold-webfont.woff") format("woff"), font-url("proximanovacond-bold-webfont.ttf") format("truetype"), font-url("proximanovacond-bold-webfont.svg#ProximaNovaCondensedBold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+  text-transform: uppercase !important; }
+
+/* Condensed Semibold */
+@font-face {
+  font-family: 'proxima-nova-condensed';
+  src: font-url("proximanovacond-semibold-webfont.eot");
+  src: font-url("proximanovacond-semibold-webfont.eot?#iefix") format("embedded-opentype"), font-url("proximanovacond-semibold-webfont.woff") format("woff"), font-url("proximanovacond-semibold-webfont.ttf") format("truetype"), font-url("proximanovacond-semibold-webfont.svg#proxima_nova_condensedSBd") format("svg");
+  font-weight: 600;
+  font-style: normal; }
+
+/* ZURB logo font */
+@font-face {
+  font-family: 'zurb-logo';
+  src: font-url("zurb-webfont.eot");
+  src: font-url("zurb-webfont.eot?#iefix") format("embedded-opentype"), font-url("zurb-webfont.woff") format("woff"), font-url("zurb-webfont.ttf") format("truetype"), font-url("zurb-webfont.svg") format("svg");
+  font-weight: normal;
+  font-style: normal; }
 
 .grayscale {
   filter: grayscale(100%);
@@ -5951,461 +6479,461 @@ p.small-lead {
   margin-bottom: 3rem; }
 
 .mini {
-  background: url("../img/learn/website-examples/mini.png") no-repeat center center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/mini.png") no-repeat center center;
   background-size: cover;
   height: 220px; }
 
 .barclays {
-  background: url("../img/learn/website-examples/barclays.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/barclays.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .urban-d {
-  background: url("../img/learn/website-examples/urban-d.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/urban-d.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .fonts {
-  background: url("../img/learn/website-examples/fonts.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/fonts.png") no-repeat top center;
   background-size: cover;
   height: 220px;
   height: 220px; }
 
 .starwars {
-  background: url("../img/learn/website-examples/starwars.png") no-repeat center center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/starwars.png") no-repeat center center;
   background-size: cover;
   height: 220px;
   height: 220px; }
 
 .vans {
-  background: url("../img/learn/website-examples/vans.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/vans.png") no-repeat top center;
   background-size: cover;
   height: 220px;
   height: 220px; }
 
 .express {
-  background: url("../img/learn/website-examples/express.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/express.png") no-repeat top center;
   background-size: cover;
   height: 220px;
   height: 220px; }
 
 .marriott-gp {
-  background: url("../img/learn/website-examples/marriott-gp.png") no-repeat top right;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/marriott-gp.png") no-repeat top right;
   background-size: cover;
   height: 220px;
   height: 220px; }
 
 .herschel {
-  background: url("../img/learn/website-examples/herschel.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/herschel.png") no-repeat top center;
   background-size: cover;
   height: 220px;
   height: 220px; }
 
 .istock {
-  background: url("../img/learn/website-examples/istock.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/istock.png") no-repeat top center;
   background-size: cover;
   height: 220px;
   height: 220px; }
 
 .toms {
-  background: url("../img/learn/website-examples/toms.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/toms.png") no-repeat top center;
   background-size: cover;
   height: 220px;
   height: 220px; }
 
 .nature-box {
-  background: url("../img/learn/website-examples/nature-box.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/nature-box.png") no-repeat top center;
   background-size: cover;
   height: 220px;
   height: 220px; }
 
 .jquery {
-  background: url("../img/learn/website-examples/jquery.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/jquery.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .parrot {
-  background: url("../img/learn/website-examples/parrot.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/parrot.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .specialized {
-  background: url("../img/learn/website-examples/specialized.png") no-repeat top left;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/specialized.png") no-repeat top left;
   background-size: cover;
   height: 220px; }
 
 .fandango {
-  background: url("../img/learn/website-examples/fandango.png") no-repeat top left;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/fandango.png") no-repeat top left;
   background-size: cover;
   height: 220px; }
 
 .swatch {
-  background: url("../img/learn/website-examples/swatch.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/swatch.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .warby {
-  background: url("../img/learn/website-examples/warby.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/warby.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .fastco {
-  background: url("../img/learn/website-examples/fastco.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/fastco.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .treehouse {
-  background: url("../img/learn/website-examples/treehouse.png") no-repeat center center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/treehouse.png") no-repeat center center;
   background-size: cover;
   height: 220px; }
 
 .htc {
-  background: url("../img/learn/website-examples/htc.png") no-repeat top left;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/htc.png") no-repeat top left;
   background-size: cover;
   height: 220px; }
 
 .carhartt {
-  background: url("../img/learn/website-examples/carhartt.png") no-repeat top left;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/carhartt.png") no-repeat top left;
   background-size: cover;
   height: 220px; }
 
 .adobe-g {
-  background: url("../img/learn/website-examples/adobe-g.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/adobe-g.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .olympic-ca {
-  background: url("../img/learn/website-examples/olympics-ca.png") no-repeat top left;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/olympics-ca.png") no-repeat top left;
   background-size: cover;
   height: 220px; }
 
 .pact-coffee {
-  background: url("../img/learn/website-examples/pact-coffee.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/pact-coffee.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .zumba {
-  background: url("../img/learn/website-examples/zumba.png") no-repeat top left;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/zumba.png") no-repeat top left;
   background-size: cover;
   height: 220px; }
 
 .zazzle {
-  background: url("../img/learn/website-examples/zazzle.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/zazzle.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .new-balance {
-  background: url("../img/learn/website-examples/new-balance.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/new-balance.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .zozi {
-  background: url("../img/learn/website-examples/zozi.png") no-repeat center center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/zozi.png") no-repeat center center;
   background-size: cover;
   height: 220px; }
 
 .docker {
-  background: url("../img/learn/website-examples/docker.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/docker.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .us-soccer {
-  background: url("../img/learn/website-examples/us-soccer.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/us-soccer.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .stance {
-  background: url("../img/learn/website-examples/stance.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/stance.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .happy-socks {
-  background: url("../img/learn/website-examples/happy-socks.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/happy-socks.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .wd40 {
-  background: url("../img/learn/website-examples/wd40.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/wd40.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .golden-state-warriors-champs {
-  background: url("../img/learn/website-examples/golden-state-warriors-champs.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/golden-state-warriors-champs.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .bold-italic {
-  background: url("../img/learn/website-examples/bold-italic.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/bold-italic.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .recode {
-  background: url("../img/learn/website-examples/recode.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/recode.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .pixar {
-  background: url("../img/learn/website-examples/pixar.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/pixar.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .car-driver {
-  background: url("../img/learn/website-examples/car-driver.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/car-driver.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .polar {
-  background: url("../img/learn/website-examples/polar.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/polar.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .perry-ellis {
-  background: url("../img/learn/website-examples/perry-ellis.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/perry-ellis.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .denon-dj {
-  background: url("../img/learn/website-examples/denon-dj.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/denon-dj.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .marantzpro {
-  background: url("../img/learn/website-examples/marantzpro.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/marantzpro.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .amazon-jobs {
-  background: url("../img/learn/website-examples/amazon-jobs.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/amazon-jobs.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .run-dmc {
-  background: url("../img/learn/website-examples/run-dmc.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/run-dmc.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .comedy-central {
-  background: url("../img/learn/website-examples/comedy-central.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/comedy-central.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .samsung-milk {
-  background: url("../img/learn/website-examples/samsung-milk.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/samsung-milk.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .skullcandy {
-  background: url("../img/learn/website-examples/skullcandy.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/skullcandy.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .timberland {
-  background: url("../img/learn/website-examples/timberland.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/timberland.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .pressed-juicery {
-  background: url("../img/learn/website-examples/pressed-juicery.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/pressed-juicery.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .ll-cool {
-  background: url("../img/learn/website-examples/ll-cool.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/ll-cool.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .keurig {
-  background: url("../img/learn/website-examples/keurig.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/keurig.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .mikes-hard {
-  background: url("../img/learn/website-examples/mikes-hard.png") no-repeat center left;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/mikes-hard.png") no-repeat center left;
   background-size: cover;
   height: 220px; }
 
 .hyperlite {
-  background: url("../img/learn/website-examples/hyperlite.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/hyperlite.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .diamondback {
-  background: url("../img/learn/website-examples/diamondback.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/diamondback.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .subaru {
-  background: url("../img/learn/website-examples/subaru.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/subaru.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .lotus {
-  background: url("../img/learn/website-examples/lotus.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/lotus.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .nissan {
-  background: url("../img/learn/website-examples/nissan.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/nissan.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .skittles {
-  background: url("../img/learn/website-examples/skittles.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/skittles.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .coca-cola {
-  background: url("../img/learn/website-examples/coca-cola.png") no-repeat bottom center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/coca-cola.png") no-repeat bottom center;
   background-size: cover;
   height: 220px; }
 
 .ford {
-  background: url("../img/learn/website-examples/ford.png") no-repeat bottom center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/ford.png") no-repeat bottom center;
   background-size: cover;
   height: 220px; }
 
 .plantronics {
-  background: url("../img/learn/website-examples/plantronics.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/plantronics.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .chicken-sea {
-  background: url("../img/learn/website-examples/chicken-sea.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/chicken-sea.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .clif {
-  background: url("../img/learn/website-examples/clif.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/clif.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .sprouts {
-  background: url("../img/learn/website-examples/sprouts.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/sprouts.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .outback {
-  background: url("../img/learn/website-examples/outback.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/outback.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .snapple {
-  background: url("../img/learn/website-examples/snapple.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/snapple.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .ea-starwars {
-  background: url("../img/learn/website-examples/ea-starwars.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/ea-starwars.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .renault-f1 {
-  background: url("../img/learn/website-examples/renault-f1.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/renault-f1.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .kawasaki {
-  background: url("../img/learn/website-examples/kawasaki.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/kawasaki.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .ethanallen {
-  background: url("../img/learn/website-examples/ethanallen.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/ethanallen.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .kellymoore {
-  background: url("../img/learn/website-examples/kellymoore.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/kellymoore.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .hp-store {
-  background: url("../img/learn/website-examples/hp-store.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/hp-store.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .jansport {
-  background: url("../img/learn/website-examples/jansport.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/jansport.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .northface {
-  background: url("../img/learn/website-examples/northface.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/northface.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .eurosport {
-  background: url("../img/learn/website-examples/eurosport.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/eurosport.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .smart-car {
-  background: url("../img/learn/website-examples/smart-car.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/smart-car.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .bhg {
-  background: url("../img/learn/website-examples/bhg.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/bhg.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .bmw-blog {
-  background: url("../img/learn/website-examples/bmw-blog.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/bmw-blog.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .maybelline {
-  background: url("../img/learn/website-examples/maybelline.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/maybelline.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .smart-car {
-  background: url("../img/learn/website-examples/smart-car.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/smart-car.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .meundies {
-  background: url("../img/learn/website-examples/meundies.png") no-repeat top center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/meundies.png") no-repeat top center;
   background-size: cover;
   height: 220px; }
 
 .washington-post {
-  background: url("../img/learn/website-examples/washington-post.png") no-repeat top right;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/washington-post.png") no-repeat top right;
   background-size: cover;
   height: 220px; }
 
 .nat-geo {
-  background: url("../img/learn/website-examples/nat-geo.png") no-repeat top right;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/nat-geo.png") no-repeat top right;
   background-size: cover;
   height: 220px; }
 
 .honor-society {
-  background: url("../img/learn/website-examples/honor-society.png") no-repeat top left;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/honor-society.png") no-repeat top left;
   background-size: cover;
   height: 220px; }
 
 .flite {
-  background: url("../img/learn/website-examples/flite.png") no-repeat center center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/flite.png") no-repeat center center;
   background-size: cover;
   height: 220px; }
 
 .mister-jekyll {
-  background: url("../img/learn/website-examples/mister-jekyll.png") no-repeat center center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/mister-jekyll.png") no-repeat center center;
   background-size: cover;
   height: 220px; }
 
 .jacqueline-west {
-  background: url("../img/learn/website-examples/jacqueline-west.png") no-repeat center center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/jacqueline-west.png") no-repeat center center;
   background-size: cover;
   height: 220px; }
 
 .swizzle {
-  background: url("../img/learn/website-examples/swizzle.png") no-repeat center center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/swizzle.png") no-repeat center center;
   background-size: cover;
   height: 220px; }
 
 .wcb {
-  background: url("../img/learn/website-examples/wcb.png") no-repeat center center;
+  background: url("http://foundation.zurb.com/assets/img/learn/website-examples/wcb.png") no-repeat center center;
   background-size: cover;
   height: 220px; }
 
@@ -6720,7 +7248,7 @@ ol.getting-started-steps li:before {
     .hero-heading.home-hero .row {
       position: relative; }
   .hero-heading.foundation-emails {
-    background-image:  url(../assets/img/foundation-emails/water.png) !important;
+    background-image: url(http://foundation.zurb.com/assets/img/foundation-emails/water.png) !important;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -6732,12 +7260,11 @@ ol.getting-started-steps li:before {
     background-size: contain;
     margin-bottom: 0;
     background-color: #002c3a;
-    background-image:  url(../assets/img/foundation-apps/apps-bg.png);
+    background-image: url(http://foundation.zurb.com/assets/img/foundation-apps/apps-bg.png);
     right: 0;
     position: relative;
     top: 0;
     width: 100%;
-    z-index: 1;
     -webkit-animation: snow 10s linear infinite;
     animation: snow 10s linear infinite; }
   .hero-heading h1 {
@@ -6790,11 +7317,11 @@ ol.getting-started-steps li:before {
 a.stars {
   padding-left: 22px;
   margin-right: 20px;
-  background: url("../img/homepage/icon-stargazer.png") no-repeat left center; }
+  background: url("http://foundation.zurb.com/assets/img/homepage/icon-stargazer.png") no-repeat left center; }
 
 a.twitter {
   padding-left: 22px;
-  background: url("../img/homepage/icon-twitter.png") no-repeat left center; }
+  background: url("http://foundation.zurb.com/assets/img/homepage/icon-twitter.png") no-repeat left center; }
 
 .commit {
   display: inline-block;
@@ -6890,6 +7417,28 @@ a.twitter {
     text-transform: uppercase;
     font-weight: 600;
     margin-top: 30px; }
+
+.building-block-item {
+  padding: 0.5rem 0;
+  text-align: center;
+  border: 1px solid #e7e7e7;
+  max-height: 12rem;
+  overflow: hidden;
+  margin-bottom: 1rem; }
+
+.building-block-item .building-block-item-header {
+  margin-bottom: 2rem;
+  color: #333; }
+  .building-block-item .building-block-item-header h4 {
+    font-size: 13px; }
+
+.with-icon {
+  text-align: center; }
+  .with-icon p, .with-icon ul li {
+    text-align: left; }
+  .with-icon img {
+    width: 200px;
+    padding: 20px; }
 
 .border-content {
   padding: 0px 20px; }
@@ -7148,3 +7697,42 @@ ul.events-list-bottom {
 
 .notable-access-cta {
   margin-bottom: 3rem; }
+
+#contribute-large-marquee {
+  background: #f8f8f8;
+  position: relative;
+  padding: 30px 0 0;
+  width: 100%; }
+  #contribute-large-marquee h1 {
+    line-height: 1;
+    color: #333;
+    margin: 60px 0 30px 0; }
+  #contribute-large-marquee h4 {
+    color: #333;
+    margin: 10px 0 30px; }
+  #contribute-large-marquee a {
+    color: #333;
+    opacity: 0.8; }
+    #contribute-large-marquee a:hover {
+      opacity: 1; }
+  @media screen and (max-width: 768px) {
+    #contribute-large-marquee {
+      background-image: none;
+      padding: 40px 0; } }
+  #contribute-large-marquee img {
+    max-width: 170%;
+    margin-top: 0px; }
+
+.contributors {
+  text-align: center; }
+  .contributors img {
+    max-width: 8rem;
+    border-radius: 50%; }
+
+.resources-icon {
+  height: 46px;
+  width: 46px;
+  margin-right: 10px; }
+  .resources-icon.emails {
+    height: 200px;
+    width: 200px; }
