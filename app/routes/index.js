@@ -15,7 +15,12 @@ router.get('/', function(req, res, next) {
 var locked = false;
 router.post('/custom-f6', function(req, res, next) {
   var cleanup = function(){
-
+    rimraf('public/assets/custom-f6-'+uniq+'.zip', function(){
+    })
+    rimraf('assets/custom-f6-'+uniq, function(){
+    })
+    rimraf('assets/temp-'+uniq, function(){
+    })
     delete data;
   }
   var zip = function(){
@@ -310,7 +315,7 @@ router.post('/custom-f6', function(req, res, next) {
       commands.unshift("sed -i \"s|'scss',|'scss'|g\" assets/temp-"+uniq+"/gulp/sass.js")
     }
     else{
-      commands.push("sed -i \"s|node_modules/motion-ui/src|../../../../f6/node_modules/motion-ui/src|g\" assets/temp-"+uniq+"/gulp/sass.js")
+      commands.push("sed -i \"s|node_modules/motion-ui/src|../../f6/node_modules/motion-ui/src|g\" assets/temp-"+uniq+"/gulp/sass.js")
     }
     debug("DEBUG: "+req.body['components[]'])
     //if someone selects grid and flex grid, default to regular grid
