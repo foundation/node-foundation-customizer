@@ -371,6 +371,7 @@ router.post('/custom-f6', function(req, res, next) {
       commands.push("sed -i 's|"+data.settingsLocators[element]+"|"+data.settingsText[element]+data.settingsPrefix[element]+req.body["scss_settings["+element+"]"]+data.settingsSuffix[element]+";|g' assets/temp-"+uniq+"/scss/settings/_settings.scss");
     })
     commands.push("sed -i 's|##|#|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
+    commands.push("sed -i 's|remrem|rem|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
     debug(process.cwd());
     debug(commands.join(' && '));
     var fork = childProcess.spawn(process.env.SHELL, ['-c', commands.join(' && ')]);
