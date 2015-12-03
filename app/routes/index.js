@@ -219,7 +219,7 @@ router.post('/custom-f6', function(req, res, next) {
     "alert-color":"$alert-color: #ec5840;",
     "body-font-color":"$body-font-color: $black;",
     "header-font-color":"$header-color: inherit;",
-    "global-radius":"$global-radius: 3px;",
+    "global-radius":"$global-radius: 0;",
     "text-direction":"$global-text-direction: ltr;"
   }
   data.settingsText= {
@@ -258,7 +258,7 @@ router.post('/custom-f6', function(req, res, next) {
     "alert-color":"",
     "body-font-color":"",
     "header-font-color":"",
-    "global-radius":"rem",
+    "global-radius":"px",
     "text-direction":""
   }
   var unimport=[];
@@ -309,7 +309,7 @@ router.post('/custom-f6', function(req, res, next) {
     childProcess.execFileSync(process.env.SHELL,['-c', 'cp {foundation-sites.scss,gulpfile.js} ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../f6'})
     debug("Unlocked f6 folder. Copy complete.")
     app.gitlock=false;
-    childProcess.execFileSync(process.env.SHELL,['-c', 'echo \'@import "settings/settings"\' >> assets/temp-'+uniq+'/scss/foundation.scss'])
+    childProcess.execFileSync(process.env.SHELL,['-c', 'sed -i \'1i @import "settings/settings";\' assets/temp-'+uniq+'/scss/foundation.scss'])
     if(req.body['components[]'].indexOf('motion_ui') < 0){
       commands.unshift("sed -i \"s|'node_modules/motion-ui/src'||g\" assets/temp-"+uniq+"/gulp/sass.js")
       commands.unshift("sed -i \"s|'scss',|'scss'|g\" assets/temp-"+uniq+"/gulp/sass.js")
@@ -368,11 +368,15 @@ router.post('/custom-f6', function(req, res, next) {
       commands.push("rm assets/temp-"+uniq+"/js/"+element);
     })
     data.settings.forEach(function(element, index){
+      if(req.body["scss_settings["+element+"]"] == 'rtl'){
+        commands.push("sed -i 's|<html class=\"no-js\" lang=\"en\">|<html dir=\"rtl\" class=\"no-js\" lang=\"en\">|g' assets/custom-f6-"+uniq+"/index.html");
+      }
       commands.push("sed -i 's|"+data.settingsLocators[element]+"|"+data.settingsText[element]+data.settingsPrefix[element]+req.body["scss_settings["+element+"]"]+data.settingsSuffix[element]+";|g' assets/temp-"+uniq+"/scss/settings/_settings.scss");
     })
     commands.push("sed -i 's|##|#|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
     commands.push("sed -i 's|remrem|rem|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
     commands.push("sed -i 's|pxrem|px|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
+    commands.push("sed -i 's|pxpx|px|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
     debug(process.cwd());
     debug(commands.join(' && '));
     var fork = childProcess.spawn(process.env.SHELL, ['-c', commands.join(' && ')]);
