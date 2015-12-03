@@ -220,7 +220,7 @@ router.post('/custom-f6', function(req, res, next) {
     "body-font-color":"$body-font-color: $black;",
     "header-font-color":"$header-color: inherit;",
     "global-radius":"$global-radius: 3px;",
-    "text-direction":"$text-direction: ltr;"
+    "text-direction":"$global-text-direction: ltr;"
   }
   data.settingsText= {
     "column-count":"$grid-column-count: ",
@@ -233,7 +233,7 @@ router.post('/custom-f6', function(req, res, next) {
     "body-font-color":"$body-font-color: ",
     "header-font-color":"$header-color: ",
     "global-radius":"$global-radius: ",
-    "text-direction":"$text-direction: "
+    "text-direction":"$global-text-direction: "
   }
   data.settingsPrefix= {
     "column-count":"",
@@ -372,6 +372,7 @@ router.post('/custom-f6', function(req, res, next) {
     })
     commands.push("sed -i 's|##|#|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
     commands.push("sed -i 's|remrem|rem|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
+    commands.push("sed -i 's|pxrem|px|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
     debug(process.cwd());
     debug(commands.join(' && '));
     var fork = childProcess.spawn(process.env.SHELL, ['-c', commands.join(' && ')]);
