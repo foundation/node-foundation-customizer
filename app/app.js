@@ -41,7 +41,7 @@ setInterval(function(){
     else if(stdout != 'Already up-to-date.\n'){
       debug(stdout)
       debug("Updates found. Rebuilding complete and essential zips...")
-      var fork=childProcess.spawn(process.env.SHELL,['-c', "npm install && bower install"],{cwd: '../../foundation-sites'})
+      var fork=childProcess.spawn(process.env.SHELL,['-c', "npm install && bower install && gulp deploy:custom"],{cwd: '../../foundation-sites'})
       fork.stdout.on('data', function (data) {
       });
       fork.stderr.on('data', function (data) {
@@ -58,7 +58,7 @@ setInterval(function(){
         var go = function(){
           app.gitlock=true;
           debug("Locked f6 folder to prepare for update.")
-          var forkeroo=childProcess.spawn(process.env.SHELL,['-c', 'rsync -av --progress ../../foundation-sites/* ../../f6'])
+          var forkeroo=childProcess.spawn(process.env.SHELL,['-c', 'sudo rsync -av --progress ../../foundation-sites/* ../../f6'])
           forkeroo.stdout.on('data', function (data) {
 
             var output = data.toString().split('\n')
