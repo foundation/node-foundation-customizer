@@ -319,16 +319,16 @@ router.post('/custom-f6', function(req, res, next) {
     }
     debug("DEBUG: "+req.body['components[]'])
     //if someone selects grid and flex grid, default to regular grid
-    if(req.body['components[]'].indexOf('grid') >= 0 && req.body['components[]'].indexOf('flex_grid') >= 0 ){
+    if(typeof(req.body['components[]']) !== 'string' && req.body['components[]'].indexOf('grid') >= 0 && req.body['components[]'].indexOf('flex_grid') >= 0){      debug("SHOTBALLs")
       delete req.body['components[]'][req.body['components[]'].indexOf('flex_grid')]
     }
     // here we know only the flex grid is selected
-    else if(req.body['components[]'].indexOf('flex_grid') >= 0){
+    else if(req.body['components[]'] == 'flex_grid' || req.body['components[]'].indexOf('flex_grid') >= 0){
       delete data.imports['grid'];//deleting a component means we keep it
       delete data.includes['grid'];//deleting a component means we keep it
       delete data.js['grid']
       delete data.components[data.components.indexOf('grid')]
-      commands.push("sed -i 's/@include foundation-grid;/@include foundation-flex-grid;/g' assets/temp-"+uniq+"/scss/foundation.scss")
+      commands.unshift("sed -i 's/@include foundation-grid;/@include foundation-flex-grid;/g' assets/temp-"+uniq+"/scss/foundation.scss")
     }
     //make sure there is more than one item before we iterate
     if(typeof(req.body['components[]']) == 'object'){
@@ -340,7 +340,7 @@ router.post('/custom-f6', function(req, res, next) {
       })
     }
     //treat our body as a string in this situation
-    else if(typeof(req.body['components[]']) == 'string'){
+    else if(typeof(req.body['components[]']) == 'string' && req.body['components[]'] !== 'flex_grid'){
       delete data.imports[req.body['components[]']];//deleting a component means we keep it
       delete data.includes[req.body['components[]']];//deleting a component means we keep it
       delete data.js[req.body['components[]']]

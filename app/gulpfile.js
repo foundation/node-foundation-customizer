@@ -35,5 +35,5 @@ gulp.task('default', ['sass', 'js', 'run'], function() {
   gulp.watch(['./assets/**/*.scss'], ['sass']);
   gulp.watch(['./assets/**/*.js'], ['js']);
   gulp.watch(['./views/**/*.ejs'], ['views']);
-  open('http://localhost:3000');
+  open('http://localhost:3000/sites/download');
 });
