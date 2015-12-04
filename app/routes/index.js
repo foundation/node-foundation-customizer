@@ -316,10 +316,13 @@ router.post('/custom-f6', function(req, res, next) {
     }
     else{
       commands.push("sed -i \"s|node_modules/motion-ui/src|../../f6/node_modules/motion-ui/src|g\" assets/temp-"+uniq+"/gulp/sass.js")
+      commands.push("echo \"@import '../../../../../f6/node_modules/motion-ui/src/motion-ui';\" >> assets/temp-"+uniq+"/scss/foundation.scss")
+      commands.push("echo '@include motion-ui-transitions;' >> assets/temp-"+uniq+"/scss/foundation.scss")
+      commands.push("echo '@include motion-ui-animations;' >> assets/temp-"+uniq+"/scss/foundation.scss")
     }
     debug("DEBUG: "+req.body['components[]'])
     //if someone selects grid and flex grid, default to regular grid
-    if(typeof(req.body['components[]']) !== 'string' && req.body['components[]'].indexOf('grid') >= 0 && req.body['components[]'].indexOf('flex_grid') >= 0){      debug("SHOTBALLs")
+    if(typeof(req.body['components[]']) !== 'string' && req.body['components[]'].indexOf('grid') >= 0 && req.body['components[]'].indexOf('flex_grid') >= 0){
       delete req.body['components[]'][req.body['components[]'].indexOf('flex_grid')]
     }
     // here we know only the flex grid is selected

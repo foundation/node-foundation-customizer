@@ -5,8 +5,8 @@
   "scripts": {
     "start": "gulp",
     "postinstall": "bower install && git clone https://github.com/zurb/foundation-sites ../../foundation-sites || cd $PWD/../../foundation-sites && npm install && bower install && cd ../node-foundation-customizer/app && rsync -av --progress ../../foundation-sites/* ../../f6 --exclude .git",
-    "update": "cd $PWD/../../foundation-sites && git pull && npm install && bower install && cd ../node-foundation-customizer/app && rsync -av --progress ../../foundation-sites/* ../../f6 --exclude .git"
-
+    "update": "cd $PWD/../../foundation-sites && git pull && npm install && bower install && cd ../node-foundation-customizer/app && rsync -av --progress ../../foundation-sites/* ../../f6 --exclude .git",
+    "clean": "rm -r public/*.zip || rm -r assets/custom* || rm -r assets/temp*"
   },
   "dependencies": {
     "archiver": "^0.16.0",
