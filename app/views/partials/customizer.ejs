@@ -44,18 +44,31 @@
                   <input type="hidden" name="version" value="5.5.3"/>
                   <label><input type="checkbox" id="toggleCss" checked="checked"> All Foundation Components</label>
                   <br>
-                  <h5>General:</h5>
+                  <h5>Grid:</h5>
                   <div class="row">
                     <div class="medium-6 small-6 columns">
                        <ul class="no-bullet customizer css">
-                          <li><label><input type="checkbox" name="components[]" value="flex_grid" checked="checked"> Flex Grid <span data-tooltip class="has-tip" title="This is what makes the responsive magic happen. Science!"> </span> </label></li>
-                          <li><label><input type="checkbox" name="components[]" value="grid" checked="checked"> Grid <span data-tooltip class="has-tip" title="This is what makes the responsive magic happen. Science!"> </span> </label></li>
-                          <li><label><input type="checkbox" name="components[]" value="typography" checked="checked"> Typography <span data-tooltip class="has-tip" title="Typography"> </span> </label></li>
+                          <li><label><input type="radio" name="components[]" value="grid" checked="checked"> Grid <span data-tooltip class="has-tip" title="This is what makes the responsive magic happen. Science!"> </span> </label></li>
+                          <li><label><input type="radio" name="components[]" value="flex_grid" > Flex Grid <span data-tooltip class="has-tip" title="Forms."> </span> </label></li>
+                          <li><label><input type="radio" name="components[]" value="" > No Grid <span data-tooltip class="has-tip" title="Forms."> </span> </label></li>
                        </ul>
                     </div>
                      <div class="medium-6 small-6 columns">
                         <ul class="no-bullet customizer css">
-                           <li><label><input type="checkbox" name="components[]" value="forms" checked="checked"> Forms <span data-tooltip class="has-tip" title="Forms."> </span> </label></li>
+
+                        </ul>
+                     </div>
+                  </div>
+                  <h5>General:</h5>
+                  <div class="row">
+                    <div class="medium-6 small-6 columns">
+                       <ul class="no-bullet customizer css">
+                          <li><label><input type="checkbox" name="components[]" value="typography" checked="checked"> Typography <span data-tooltip class="has-tip" title="Typography"> </span> </label></li>
+                          <li><label><input type="checkbox" name="components[]" value="forms" checked="checked"> Forms <span data-tooltip class="has-tip" title="Forms."> </span> </label></li>
+                       </ul>
+                    </div>
+                     <div class="medium-6 small-6 columns">
+                        <ul class="no-bullet customizer css">
                            <li><label><input type="checkbox" name="components[]" value="float_classes" checked="checked"> Float Classes <span data-tooltip class="has-tip" title="Float Classes"> </span></label></li>
                            <li><label><input type="checkbox" name="components[]" value="visibility_classes" checked="checked"> Visibility Classes <span data-tooltip class="has-tip" title="Visibility Classes."> </span></label></li>
                         </ul>
