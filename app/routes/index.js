@@ -380,6 +380,10 @@ router.post('/custom-f6', function(req, res, next) {
     commands.push("sed -i 's|remrem|rem|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
     commands.push("sed -i 's|pxrem|px|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
     commands.push("sed -i 's|pxpx|px|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
+    commands.push("sed -i 's|@import '../node_modules/motion-ui/src/motion-ui';||g'"])
+    commands.push("sed -i 's|@include motion-ui-transitions;||g'"])
+    commands.push("sed -i 's|@include motion-ui-animations;||g'"])
+
     debug(process.cwd());
     debug(commands.join(' && '));
     var fork = childProcess.spawn(process.env.SHELL, ['-c', commands.join(' && ')]);
