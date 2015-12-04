@@ -310,6 +310,9 @@ router.post('/custom-f6', function(req, res, next) {
     debug("Unlocked f6 folder. Copy complete.")
     app.gitlock=false;
     childProcess.execFileSync(process.env.SHELL,['-c', 'sed -i \'1i @import "settings/settings";\' assets/temp-'+uniq+'/scss/foundation.scss'])
+    commands.push("sed -i 's|@import '../node_modules/motion-ui/src/motion-ui';||g' assets/temp-"+uniq+"/scss/foundation.scss")
+    commands.push("sed -i 's|@include motion-ui-transitions;||g' assets/temp-"+uniq+"/scss/foundation.scss")
+    commands.push("sed -i 's|@include motion-ui-animations;||g' assets/temp-"+uniq+"/scss/foundation.scss")
     if(req.body['components[]'].indexOf('motion_ui') < 0){
       commands.unshift("sed -i \"s|'node_modules/motion-ui/src'||g\" assets/temp-"+uniq+"/gulp/sass.js")
       commands.unshift("sed -i \"s|'scss',|'scss'|g\" assets/temp-"+uniq+"/gulp/sass.js")
@@ -380,9 +383,7 @@ router.post('/custom-f6', function(req, res, next) {
     commands.push("sed -i 's|remrem|rem|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
     commands.push("sed -i 's|pxrem|px|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
     commands.push("sed -i 's|pxpx|px|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
-    commands.push("sed -i 's|@import '../node_modules/motion-ui/src/motion-ui';||g' assets/temp-"+uniq+"/scss/foundation.scss")
-    commands.push("sed -i 's|@include motion-ui-transitions;||g' assets/temp-"+uniq+"/scss/foundation.scss")
-    commands.push("sed -i 's|@include motion-ui-animations;||g' assets/temp-"+uniq+"/scss/foundation.scss")
+
 
     debug(process.cwd());
     debug(commands.join(' && '));
