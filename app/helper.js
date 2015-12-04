@@ -10,10 +10,14 @@ exports.createCompleteAndEssential=function(){
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'sed -i "s|\'node_modules/jquery/dist/jquery.js\',|\'node_modules/jquery/dist/jquery.js\'|g" ../../f6/gulp/javascript.js']))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'sed -i "s|\'node_modules/motion-ui/dist/motion-ui.js\',||g" ../../f6/gulp/javascript.js']))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'sed -i "s|\'node_modules/what-input/what-input.js\'||g" ../../f6/gulp/javascript.js']))
+  .then(childProcess.execFileAsync(process.env.SHELL,['-c', "echo \"@import '../node_modules/motion-ui/src/motion-ui';\" >> ../../f6/scss/foundation.scss"]))
+  .then(childProcess.execFileAsync(process.env.SHELL,['-c', "echo '@include motion-ui-transitions;' >> ../../f6/scss/foundation.scss"]))
+  .then(childProcess.execFileAsync(process.env.SHELL,['-c', "echo '@include motion-ui-animations;' >> ../../f6/scss/foundation.scss"]))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', "gulp deploy:custom"], {cwd: '../../f6'}))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', "cp ./_build/assets/css/*.css ../node-foundation-customizer/app/assets/temp-complete/css"], {cwd: '../../f6'}))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', "cp ./_build/assets/js/*.js ../node-foundation-customizer/app/assets/temp-complete/js"], {cwd: '../../f6'}))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', "cp -r assets/common/* assets/temp-complete/"]))
+
   .then(function(){
     var output = fs.createWriteStream('public/assets/complete-f6.zip');
       var archive = archiver('zip'); //straight from the npm archiver docs
