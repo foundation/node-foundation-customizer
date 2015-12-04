@@ -310,7 +310,7 @@ router.post('/custom-f6', function(req, res, next) {
     debug("Unlocked f6 folder. Copy complete.")
     app.gitlock=false;
     childProcess.execFileSync(process.env.SHELL,['-c', 'sed -i \'1i @import "settings/settings";\' assets/temp-'+uniq+'/scss/foundation.scss'])
-    commands.push("sed -i 's|@import '../node_modules/motion-ui/src/motion-ui';||g' assets/temp-"+uniq+"/scss/foundation.scss")
+    commands.push("sed -i \"s|@import '../node_modules/motion-ui/src/motion-ui';||g\" assets/temp-"+uniq+"/scss/foundation.scss")
     commands.push("sed -i 's|@include motion-ui-transitions;||g' assets/temp-"+uniq+"/scss/foundation.scss")
     commands.push("sed -i 's|@include motion-ui-animations;||g' assets/temp-"+uniq+"/scss/foundation.scss")
     if(req.body['components[]'].indexOf('motion_ui') < 0){
