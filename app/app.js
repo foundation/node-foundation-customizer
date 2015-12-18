@@ -36,7 +36,7 @@ childProcess.execFileAsync(process.env.SHELL, ['-c', "stat public/assets/complet
 })
 setInterval(function(){
   debug("Checking for updates...")
-  var fork=childProcess.execFile(process.env.SHELL, ['-c',"git pull"], {cwd:'../../foundation-sites'}, function(err, stdout, stderr){
+  var fork=childProcess.execFile(process.env.SHELL, ['-c',"git pull origin master"], {cwd:'../../foundation-sites'}, function(err, stdout, stderr){
     if(err) debug(stderr)
     else if(stdout != 'Already up-to-date.\n'){
       debug(stdout)

@@ -41,7 +41,7 @@ router.post('/custom-f6', function(req, res, next) {
   }
   var complete = function(){
 
-    var fork = childProcess.spawn(process.env.SHELL, ['-c', 'gulp deploy:custom'], {cwd: 'assets/temp-'+uniq});
+    var fork = childProcess.spawn(process.env.SHELL, ['-c', 'gulp deploy:custom && rm ../custom-f6-'+uniq+'/css/foundation-flex* && rm ../custom-f6-'+uniq+'/css/*.map'], {cwd: 'assets/temp-'+uniq});
     fork.stdout.on('data', function (data) {
 
       var output = data.toString().split('\n')
@@ -273,6 +273,7 @@ router.post('/custom-f6', function(req, res, next) {
     "sed -i \"s|require('|require('"+process.cwd()+"/../../f6/node_modules/|g\" assets/temp-"+uniq+"/gulp/javascript.js",
     "sed -i \"s|require('|require('"+process.cwd()+"/../../f6/node_modules/|g\" assets/temp-"+uniq+"/gulpfile.js",
     "sed -i \"s|require('"+process.cwd()+"/../../f6/node_modules/fs|require('fs|g\" assets/temp-"+uniq+"/gulp/sass.js",
+    "sed -i \"s|sass()|sass({includePaths: ['scss']})|g\" assets/temp-"+uniq+"/gulp/sass.js",
     "sed -i \"s|require('"+process.cwd()+"/../../f6/node_modules/gulp|require('../../node_modules/gulp|g\" assets/temp-"+uniq+"/gulpfile.js",
     "sed -i \"s|var gulp = require('"+process.cwd()+"/../../f6/node_modules/gulp');||g\" assets/temp-"+uniq+"/gulp/deploy.js",
     "sed -i \"s|var gulp = require('"+process.cwd()+"/../../f6/node_modules/gulp');||g\" assets/temp-"+uniq+"/gulp/javascript.js",
