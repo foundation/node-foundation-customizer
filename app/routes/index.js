@@ -279,6 +279,7 @@ router.post('/custom-f6', function(req, res, next) {
     "sed -i \"s|var gulp = require('"+process.cwd()+"/../../f6/node_modules/gulp');||g\" assets/temp-"+uniq+"/gulp/sass.js",
     "sed -i \"s|./_build/assets/css/foundation.css|../custom-f6-"+uniq+"/css/foundation.css|g\" assets/temp-"+uniq+"/gulp/deploy.js",
     "sed -i \"s|_build/assets/css|../custom-f6-"+uniq+"/css|g\" assets/temp-"+uniq+"/gulp/sass.js",
+    "sed -i \"s|assets/*|scss/foundation.scss|g\" assets/temp-"+uniq+"/gulp/sass.js",
     "sed -i \"s|_build/assets/js|../custom-f6-"+uniq+"/js|g\" assets/temp-"+uniq+"/gulp/javascript.js",
     'sed -i "s|\'node_modules/jquery/dist/jquery.js\',|\'node_modules/jquery/dist/jquery.js\'|g" assets/temp-'+uniq+'/gulp/javascript.js',
     'sed -i "s|\'node_modules/motion-ui/dist/motion-ui.js\',||g" assets/temp-'+uniq+'/gulp/javascript.js',
