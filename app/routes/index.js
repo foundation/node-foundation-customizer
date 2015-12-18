@@ -306,7 +306,7 @@ router.post('/custom-f6', function(req, res, next) {
     childProcess.execFileSync(process.env.SHELL,['-c', 'cp -r js ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../f6'})
     childProcess.execFileSync(process.env.SHELL,['-c', 'cp -r assets/common/* assets/custom-f6-'+uniq])
     childProcess.execFileSync(process.env.SHELL,['-c', 'cp gulp/{javascript.js,deploy.js,sass.js} ../node-foundation-customizer/app/assets/temp-'+uniq+'/gulp'], {cwd: '../../f6'})
-    childProcess.execFileSync(process.env.SHELL,['-c', 'cp {gulpfile.js} ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../f6'})
+    childProcess.execFileSync(process.env.SHELL,['-c', 'cp gulpfile.js ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../f6'})
     childProcess.execFileSync(process.env.SHELL,['-c', 'cp -r assets ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../f6'})
     debug("Unlocked f6 folder. Copy complete.")
     app.gitlock=false;
