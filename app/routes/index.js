@@ -211,7 +211,7 @@ router.post('/custom-f6', function(req, res, next) {
   ]
   data.settingsLocators= {
     "column-count":"$grid-column-count: 12;",
-    "column-gutter":"$grid-column-gutter: 1.875rem / 2;",
+    "column-gutter":"$grid-column-gutter: 30px;",
     "max-width":"$global-width: rem-calc(1200);",
     "primary-color":"$primary-color: #2199e8;",
     "secondary-color":"$secondary-color: #777;",
