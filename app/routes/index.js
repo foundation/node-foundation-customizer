@@ -279,7 +279,6 @@ router.post('/custom-f6', function(req, res, next) {
     "sed -i \"s|var gulp = require('"+process.cwd()+"/../../f6/node_modules/gulp');||g\" assets/temp-"+uniq+"/gulp/sass.js",
     "sed -i \"s|./_build/assets/css/foundation.css|../custom-f6-"+uniq+"/css/foundation.css|g\" assets/temp-"+uniq+"/gulp/deploy.js",
     "sed -i \"s|_build/assets/css|../custom-f6-"+uniq+"/css|g\" assets/temp-"+uniq+"/gulp/sass.js",
-    "sed -i \"s|assets/*|scss/foundation.scss|g\" assets/temp-"+uniq+"/gulp/sass.js",
     "sed -i \"s|_build/assets/js|../custom-f6-"+uniq+"/js|g\" assets/temp-"+uniq+"/gulp/javascript.js",
     'sed -i "s|\'node_modules/jquery/dist/jquery.js\',|\'node_modules/jquery/dist/jquery.js\'|g" assets/temp-'+uniq+'/gulp/javascript.js',
     'sed -i "s|\'node_modules/motion-ui/dist/motion-ui.js\',||g" assets/temp-'+uniq+'/gulp/javascript.js',
@@ -307,7 +306,8 @@ router.post('/custom-f6', function(req, res, next) {
     childProcess.execFileSync(process.env.SHELL,['-c', 'cp -r js ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../f6'})
     childProcess.execFileSync(process.env.SHELL,['-c', 'cp -r assets/common/* assets/custom-f6-'+uniq])
     childProcess.execFileSync(process.env.SHELL,['-c', 'cp gulp/{javascript.js,deploy.js,sass.js} ../node-foundation-customizer/app/assets/temp-'+uniq+'/gulp'], {cwd: '../../f6'})
-    childProcess.execFileSync(process.env.SHELL,['-c', 'cp {foundation-sites.scss,gulpfile.js} ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../f6'})
+    childProcess.execFileSync(process.env.SHELL,['-c', 'cp {gulpfile.js} ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../f6'})
+    childProcess.execFileSync(process.env.SHELL,['-c', 'cp -r assets ../node-foundation-customizer/app/assets/temp-'+uniq], {cwd: '../../f6'})
     debug("Unlocked f6 folder. Copy complete.")
     app.gitlock=false;
     childProcess.execFileSync(process.env.SHELL,['-c', 'sed -i \'1i @import "settings/settings";\' assets/temp-'+uniq+'/scss/foundation.scss'])
