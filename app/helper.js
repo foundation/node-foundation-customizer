@@ -13,7 +13,7 @@ exports.createCompleteAndEssential=function(){
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', "echo \"@import '../node_modules/motion-ui/src/motion-ui';\" >> ../../f6/scss/foundation.scss"]))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', "echo '@include motion-ui-transitions;' >> ../../f6/scss/foundation.scss"]))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', "echo '@include motion-ui-animations;' >> ../../f6/scss/foundation.scss"]))
-  .then(childProcess.execFileAsync(process.env.SHELL,['-c', "gulp deploy:custom"], {cwd: '../../f6'}))
+  .then(childProcess.execFileAsync(process.env.SHELL,['-c', "gulp deploy:custom && rm _build/assets/css/foundation-flex* && rm _build/assets/css/*.map'"], {cwd: '../../f6'}))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', "cp ./_build/assets/css/*.css ../node-foundation-customizer/app/assets/temp-complete/css"], {cwd: '../../f6'}))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', "cp ./_build/assets/js/*.js ../node-foundation-customizer/app/assets/temp-complete/js"], {cwd: '../../f6'}))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', "cp -r assets/common/* assets/temp-complete/ "]))
