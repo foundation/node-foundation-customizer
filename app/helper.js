@@ -16,13 +16,14 @@ exports.createCompleteAndEssential=function(){
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', "gulp deploy:custom"], {cwd: '../../f6'}))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', "cp ./_build/assets/css/*.css ../node-foundation-customizer/app/assets/temp-complete/css"], {cwd: '../../f6'}))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', "cp ./_build/assets/js/*.js ../node-foundation-customizer/app/assets/temp-complete/js"], {cwd: '../../f6'}))
-  .then(childProcess.execFileAsync(process.env.SHELL,['-c', "cp -r assets/common/* assets/temp-complete/"]))
+  .then(childProcess.execFileAsync(process.env.SHELL,['-c', "cp -r assets/common/* assets/temp-complete/ "]))
 
   .then(function(){
-    var output = fs.createWriteStream('public/assets/complete-f6.zip');
+    var output = fs.createWriteStream('assets/complete-f6.zip');
       var archive = archiver('zip'); //straight from the npm archiver docs
       output.on('close', function () {
         debug("Finished building complete zip")
+        childProcess.execFileAsync(process.env.SHELL,['-c', "mv assets/complete-f6.zip public/assets/complete-f6.zip"])
         rimraf('assets/temp-complete', function(){
         })
       });
@@ -39,8 +40,13 @@ exports.createCompleteAndEssential=function(){
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'cp -r js ../node-foundation-customizer/app/assets/temp-essential'], {cwd: '../../f6'}))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'cp -r assets/common/* assets/essential']))
   .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'cp gulp/{javascript.js,deploy.js,sass.js} ../node-foundation-customizer/app/assets/temp-essential/gulp'], {cwd: '../../f6'}))
-  .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'cp {foundation-sites.scss,gulpfile.js} ../node-foundation-customizer/app/assets/temp-essential'], {cwd: '../../f6'}))
-  .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'echo \'@import "settings/settings"\' >> assets/temp-essential'+'/scss/foundation.scss']))
+  .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'cp gulpfile.js ../node-foundation-customizer/app/assets/temp-essential'], {cwd: '../../f6'}))
+  .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'cp -r assets ../node-foundation-customizer/app/assets/temp-essential'], {cwd: '../../f6'}))
+  .then(childProcess.execFileAsync(process.env.SHELL,['-c', 'sed -i \'1i @import "settings/settings";\' assets/temp-essential/scss/foundation.scss']))
+  .then(childProcess.execFileAsync(process.env.SHELL,['-c', "sed -i \"s|@import '../node_modules/motion-ui/src/motion-ui';||g\" assets/temp-essential/scss/foundation.scss"]))
+  .then(childProcess.execFileAsync(process.env.SHELL,['-c', "sed -i 's|@include motion-ui-transitions;||g' assets/temp-essential/scss/foundation.scss"]))
+  .then(childProcess.execFileAsync(process.env.SHELL,['-c', "sed -i 's|@include motion-ui-animations;||g' assets/temp-essential/scss/foundation.scss"]))
+  .then(childProcess.execFileAsync(process.env.SHELL,['-c', "sed -i \"s|sass()|sass({includePaths: ['scss']})|g\" assets/temp-essential/gulp/sass.js"]))
   .then(function(){
     var essential=[ 'sed -i "s|\'scss\',|\'scss\'|g" assets/temp-essential/gulp/sass.js','sed -i "s|\'node_modules/motion-ui/src\'||g" assets/temp-essential/gulp/sass.js',
     'sed -i "s|\'node_modules/jquery/dist/jquery.js\',|\'node_modules/jquery/dist/jquery.js\'|g" assets/temp-essential/gulp/javascript.js',
@@ -58,7 +64,7 @@ exports.createCompleteAndEssential=function(){
       debug(data.toString());
     });
     fork.on('close', function(code){
-      var forker = childProcess.spawn(process.env.SHELL, ['-c', 'gulp deploy:custom'], {cwd: 'assets/temp-essential'});
+      var forker = childProcess.spawn(process.env.SHELL, ['-c', 'gulp deploy:custom  && rm ../essential/css/foundation-flex* && rm ../essential/css/*.map'], {cwd: 'assets/temp-essential'});
       forker.stdout.on('data', function (data) {
 
         var output = data.toString().split('\n')
@@ -69,10 +75,11 @@ exports.createCompleteAndEssential=function(){
         var output = data.toString();
       });
       forker.on('close', function(code){
-        var outputer = fs.createWriteStream('public/assets/essential-f6.zip');
+        var outputer = fs.createWriteStream('assets/essential-f6.zip');
         var archive2 = archiver('zip');
           outputer.on('close', function () {
             debug("Finished building essential zip")
+            childProcess.execFileAsync(process.env.SHELL,['-c', "mv assets/essential-f6.zip public/assets/essential-f6.zip"])
             rimraf('assets/temp-essential', function(){
             })
             rimraf('assets/essential', function(){

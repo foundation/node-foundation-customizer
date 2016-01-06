@@ -54,11 +54,11 @@ setInterval(function(){
           if(app.gitlock) setTimeout(wait,1000);
           else go();
         }
-
+ 
         var go = function(){
           app.gitlock=true;
           debug("Locked f6 folder to prepare for update.")
-          var forkeroo=childProcess.spawn(process.env.SHELL,['-c', 'sudo rsync -av --progress ../../foundation-sites/* ../../f6'])
+          var forkeroo=childProcess.spawn(process.env.SHELL,['-c', 'rsync -av --progress ../../foundation-sites/* ../../f6'])
           forkeroo.stdout.on('data', function (data) {
 
             var output = data.toString().split('\n')
