@@ -15,12 +15,12 @@ router.get('/', function(req, res, next) {
 var locked = false;
 router.post('/custom-f6', function(req, res, next) {
   var cleanup = function(){
-    rimraf('public/assets/custom-f6-'+uniq+'.zip', function(){
-    })
-    rimraf('assets/custom-f6-'+uniq, function(){
-    })
-    rimraf('assets/temp-'+uniq, function(){
-    })
+//    rimraf('public/assets/custom-f6-'+uniq+'.zip', function(){
+//    })
+//    rimraf('assets/custom-f6-'+uniq, function(){
+//    })
+//    rimraf('assets/temp-'+uniq, function(){
+//    })
     delete data;
   }
   var zip = function(){
@@ -269,6 +269,7 @@ router.post('/custom-f6', function(req, res, next) {
   debug(uniq)
   var commands=[
     "sed -i \"s|require('|require('"+process.cwd()+"/../../f6/node_modules/|g\" assets/temp-"+uniq+"/gulp/deploy.js",
+    "sed -i \"s|var exec = require('"+process.cwd()+"/../../f6/node_modules/child_process').execSync;||g\" assets/temp-"+uniq+"/gulp/deploy.js",
     "sed -i \"s|require('|require('"+process.cwd()+"/../../f6/node_modules/|g\" assets/temp-"+uniq+"/gulp/sass.js",
     "sed -i \"s|require('|require('"+process.cwd()+"/../../f6/node_modules/|g\" assets/temp-"+uniq+"/gulp/javascript.js",
     "sed -i \"s|require('|require('"+process.cwd()+"/../../f6/node_modules/|g\" assets/temp-"+uniq+"/gulpfile.js",
@@ -384,6 +385,8 @@ router.post('/custom-f6', function(req, res, next) {
     commands.push("sed -i 's|##|#|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
     commands.push("sed -i 's|remrem|rem|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
     commands.push("sed -i 's|pxrem|px|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
+    commands.push("sed -i 's|pxpx|px|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
+    commands.push("sed -i 's|pxpx|px|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
     commands.push("sed -i 's|pxpx|px|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
 
 
