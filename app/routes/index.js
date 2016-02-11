@@ -59,6 +59,7 @@ router.post('/custom-f6', function(req, res, next) {
   var data = {}
   data.includes = {
     "grid":"@include foundation-grid;",
+    "flex_grid":"@include foundation-flex-grid;",
     "typography":"@include foundation-typography;",
     "button":"@include foundation-button;",
     "forms":"@include foundation-forms;",
@@ -322,7 +323,7 @@ router.post('/custom-f6', function(req, res, next) {
     }
     else{
       commands.push("sed -i \"s|node_modules/motion-ui/src|../../f6/node_modules/motion-ui/src|g\" assets/temp-"+uniq+"/gulp/sass.js")
-      commands.push("echo \"@import '../../../../../f6/node_modules/motion-ui/src/motion-ui';\" >> assets/temp-"+uniq+"/scss/foundation.scss")
+      commands.push("echo \"@import '../../../../../f6/node_modules/motion-ui/src/motion-ui';\" | cat - assets/temp-"+uniq+"/scss/foundation.scss > /tmp/out && mv /tmp/out assets/temp-"+uniq+"/scss/foundation.scss")
       commands.push("echo '@include motion-ui-transitions;' >> assets/temp-"+uniq+"/scss/foundation.scss")
       commands.push("echo '@include motion-ui-animations;' >> assets/temp-"+uniq+"/scss/foundation.scss")
     }
@@ -388,8 +389,10 @@ router.post('/custom-f6', function(req, res, next) {
     commands.push("sed -i 's|pxpx|px|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
     commands.push("sed -i 's|pxpx|px|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
     commands.push("sed -i 's|pxpx|px|g' assets/temp-"+uniq+"/scss/settings/_settings.scss")
-
-
+    commands.push("sed -i 's|@if not $flex {||g' assets/temp-"+uniq+"/scss/foundation.scss")
+    commands.push("sed -i 's|}||g' assets/temp-"+uniq+"/scss/foundation.scss")
+    commands.push("sed -i 's|@else {||' assets/temp-"+uniq+"/scss/foundation.scss")
+    commands.push("echo '}' >> assets/temp-"+uniq+"/scss/foundation.scss")
     debug(process.cwd());
     debug(commands.join(' && '));
     var fork = childProcess.spawn(process.env.SHELL, ['-c', commands.join(' && ')]);
