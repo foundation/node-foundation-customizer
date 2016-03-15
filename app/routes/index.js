@@ -8,9 +8,10 @@ var rimraf       = require('rimraf')
 var router = express.Router();
 var childProcess = require('child_process')
 var Promise = require("bluebird");
-var fs = Promise.promisifyAll(require('fs'))
-Promise.promisify(childProcess.execFile)
+var fs = Promise.promisifyAll(require('fs'));
+var exec = Promise.promisify(childProcess.exec);
 
+var sitesDirectory = require('../config.json').directory;
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -34,18 +35,20 @@ var processBody = function(originalBody) {
 
 var writeJson = function(req) {
   var config = JSON.stringify(processBody(req.body));
-  var hash = md5(config)
-  var filename = 'tmp.' + hash + '.json';
+  var hash = md5(config);
+  var filename = '/tmp/tmp.' + hash + '.json';
   req.jsonFilename = filename;
   return fs.writeFileAsync(filename, config);
 };
 
 router.post('/custom-f6', function(req, res, next) {
   writeJson(req).then(function() {
-    res.send(req.jsonFilename);
+    exec('gulp customizer --modules ' + req.jsonFilename, {cwd: sitesDirectory}).then(function() {
+      var file = sitesDirectory + '/foundation-6.2.0.zip';
+      res.download(file);
+    });
   });
 
-  //res.download(file);
 });
 
 module.exports = router;
