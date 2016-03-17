@@ -1,8 +1,8 @@
-app/node_modules
-app/bower_components
-app/public/assets/custom*.zip
-app/public/assets/*.zip
-app/assets/custom*
-app/assets/temp*
-app/npm-debug.log
+node_modules
+bower_components
+public/assets/custom*.zip
+public/assets/*.zip
+assets/custom*
+assets/temp*
+npm-debug.log
 .DS_Store
