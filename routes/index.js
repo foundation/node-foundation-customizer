@@ -24,8 +24,8 @@ var locked = false;
 
 var processBody = function(originalBody) {
   var results = {}
-  results.modules = originalBody['modules'];
-  results.variables = originalBody.variables;
+  results.modules = originalBody['modules'] || [];
+  results.variables = originalBody.variables || {};
   if(originalBody.grid_type === 'grid') {
     results.modules.push('grid');
   } else if (originalBody.grid_type === 'flex_grid') {
