@@ -6,3 +6,4 @@ assets/custom*
 assets/temp*
 npm-debug.log
 .DS_Store
+foundation-sites
