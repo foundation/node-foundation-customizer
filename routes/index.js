@@ -62,11 +62,12 @@ var getFile = function(req, res) {
     then(function() {
       var file = req.outputDir + '.zip';
       // TODO:  make this pull from config
-      res.download(file, 'foundation-' + foundationVersion + '.zip');
+      res.download(file, req.downloadName);
     });
 }
 
 router.post('/custom-f6', function(req, res, next) {
+  req.downloadName = 'foundation-' + foundationVersion + '-custom.zip';
   writeJson(req).then(function() {
     getFile(req, res);
   });
@@ -75,12 +76,14 @@ router.post('/custom-f6', function(req, res, next) {
 router.get('/complete', function(req, res, next) {
   req.jsonFilename = path.resolve(sitesDirectory + '/customizer/complete.json');
   req.outputDir = '/tmp/foundation-' + foundationVersion + '.complete';
+  req.downloadName = 'foundation-' + foundationVersion + '-complete.zip';
   getFile(req, res);
 });
 
 router.get('/essential', function(req, res, next) {
   req.jsonFilename = path.resolve(sitesDirectory + '/customizer/essential.json');
   req.outputDir = '/tmp/foundation-' + foundationVersion + '.essential';
+  req.downloadName = 'foundation-' + foundationVersion + '-essential.zip';
   getFile(req, res);
 });
 
