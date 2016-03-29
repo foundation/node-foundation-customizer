@@ -17409,7 +17409,7 @@ function setColor($this) {
     }
   });
 
-  $("#maxWidth, #columnGutter").keydown(function(event){
+  $("#maxWidth, #columnGutter, #global-radius").keydown(function(event){
     if (event.which === 9) {
       return true;
     }
