@@ -29,7 +29,8 @@ var processBody = function(originalBody) {
   if(originalBody.grid_type === 'grid') {
     results.modules.push('grid');
   } else if (originalBody.grid_type === 'flex_grid') {
-    results.modules.push('grid');
+    results.modules.push('flex_grid');
+    results.modules.push('flex_classes');
     results.variables['global-flexbox'] = 'true';
   }
 
