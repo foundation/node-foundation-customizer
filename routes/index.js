@@ -34,6 +34,27 @@ var processBody = function(originalBody) {
     results.variables['global-flexbox'] = 'true';
   }
 
+  // Some browsers (safari 9) don't submit the non-user-entered values in colors/rem/px, so we need to check and adjust
+  var colors = ["primary-color","secondary-color","alert-color","success-color","warning-color","body-font-color","header-color"];
+  for(var i = 0; i < colors.length; i ++) {
+    if (results.variables[colors[i]][0] !== '#') {
+      results.variables[colors[i]] = '#' + results.variables[colors[i]];
+    }
+  }
+
+  var endsInRem = ["grid-column-gutter","global-width"];
+  for(var i = 0; i < endsInRem.length; i ++) {
+    if (results.variables[endsInRem[i]].slice(-3) !== 'rem') {
+      results.variables[endsInRem[i]] = results.variables[endsInRem[i]] + 'rem';
+    }
+  }
+
+  var endsInPx = ["global-radius"]
+  for(var i = 0; i < endsInPx.length; i ++) {
+    if (results.variables[endsInPx[i]].slice(-2) !== 'px') {
+      results.variables[endsInPx[i]] = results.variables[endsInPx[i]] + 'px';
+    }
+  }
   return results;
 };
 
