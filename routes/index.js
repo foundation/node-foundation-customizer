@@ -34,6 +34,10 @@ var processBody = function(originalBody) {
     results.variables['global-flexbox'] = 'true';
   }
 
+
+  if(results.modules.indexOf('menu') !== -1) {
+    results.modules.push('menu_icon');
+  }
   // Some browsers (safari 9) don't submit the non-user-entered values in colors/rem/px, so we need to check and adjust
   var colors = ["primary-color","secondary-color","alert-color","success-color","warning-color","body-font-color","header-color"];
   for(var i = 0; i < colors.length; i ++) {
