@@ -68,9 +68,9 @@ var writeJson = function(req) {
   var configObject = processBody(req.body)
   var config = JSON.stringify(configObject);
   var hash = md5(config);
-  var filename = '/tmp/tmp.' + hash + '.json';
+  var filename = '/tmp/tmp.' +foundationVersion + '.' + hash + '.json';
   req.jsonFilename = filename;
-  req.outputDir = '/tmp/tmp.' + hash;
+  req.outputDir = '/tmp/tmp.' + foundationVersion + '.'  + hash;
   return fs.writeFileAsync(filename, config);
 };
 
