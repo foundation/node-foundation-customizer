@@ -3809,6 +3809,8 @@ p.faq {
         opacity: 0.8; }
       .zurb-footer-bottom .home-social a.twitter {
         background-position: center 0; }
+      .zurb-footer-bottom .home-social a.youtube {
+        background: url("http://foundation.zurb.com/assets/img/icons/youtube.png") no-repeat center 0;}
       .zurb-footer-bottom .home-social a.facebook {
         background-position: center -200px; }
       .zurb-footer-bottom .home-social a.mail {
