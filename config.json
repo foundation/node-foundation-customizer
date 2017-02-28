@@ -1,10 +1,10 @@
 {
   "development" : {
     "directory": "./foundation-sites",
-    "version" : "6.3.0"
+    "version" : "6.3.1"
   },
   "production" : {
     "directory": "./foundation-sites",
-    "version" : "6.3.0"
+    "version" : "6.3.1"
   }
 }
