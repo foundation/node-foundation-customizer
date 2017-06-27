@@ -28,6 +28,9 @@ var processBody = function(originalBody) {
   results.variables = originalBody.variables || {};
   if(originalBody.grid_type === 'grid') {
     results.modules.push('grid');
+  } else if (originalBody.grid_type === 'xy_grid') {
+    results.modules.push('xy_grid');
+    results.modules.push('flex_classes');
   } else if (originalBody.grid_type === 'flex_grid') {
     results.modules.push('flex_grid');
     results.modules.push('flex_classes');
