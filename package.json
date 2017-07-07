@@ -24,6 +24,7 @@
     "gulp-uncss": "^1.0.4",
     "md5": "^2.1.0",
     "morgan": "~1.6.1",
+    "node-sass": "^4.5.3",
     "open": "0.0.5",
     "rimraf": "^2.4.3",
     "serve-favicon": "~2.3.0"
