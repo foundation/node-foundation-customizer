@@ -59,6 +59,7 @@ var processBody = function(originalBody) {
   // We should let folks individually customize margin and padding for XY, but for now
   // just piggy back on existing gutters
   results.variables['grid-margin-gutters'] = results.variables['grid-column-gutter'];
+  results.variables['grid-columns'] = results.variables['grid-column-count'];
 
   var endsInPx = ["global-radius"]
   for(var i = 0; i < endsInPx.length; i ++) {
