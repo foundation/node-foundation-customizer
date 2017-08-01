@@ -7,3 +7,4 @@ assets/temp*
 npm-debug.log
 .DS_Store
 foundation-sites
+*.swp
