@@ -3287,7 +3287,7 @@ p {
     opacity: 1.0; }
 
 .marketing-hero {
-  background: url(http://foundation.zurb.com/assets/img/subheader-bg-01.svg) center center repeat-x;
+  background: url(https://foundation.zurb.com/assets/img/subheader-bg-01.svg) center center repeat-x;
   background-size: cover;
   position: relative;
   padding: 2.5rem 0 4.5rem;
