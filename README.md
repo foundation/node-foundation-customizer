@@ -1,6 +1,6 @@
 # Foundation Customizer
 
-This is the [Foundation Customizer](http://foundation.zurb.com/develop/download.html), a frontend for the custom zip creator for Foundation 6 by [ZURB](http://zurb.com).
+This is the [Foundation Customizer](http://foundation.zurb.com/download.html), a frontend for the custom zip creator for Foundation 6 by [ZURB](http://zurb.com).
 
 ## Requirements
 
