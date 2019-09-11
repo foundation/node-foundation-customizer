@@ -1,10 +1,10 @@
 {
-  "development" : {
+  "development": {
     "directory": "./foundation-sites",
-    "version" : "6.5.1"
+    "version": "6.5.3"
   },
-  "production" : {
+  "production": {
     "directory": "./foundation-sites",
-    "version" : "6.5.1"
+    "version": "6.5.3"
   }
 }
