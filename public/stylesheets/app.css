@@ -3141,6 +3141,9 @@ p {
   background: #121212;
   font-size: 0.8125rem;
   font-weight: bold; }
+.marketing-topbar .is-dropdown-submenu-parent {
+  outline: none;
+}
   .marketing-topbar::before, .marketing-topbar::after {
     content: ' ';
     display: table; }
@@ -3287,7 +3290,7 @@ p {
     opacity: 1.0; }
 
 .marketing-hero {
-  background: url(https://foundation.zurb.com/assets/img/subheader-bg-01.svg) center center repeat-x;
+  background: #074E68;
   background-size: cover;
   position: relative;
   padding: 2.5rem 0 4.5rem;
@@ -7672,7 +7675,7 @@ ul.events-list-bottom {
       float: none; }
 
 .page-content {
-  margin: 4rem 0; }
+  margin-top: 4rem; }
 
 .block-pattern {
   margin-bottom: 3rem; }
@@ -8090,4 +8093,3 @@ a.docs-banner h5 {
   color: #fff;
   margin-bottom: 0;
 }
-
