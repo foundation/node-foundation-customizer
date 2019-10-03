@@ -84,7 +84,7 @@ var writeJson = function(req) {
 
 var getFile = function(req, res) {
     fs.existsAsync(req.outputDir + '.zip').
-    then(function(exists) {
+    then(function() {
       var command = 'gulp customizer --modules ' + req.jsonFilename + ' --output ' + req.outputDir;
       debug(command);
       return exec(command, {cwd: sitesDirectory});
