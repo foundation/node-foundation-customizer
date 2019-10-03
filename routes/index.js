@@ -85,10 +85,11 @@ var writeJson = function(req) {
 var getFile = function(req, res) {
     fs.existsAsync(req.outputDir + '.zip').
     then(function() {
-      var command = 'gulp customizer --modules ' + req.jsonFilename + ' --output ' + req.outputDir;
+      var command = './node_modules/.bin/gulp customizer --modules ' + req.jsonFilename + ' --output ' + req.outputDir;
       debug(command);
       return exec(command, {cwd: sitesDirectory});
-    }).catch(function() {
+    }).catch(function(error) {
+      debug(error);
       return new Promise(function(resolve) {
         resolve();
       });
