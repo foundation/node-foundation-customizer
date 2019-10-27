@@ -4,7 +4,12 @@
   "private": true,
   "scripts": {
     "start": "gulp",
-    "postinstall": "bower install"
+    "postinstall": "bower install",
+    "foundation": "npm run foundation:clone && npm run foundation:checkout && npm run foundation:install",
+    "foundation:clone": "git clone git@github.com:foundation/foundation-sites && npm run foundation:checkout",
+    "foundation:checkout": "cd foundation-sites && git fetch && git checkout v6.5.3 && cd ..",
+    "foundation:install": "cd foundation-sites && npm install && cd ..",
+    "foundation:update": "cd foundation-sites && git pull && npm install && cd .."
   },
   "dependencies": {
     "archiver": "^0.16.0",
