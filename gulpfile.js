@@ -30,7 +30,7 @@ gulp.task('run', function(){
     console.log(output);
   });
 })
-gulp.task('default', ['sass', 'js', 'run'], function() {
+gulp.task('default', gulp.series('sass', 'run'), function() {
   //$.livereload.listen();
   gulp.watch(['./assets/**/*.scss'], ['sass']);
   gulp.watch(['./assets/**/*.js'], ['js']);
