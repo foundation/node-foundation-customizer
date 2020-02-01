@@ -20,12 +20,11 @@
     <link rel="icon" href="https://foundation.zurb.com/sites/docs/assets/img/icons/foundation-favicon.ico" type="image/x-icon">
     <link rel='stylesheet' href='./stylesheets/app.css' />
     <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+    <style>
+    .customizer {border-bottom: 1px #ddd dotted;}
+    </style>
   </head>
-  <style>
-  .customizer {border-bottom: 1px #ddd dotted;}
-  </style>
   <body>
-
     <div class="off-canvas-wrapper">
       <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
         <div class="off-canvas position-left" id="offCanvas" data-off-canvas data-position="left">
@@ -205,8 +204,7 @@
 
             </ul>
           </nav>
-
-    <div>
+        </div>
 
       <header class="marketing-hero">
         <a href="http://foundation.zurb.com/sites.html"><p class="hero-framework-link">Foundation for Sites</p></a>
@@ -230,8 +228,6 @@
 
   <% include partials/customizer.ejs %>
   <!--<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>-->
-
-        </section>
 
 <br><br>
 
@@ -280,6 +276,7 @@
     </div>
   </section> -->
 
+  </article>
 
   <footer class="footer-nav row expanded collapse">
     <div class="footer-nav-left">
@@ -322,7 +319,8 @@
     </div>
   </footer>
 
-
+</div>
+</div>
   <script src='./javascripts/jquery.min.js'></script>
   <script src='./javascripts/templates.js'></script>
   <script src='./javascripts/foundation.js'></script>
