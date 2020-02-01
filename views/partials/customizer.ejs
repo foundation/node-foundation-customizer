@@ -1,291 +1,439 @@
 <section id="main-content">
    <div class="row" data-equalizer>
-      <div class="medium-6 large-3 columns">
-         <h3>Complete</h3>
-         <p class="download-text" data-equalizer-watch>Grab this version of Foundation if you want everything in the framework in simple, vanilla CSS and JS.</p>
-         <p><a id="kmDownloadAll" data-src-download="6.6.1" href="complete" title="Foundation 6" class="expand button">Download Everything</a></p>
-      </div>
-      <div class="medium-6 large-3 columns">
-         <h3>Essential</h3>
-         <p class="download-text" data-equalizer-watch>A simple, lighter version that includes typography, the grid, buttons, Reveal and Interchange.<sup>*</sup><br/><small>*59kb (okay, plus dependencies).</small></p>
-         <p><a id="kmDownloadEssentials" data-src-download="6.6.1-essentials" href="essential" title="Foundation 6" class="secondary expand button">Download Essentials</a></p>
-      </div>
-      <div class="medium-6 large-3 columns">
-         <h3>Custom</h3>
-         <p class="download-text" data-equalizer-watch>Include or remove certain elements and define the size of columns, colors, font size and more.</p>
-         <p><a href="#customizeFoundation" class="secondary expand button">Custom Download</a></p>
-      </div>
-      <div class="medium-6 large-3 columns">
-         <h3>Sass</h3>
-         <p class="download-text" data-equalizer-watch>Foundation is built using SCSS, and you can work with it in the same way. Check out the instructions on the Install documentation page.</p>
-         <p><a href="http://foundation.zurb.com/sites/docs/sass.html" class="secondary expand button">Install via SCSS</a></p>
-      </div>
+       <div class="medium-6 large-3 columns">
+           <h3>Complete</h3>
+           <p class="download-text" data-equalizer-watch>Grab this version of Foundation if you want everything in the framework in simple, vanilla CSS and JS.</p>
+           <p><a id="kmDownloadAll" data-src-download="6.6.1" href="complete" title="Foundation 6" class="expand button">Download Everything</a></p>
+       </div>
+       <div class="medium-6 large-3 columns">
+           <h3>Essential</h3>
+           <p class="download-text" data-equalizer-watch>A simple, lighter version that includes typography, the grid, buttons, Reveal and Interchange.<sup>*</sup>
+               <br/><small>*59kb (okay, plus dependencies).</small></p>
+           <p><a id="kmDownloadEssentials" data-src-download="6.6.1-essentials" href="essential" title="Foundation 6" class="secondary expand button">Download Essentials</a></p>
+       </div>
+       <div class="medium-6 large-3 columns">
+           <h3>Custom</h3>
+           <p class="download-text" data-equalizer-watch>Include or remove certain elements and define the size of columns, colors, font size and more.</p>
+           <p><a href="#customizeFoundation" class="secondary expand button">Custom Download</a></p>
+       </div>
+       <div class="medium-6 large-3 columns">
+           <h3>Sass</h3>
+           <p class="download-text" data-equalizer-watch>Foundation is built using SCSS, and you can work with it in the same way. Check out the instructions on the Install documentation page.</p>
+           <p><a href="http://foundation.zurb.com/sites/docs/sass.html" class="secondary expand button">Install via SCSS</a></p>
+       </div>
    </div>
    <div class="row">
-      <div class="large-12 columns">
+       <div class="large-12 columns">
 
-<div class="callout primary">
-<p><strong>Previous Versions CSS Downloads:</strong>
-<a href="http://foundation.zurb.com/downloads/foundation-5.5.3.zip">Foundation 5</a> |
-<a href="http://foundation5.zurb.com/cdn/releases/foundation-4.3.2.zip">Foundation 4</a> |
-           <a href="http://foundation5.zurb.com/cdn/releases/foundation-3.2.5.zip">Foundation 3</a>
-        </p>
-     </div>
-      </div>
+           <div class="callout primary">
+               <p><strong>Previous Versions CSS Downloads:</strong>
+                   <a href="http://foundation.zurb.com/downloads/foundation-5.5.3.zip">Foundation 5</a> |
+                   <a href="http://foundation5.zurb.com/cdn/releases/foundation-4.3.2.zip">Foundation 4</a> |
+                   <a href="http://foundation5.zurb.com/cdn/releases/foundation-3.2.5.zip">Foundation 3</a>
+               </p>
+           </div>
+       </div>
    </div>
    <div class="row" id="customizeFoundation">
-      <div class="large-12 columns">
-         <h2 class="top40">Customize Foundation</h2>
-         <p class="lead bottom40">Pick and choose the features you want or have the whole enchilada.</p>
-         <form id="customBuild" action="custom-f6" method="post">
-            <div class="row">
-               <div class="medium-6 columns checkboxes">
-                  <h4>Choose Your Components:</h4>
-                  <input type="hidden" name="version" value="6.2.1"/>
-                  <label><input type="checkbox" id="toggleCss" checked="checked"> All Foundation Components</label>
-                  <br>
-                  <h5>Grid:</h5>
-                  <div class="row">
-                    <div class="medium-6 small-6 columns">
-                       <ul class="no-bullet customizer css">
-                          <li><label><input type="radio" name="grid_type" value="xy_grid" checked="checked"> XY Grid <span data-tooltip class="has-tip" title="The new hot XY Grid"> </span> </label></li>
-                          <li><label><input type="radio" name="grid_type" value="grid"> Float Grid <span data-tooltip class="has-tip" title="This is what makes the responsive magic happen. Science!"> </span> </label></li>
-                          <li><label><input type="radio" name="grid_type" value="flex_grid" > Flex Grid <span data-tooltip class="has-tip" title="Legacy Float Grid"> </span> </label></li>
-                          <li><label><input type="radio" name="grid_type" value="" > No Grid <span data-tooltip class="has-tip" title="Forms."> </span> </label></li>
-                       </ul>
-                    </div>
-                     <div class="medium-6 small-6 columns">
-                        <ul class="no-bullet customizer css">
+       <div class="large-12 columns">
+           <h2 class="top40">Customize Foundation</h2>
+           <p class="lead bottom40">Pick and choose the features you want or have the whole enchilada.</p>
+           <form id="customBuild" action="custom-f6" method="post">
+               <div class="row">
+                   <div class="medium-6 columns checkboxes">
+                       <h4>Choose Your Components:</h4>
+                       <input type="hidden" name="version" value="6.2.1" />
+                       <label>
+                           <input type="checkbox" id="toggleCss" checked="checked"> All Foundation Components</label>
+                       <br>
+                       <h5>Grid:</h5>
+                       <div class="row">
+                           <div class="medium-6 small-6 columns">
+                               <ul class="no-bullet customizer css">
+                                   <li>
+                                       <label>
+                                           <input type="radio" name="grid_type" value="xy_grid" checked="checked"> XY Grid <span data-tooltip class="has-tip" title="The new hot XY Grid"> </span> </label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="radio" name="grid_type" value="grid"> Float Grid <span data-tooltip class="has-tip" title="This is what makes the responsive magic happen. Science!"> </span> </label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="radio" name="grid_type" value="flex_grid"> Flex Grid <span data-tooltip class="has-tip" title="Legacy Float Grid"> </span> </label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="radio" name="grid_type" value=""> No Grid <span data-tooltip class="has-tip" title="Forms."> </span> </label>
+                                   </li>
+                               </ul>
+                           </div>
+                           <div class="medium-6 small-6 columns">
+                               <ul class="no-bullet customizer css">
 
-                        </ul>
-                     </div>
-                  </div>
-                  <h5>General:</h5>
-                  <div class="row">
-                    <div class="medium-6 small-6 columns">
-                       <ul class="no-bullet customizer css">
-                          <li><label><input type="checkbox" name="modules[]" value="typography" checked="checked"> Typography <span data-tooltip class="has-tip" title="Typography"> </span> </label></li>
-                          <li><label><input type="checkbox" name="modules[]" value="forms" checked="checked"> Forms <span data-tooltip class="has-tip" title="Forms."> </span> </label></li>
-                          <li><label><input type="checkbox" name="modules[]" value="prototyping_helpers"> Prototyping Helpers <span data-tooltip class="has-tip" title="Prototyping Helpers"> </span> </label></li>
-                       </ul>
-                    </div>
-                     <div class="medium-6 small-6 columns">
-                        <ul class="no-bullet customizer css">
-                           <li><label><input type="checkbox" name="modules[]" value="float" checked="checked"> Float Classes <span data-tooltip class="has-tip" title="Float Classes"> </span></label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="visibility" checked="checked"> Visibility Classes <span data-tooltip class="has-tip" title="Visibility Classes."> </span></label></li>
-                        </ul>
-                     </div>
-                  </div>
-                  <h5>Controls</h5>
-                  <div class="row">
-                     <div class="medium-6 small-6 columns">
-                        <ul class="no-bullet customizer css">
-                           <li><label><input type="checkbox" name="modules[]" value="button" checked="checked"> Buttons <span data-tooltip class="has-tip" title="We made some sweet buttons so you don't have to"> </span> </label></li>
-                          <li><label><input type="checkbox" name="modules[]" value="close_button" checked /> Close Button</label></li>
-                          <li><label><input type="checkbox" name="modules[]" value="button_group" checked="checked"> Button Group <span data-tooltip class="has-tip" title="Buttons that look good together."> </span></label></li>
-                        </ul>
-                     </div>
-                     <div class="medium-6 small-6 columns">
-                        <ul class="no-bullet customizer css">
-                           <li><label><input type="checkbox" name="modules[]" value="slider" checked="checked"> Slider</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="switch" checked="checked"> Switch</label></li>
-                        </ul>
-                     </div>
-                  </div>
-                  <h5>Navigation</h5>
-                  <div class="row">
-                     <div class="medium-6 small-6 columns">
-                        <ul class="no-bullet customizer css">
-                           <li><label><input type="checkbox" name="modules[]" value="menu" checked="checked"> Menu</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="drilldown_menu" checked="checked"> Drilldown Menu</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="accordion_menu" data-scss-dependency="accordion" checked="checked"> Accordion Menu <span data-tooltip class="has-tip" title="Expandable"> </span></label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="dropdown_menu" checked="checked"> Dropdown Menu</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="title_bar" checked="checked"> Title Bar</label></li>
-                        </ul>
-                     </div>
-                     <div class="medium-6 small-6 columns">
-                        <ul class="no-bullet customizer css">
-                           <li><label><input type="checkbox" name="modules[]" value="magellan" checked="checked"> Magellan</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="responsive_menu" checked="checked"> Responsive Menu</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="top_bar" checked="checked"> Top Bar</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="breadcrumbs" checked="checked"> Breadcrumbs <span data-tooltip class="has-tip" title="Breadcrumbs"> </span></label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="pagination" checked="checked"> Pagination</label></li>
-                        </ul>
-                     </div>
-                  </div>
-                  <h5>Containers</h5>
-                  <div class="row">
-                     <div class="medium-6 small-6 columns">
-                        <ul class="no-bullet customizer css">
-                          <li><label><input type="checkbox" name="modules[]" value="accordion" data-scss-dependency="accordion" checked="checked"> Accordion <span data-tooltip class="has-tip" title="Expandable"> </span></label></li>
-                          <li><label><input type="checkbox" name="modules[]" value="dropdown" checked="checked"> Dropdown</label></li>
-                          <li><label><input type="checkbox" name="modules[]" value="off_canvas" checked="checked"> Off Canvas</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="tabs" checked="checked"> Tabs</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="callout" checked="checked"> Callout <span data-tooltip class="has-tip" title="Callout"> </span></label></li>
-                        </ul>
-                     </div>
-                     <div class="medium-6 small-6 columns">
-                        <ul class="no-bullet customizer css">
-                           <li><label><input type="checkbox" name="modules[]" value="card" checked="checked"> Card</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="media_object" checked="checked"> Media Object</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="reveal" checked="checked"> Reveal</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="table" checked="checked"> Table</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="responsive_accordion_tabs" checked="checked"> Responsive Accordion Tabs</label></li>
-                        </ul>
-                     </div>
-                  </div>
-                  <h5>Media</h5>
-                  <div class="row">
-                     <div class="medium-6 small-6 columns">
-                        <ul class="no-bullet customizer css">
-                           <li><label><input type="checkbox" name="modules[]" value="badge" checked="checked"> Badge <span data-tooltip class="has-tip" title="Badge."> </span></label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="label" checked="checked"> Label</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="progress_bar" checked="checked"> Progress Bar</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="tooltip" checked="checked"> Tooltip</label></li>
-                        </ul>
-                     </div>
-                     <div class="medium-6 small-6 columns">
-                        <ul class="no-bullet customizer css">
-                           <li><label><input type="checkbox" name="modules[]" value="responsive_embed" checked="checked"> Responsive Embed</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="orbit" checked="checked"> Orbit</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="thumbnail" checked="checked"> Thumbnail</label></li>
-                        </ul>
-                     </div>
-                  </div>
+                               </ul>
+                           </div>
+                       </div>
+                       <h5>General:</h5>
+                       <div class="row">
+                           <div class="medium-6 small-6 columns">
+                               <ul class="no-bullet customizer css">
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="typography" checked="checked"> Typography <span data-tooltip class="has-tip" title="Typography"> </span> </label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="forms" checked="checked"> Forms <span data-tooltip class="has-tip" title="Forms."> </span> </label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="prototyping_helpers"> Prototyping Helpers <span data-tooltip class="has-tip" title="Prototyping Helpers"> </span> </label>
+                                   </li>
+                               </ul>
+                           </div>
+                           <div class="medium-6 small-6 columns">
+                               <ul class="no-bullet customizer css">
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="float" checked="checked"> Float Classes <span data-tooltip class="has-tip" title="Float Classes"> </span></label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="visibility" checked="checked"> Visibility Classes <span data-tooltip class="has-tip" title="Visibility Classes."> </span></label>
+                                   </li>
+                               </ul>
+                           </div>
+                       </div>
+                       <h5>Controls</h5>
+                       <div class="row">
+                           <div class="medium-6 small-6 columns">
+                               <ul class="no-bullet customizer css">
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="button" checked="checked"> Buttons <span data-tooltip class="has-tip" title="We made some sweet buttons so you don't have to"> </span> </label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="close_button" checked /> Close Button</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="button_group" checked="checked"> Button Group <span data-tooltip class="has-tip" title="Buttons that look good together."> </span></label>
+                                   </li>
+                               </ul>
+                           </div>
+                           <div class="medium-6 small-6 columns">
+                               <ul class="no-bullet customizer css">
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="slider" checked="checked"> Slider</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="switch" checked="checked"> Switch</label>
+                                   </li>
+                               </ul>
+                           </div>
+                       </div>
+                       <h5>Navigation</h5>
+                       <div class="row">
+                           <div class="medium-6 small-6 columns">
+                               <ul class="no-bullet customizer css">
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="menu" checked="checked"> Menu</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="drilldown_menu" checked="checked"> Drilldown Menu</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="accordion_menu" data-scss-dependency="accordion" checked="checked"> Accordion Menu <span data-tooltip class="has-tip" title="Expandable"> </span></label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="dropdown_menu" checked="checked"> Dropdown Menu</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="title_bar" checked="checked"> Title Bar</label>
+                                   </li>
+                               </ul>
+                           </div>
+                           <div class="medium-6 small-6 columns">
+                               <ul class="no-bullet customizer css">
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="magellan" checked="checked"> Magellan</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="responsive_menu" checked="checked"> Responsive Menu</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="top_bar" checked="checked"> Top Bar</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="breadcrumbs" checked="checked"> Breadcrumbs <span data-tooltip class="has-tip" title="Breadcrumbs"> </span></label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="pagination" checked="checked"> Pagination</label>
+                                   </li>
+                               </ul>
+                           </div>
+                       </div>
+                       <h5>Containers</h5>
+                       <div class="row">
+                           <div class="medium-6 small-6 columns">
+                               <ul class="no-bullet customizer css">
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="accordion" data-scss-dependency="accordion" checked="checked"> Accordion <span data-tooltip class="has-tip" title="Expandable"> </span></label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="dropdown" checked="checked"> Dropdown</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="off_canvas" checked="checked"> Off Canvas</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="tabs" checked="checked"> Tabs</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="callout" checked="checked"> Callout <span data-tooltip class="has-tip" title="Callout"> </span></label>
+                                   </li>
+                               </ul>
+                           </div>
+                           <div class="medium-6 small-6 columns">
+                               <ul class="no-bullet customizer css">
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="card" checked="checked"> Card</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="media_object" checked="checked"> Media Object</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="reveal" checked="checked"> Reveal</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="table" checked="checked"> Table</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="responsive_accordion_tabs" checked="checked"> Responsive Accordion Tabs</label>
+                                   </li>
+                               </ul>
+                           </div>
+                       </div>
+                       <h5>Media</h5>
+                       <div class="row">
+                           <div class="medium-6 small-6 columns">
+                               <ul class="no-bullet customizer css">
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="badge" checked="checked"> Badge <span data-tooltip class="has-tip" title="Badge."> </span></label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="label" checked="checked"> Label</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="progress_bar" checked="checked"> Progress Bar</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="tooltip" checked="checked"> Tooltip</label>
+                                   </li>
+                               </ul>
+                           </div>
+                           <div class="medium-6 small-6 columns">
+                               <ul class="no-bullet customizer css">
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="responsive_embed" checked="checked"> Responsive Embed</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="orbit" checked="checked"> Orbit</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="thumbnail" checked="checked"> Thumbnail</label>
+                                   </li>
+                               </ul>
+                           </div>
+                       </div>
 
-                  <h5>Plugins</h5>
-                  <div class="row">
-                     <div class="medium-6 small-6 columns">
-                        <ul class="no-bullet customizer css">
-                           <li><label><input type="checkbox" name="modules[]" value="sticky" checked="checked"> Sticky</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="interchange" checked="checked"> Interchange</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="responsive_toggle" checked="checked"> Responsive Toggle</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="toggler" checked="checked"> Toggler</label></li>
-                        </ul>
-                     </div>
-                     <div class="medium-6 small-6 columns">
-                        <ul class="no-bullet customizer css">
-                           <li><label><input type="checkbox" name="modules[]" value="abide" checked="checked"> Abide</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="equalizer" checked="checked"> Equalizer</label></li>
-                           <li><label><input type="checkbox" name="modules[]" value="smooth_scroll" checked="checked"> Smooth Scroll</label></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-               <div class="medium-6 columns">
-                  <h4>Set Your Defaults:</h4>
-                  <h5>The Grid</h5>
-                  <div class="row">
-                     <div class="medium-6 columns">
-                        <label for="columnCount"># of Columns</label>
-                        <input type="text" value="12" placeholder="12" id="columnCount" name="variables[grid-column-count]"/>
-                     </div>
-                     <div class="medium-6 columns">
-                        <label for="columnGutter">Total Gutter</label>
-                        <div class="input-group">
-                           <input type="text" value="1.875" placeholder="1.875" id="columnGutter" name="variables[grid-column-gutter]" class="rem-value input-group-field"/>
-                           <span class="input-group-label">rem</span>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="medium-6 columns end">
-                        <label for="maxWidth">Max-Width</label>
-                        <div class="input-group">
-                           <input type="text" value="62.5" placeholder="62.5" class="rem-value input-group-field" id="maxWidth" name="variables[global-width]"/>
-                           <span class="input-group-label">rem</span>
-                        </div>
-                     </div>
-                  </div>
-                  <h5>Colors</h5>
-                  <div class="row">
-                     <div class="medium-6 columns">
-                        <label for="primary-color">Primary Color</label>
-                        <div class="input-group">
-                           <span class="input-group-label white">#</span>
-                           <input type="text" value="2ba6cb" placeholder="Hex" id="primary-color" name="variables[primary-color]" maxlength="6" class="color-picker input-group-field"/>
-                        </div>
-                     </div>
-                     <div class="medium-6 columns">
-                        <label for="secondary-color">Secondary Color</label>
-                        <div class="input-group">
-                           <span class="input-group-label">#</span>
-                           <input type="text" value="e9e9e9" placeholder="Hex" id="secondary-color" name="variables[secondary-color]" maxlength="6" class="color-picker input-group-field"/>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="medium-6 columns">
-                        <label for="alert-color">Alert Color</label>
-                        <div class="input-group">
-                           <span class="input-group-label white">#</span>
-                           <input type="text" value="c60f13" placeholder="Hex" id="alert-color" name="variables[alert-color]" maxlength="6" class="color-picker input-group-field"/>
-                        </div>
-                     </div>
-                     <div class="medium-6 columns">
-                        <label for="success-color">Success Color</label>
-                        <div class="input-group">
-                           <span class="input-group-label white">#</span>
-                           <input type="text" value="5da423" placeholder="Hex" id="success-color" name="variables[success-color]" maxlength="6" class="color-picker input-group-field"/>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="medium-12 columns">
-                        <label for="body-font-color">Warning Color</label>
-                        <div class="input-group">
-                           <span class="input-group-label">#</span>
-                           <input type="text" value="ffae00" placeholder="Hex" id="warning-color" name="variables[warning-color]" maxlength="6" class="color-picker input-group-field"/>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="medium-6 columns">
-                        <label for="body-font-color">Body Font Color</label>
-                        <div class="input-group">
-                           <span class="input-group-label">#</span>
-                           <input type="text" value="222222" placeholder="Hex" id="body-font-color" name="variables[body-font-color]" maxlength="6" class="color-picker input-group-field"/>
-                        </div>
-                     </div>
-                     <div class="medium-6 columns">
-                        <label for="header-color">Header Font Color</label>
-                        <div class="input-group">
-                           <span class="input-group-label">#</span>
-                           <input type="text" value="222222" placeholder="Hex" id="header-color" name="variables[header-color]" maxlength="6" class="color-picker input-group-field"/>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="medium-12 columns">
-                        <h5>Global Radius</h5>
-                        <label for="global-radius">Radius</label>
-                        <div class="input-group">
-                           <input type="text" value="3" placeholder="3" class="pixel-value input-group-field" id="global-radius" name="variables[global-radius]"/>
-                           <span class="input-group-label">px</span>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="large-12 columns">
-                        <h5>Text Direction</h5>
-                        <div class="row">
+                       <h5>Plugins</h5>
+                       <div class="row">
+                           <div class="medium-6 small-6 columns">
+                               <ul class="no-bullet customizer css">
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="sticky" checked="checked"> Sticky</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="interchange" checked="checked"> Interchange</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="responsive_toggle" checked="checked"> Responsive Toggle</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="toggler" checked="checked"> Toggler</label>
+                                   </li>
+                               </ul>
+                           </div>
+                           <div class="medium-6 small-6 columns">
+                               <ul class="no-bullet customizer css">
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="abide" checked="checked"> Abide</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="equalizer" checked="checked"> Equalizer</label>
+                                   </li>
+                                   <li>
+                                       <label>
+                                           <input type="checkbox" name="modules[]" value="smooth_scroll" checked="checked"> Smooth Scroll</label>
+                                   </li>
+                               </ul>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="medium-6 columns">
+                       <h4>Set Your Defaults:</h4>
+                       <h5>The Grid</h5>
+                       <div class="row">
                            <div class="medium-6 columns">
-                              <label><input type="radio" name="variables[global-text-direction]" value="ltr" checked /> Left-to-right</label>
+                               <label for="columnCount"># of Columns</label>
+                               <input type="text" value="12" placeholder="12" id="columnCount" name="variables[grid-column-count]" />
                            </div>
-                           <div class="medium-6 columns bottom40">
-                              <label><input type="radio" name="variables[global-text-direction]" value="rtl"/> Right-to-left</label>
+                           <div class="medium-6 columns">
+                               <label for="columnGutter">Total Gutter</label>
+                               <div class="input-group">
+                                   <input type="text" value="1.875" placeholder="1.875" id="columnGutter" name="variables[grid-column-gutter]" class="rem-value input-group-field" />
+                                   <span class="input-group-label">rem</span>
+                               </div>
                            </div>
-                        </div>
-                     </div>
-                  </div>
+                       </div>
+                       <div class="row">
+                           <div class="medium-6 columns end">
+                               <label for="maxWidth">Max-Width</label>
+                               <div class="input-group">
+                                   <input type="text" value="62.5" placeholder="62.5" class="rem-value input-group-field" id="maxWidth" name="variables[global-width]" />
+                                   <span class="input-group-label">rem</span>
+                               </div>
+                           </div>
+                       </div>
+                       <h5>Colors</h5>
+                       <div class="row">
+                           <div class="medium-6 columns">
+                               <label for="primary-color">Primary Color</label>
+                               <div class="input-group">
+                                   <span class="input-group-label white">#</span>
+                                   <input type="text" value="2ba6cb" placeholder="Hex" id="primary-color" name="variables[primary-color]" maxlength="6" class="color-picker input-group-field" />
+                               </div>
+                           </div>
+                           <div class="medium-6 columns">
+                               <label for="secondary-color">Secondary Color</label>
+                               <div class="input-group">
+                                   <span class="input-group-label">#</span>
+                                   <input type="text" value="e9e9e9" placeholder="Hex" id="secondary-color" name="variables[secondary-color]" maxlength="6" class="color-picker input-group-field" />
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="medium-6 columns">
+                               <label for="alert-color">Alert Color</label>
+                               <div class="input-group">
+                                   <span class="input-group-label white">#</span>
+                                   <input type="text" value="c60f13" placeholder="Hex" id="alert-color" name="variables[alert-color]" maxlength="6" class="color-picker input-group-field" />
+                               </div>
+                           </div>
+                           <div class="medium-6 columns">
+                               <label for="success-color">Success Color</label>
+                               <div class="input-group">
+                                   <span class="input-group-label white">#</span>
+                                   <input type="text" value="5da423" placeholder="Hex" id="success-color" name="variables[success-color]" maxlength="6" class="color-picker input-group-field" />
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="medium-12 columns">
+                               <label for="body-font-color">Warning Color</label>
+                               <div class="input-group">
+                                   <span class="input-group-label">#</span>
+                                   <input type="text" value="ffae00" placeholder="Hex" id="warning-color" name="variables[warning-color]" maxlength="6" class="color-picker input-group-field" />
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="medium-6 columns">
+                               <label for="body-font-color">Body Font Color</label>
+                               <div class="input-group">
+                                   <span class="input-group-label">#</span>
+                                   <input type="text" value="222222" placeholder="Hex" id="body-font-color" name="variables[body-font-color]" maxlength="6" class="color-picker input-group-field" />
+                               </div>
+                           </div>
+                           <div class="medium-6 columns">
+                               <label for="header-color">Header Font Color</label>
+                               <div class="input-group">
+                                   <span class="input-group-label">#</span>
+                                   <input type="text" value="222222" placeholder="Hex" id="header-color" name="variables[header-color]" maxlength="6" class="color-picker input-group-field" />
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="medium-12 columns">
+                               <h5>Global Radius</h5>
+                               <label for="global-radius">Radius</label>
+                               <div class="input-group">
+                                   <input type="text" value="3" placeholder="3" class="pixel-value input-group-field" id="global-radius" name="variables[global-radius]" />
+                                   <span class="input-group-label">px</span>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="large-12 columns">
+                               <h5>Text Direction</h5>
+                               <div class="row">
+                                   <div class="medium-6 columns">
+                                       <label>
+                                           <input type="radio" name="variables[global-text-direction]" value="ltr" checked /> Left-to-right</label>
+                                   </div>
+                                   <div class="medium-6 columns bottom40">
+                                       <label>
+                                           <input type="radio" name="variables[global-text-direction]" value="rtl" /> Right-to-left</label>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
                </div>
-            </div>
-            <div class="row">
-               <div class="large-12 columns">
-                  <input type="submit" class="radius large button km-foundation-customized-download" id="packageSubmit" value="Download Custom Build" data-src-download="6.6.1-custom"/>
+               <div class="row">
+                   <div class="large-12 columns">
+                       <input type="submit" class="radius large button km-foundation-customized-download" id="packageSubmit" value="Download Custom Build" data-src-download="6.6.1-custom" />
+                   </div>
                </div>
-            </div>
-         </form>
-      </div>
+           </form>
+       </div>
    </div>
 </section>
