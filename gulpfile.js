@@ -5,8 +5,7 @@ var childProcess = require('child_process')
 
 
 gulp.task('js', function(){
-  return gulp.src('assets/javascripts/app.js')
-  .pipe($.concat('app.js'))
+  return gulp.src('app.js')
   .pipe(gulp.dest('./public/javascripts'))
   .pipe($.livereload())
 })
@@ -30,7 +29,7 @@ gulp.task('run', function(){
     console.log(output);
   });
 })
-gulp.task('default', ['sass', 'js', 'run'], function() {
+gulp.task('default', gulp.series('sass', 'js', 'run'), function() {
   //$.livereload.listen();
   gulp.watch(['./assets/**/*.scss'], ['sass']);
   gulp.watch(['./assets/**/*.js'], ['js']);
