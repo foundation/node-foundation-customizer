@@ -7,7 +7,6 @@ This is the [Foundation Customizer](https://foundation.zurb.com/sites/download.h
 You'll need the following software installed to get started.
 
   * [Node.js](http://nodejs.org): Use the installer provided on the NodeJS website.
-  * [Gulp](http://gulpjs.com/) and [Bower](http://bower.io): Run `[sudo] npm install -g gulp bower`
 
 ## Installing Dependencies
 
@@ -18,7 +17,7 @@ npm install
 
 # NOTE:  You can also symlink in an existing foundation-sites repo.
 git clone git@github.com:zurb/foundation-sites && cd foundation-sites
-npm install && bower install
+npm install
 ```
 
 ## Launching the customizer

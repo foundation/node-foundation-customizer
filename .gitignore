@@ -1,5 +1,4 @@
 node_modules
-bower_components
 public/assets/custom*.zip
 public/assets/*.zip
 assets/custom*
