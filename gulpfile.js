@@ -3,12 +3,6 @@ var open = require('open');
 var $    = require('gulp-load-plugins')();
 var childProcess = require('child_process')
 
-
-gulp.task('js', function(){
-  return gulp.src('app.js')
-  .pipe(gulp.dest('./public/javascripts'))
-  .pipe($.livereload())
-})
 gulp.task('sass', function() {
   return gulp.src('./assets/scss/style.scss')
     .pipe($.sass())
@@ -29,10 +23,9 @@ gulp.task('run', function(){
     console.log(output);
   });
 })
-gulp.task('default', gulp.series('sass', 'js', 'run'), function() {
+gulp.task('default', gulp.series('sass', 'run'), function() {
   //$.livereload.listen();
   gulp.watch(['./assets/**/*.scss'], ['sass']);
-  gulp.watch(['./assets/**/*.js'], ['js']);
   gulp.watch(['./views/**/*.ejs'], ['views']);
   open('http://localhost:3000/sites/download');
 });
