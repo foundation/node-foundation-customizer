@@ -27,7 +27,7 @@
     "gulp-uglify": "^1.4.2",
     "gulp-uncss": "^1.0.4",
     "md5": "^2.1.0",
-    "morgan": "~1.6.1",
+    "morgan": "~1.9.1",
     "node-sass": "^4.13.1",
     "open": "0.0.5",
     "rimraf": "^2.4.3",
