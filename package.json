@@ -6,7 +6,7 @@
     "start": "gulp",
     "foundation": "npm run foundation:clone && npm run foundation:checkout && npm run foundation:install",
     "foundation:clone": "git clone https://github.com/foundation/foundation-sites.git && npm run foundation:checkout",
-    "foundation:checkout": "cd foundation-sites && git fetch && git checkout v6.6.1 && cd ..",
+    "foundation:checkout": "cd foundation-sites && git fetch && git checkout v6.6.3 && cd ..",
     "foundation:install": "cd foundation-sites && npm install && cd ..",
     "foundation:update": "cd foundation-sites && git pull && npm install && cd .."
   },
