@@ -2,7 +2,7 @@ module.exports = {
   apps : [{
     name: 'customizer',
     script: 'npm start',
-
+    cwd: '/home/druf/html/foundation-customizer.daniel-ruf.de',
     // Options reference: https://pm2.keymetrics.io/docs/usage/application-declaration/
     //args: 'one two',
     instances: 1,
