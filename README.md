@@ -20,16 +20,16 @@ git clone git@github.com:zurb/foundation-sites && cd foundation-sites
 npm install
 ```
 
+## Setup foundation-sites
+```shell
+npm run foundation
+```
+
 ## Launching the customizer
 
 Easy as 1..2..3!
 ```shell
 npm start
-```
-
-Setup foundation-sites
-```shell
-npm run foundation
 ```
 
 ## Customizer Overview
