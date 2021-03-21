@@ -28,7 +28,7 @@ npm start
 ```
 
 Setup foundation-sites
-````shell
+```shell
 npm run foundation
 ```
 
